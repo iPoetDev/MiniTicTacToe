@@ -1,0 +1,41 @@
+##################### GitHub Python Ignore Template #########################
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# mkdocs documentation
+/site
+
+############################ Node    #########################################
+# Node configuration
+/node_modules/*
+
+############################ PyCharm #########################################
+#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
+#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
+#  and can be added to the global gitignore or merged into this file.  For a more nuclear
+#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
+.idea/
+
+########################### USER IGNORE ######################################
+# Excess / Overage
+Writerside/*
+.obsidian/*
+/obsidian/*
+.ai/*
+
+########################### DOC CONTROL ######################################
+# Undo as needed for.
+# Tracker
