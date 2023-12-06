@@ -31,17 +31,17 @@ For specific solution and user goals, see 2.0 Solution and 4.0 User Experience s
 -  [x] To employ Frameworks from *CSS* and *JavaScript* if appropriate and decided for.
 	- *TailwindsCSS* is a preferred *CSS Framework* to build any design, directly in your *HTML*; using a *Locality of Behaviour* principle, over a *Separation of Concerns*.
 	- *AlpineJS* is a preferred *VUE/jQuery* like Framework for rugged, minimal tool for composing behaviour directly in your markup; using a *Locality of Behaviour* principle, over a *Separation of Concerns*.
--  [x] To demonstrate the author's technical and *academic* writing skills in this `README.md`. 
+-  [x] To demonstrate the author's technical and *academic* writing skills in this `README.md`.
 	- The author is an expressive, detailed orientated and explicit technical writer.
 	- This technical writing is inside a academic context, with goals are to show learnings and capabilities.
 -  [x] To showcase the author's technical knowledge, supplementary skills beyond the scope of this assignment, such as:
 	- Agile Software & Project Management and appropriate level according to scope/complexity.
 	- Any Decision Records
-	- Mermaid Diagrams 
+	- Mermaid Diagrams
 
 ### 1.2 Live App 🚧
 
-Name | App | Repo Name | Repo URL 
+Name | App | Repo Name | Repo URL
 --- | --- |--- | --- |
 `Project` | https://{{app-slug}}.github.io | `Repo` | https://github.com/iPoetDev/{{repo-slug}} |
 ***
@@ -52,10 +52,10 @@ Name | App | Repo Name | Repo URL
 amiresponsive.co.uk/ | URI: AmIResponsive
 
 ***
-> :: 
+> ::
 ***
 ## 2.0 Solution: **`Tic Tac Toe`** - A Grid Game 🚧✅
-> Complete: ✅ | Review: ❓ 
+> Complete: ✅ | Review: ❓
 ### 2.1 Game Play ✅✅
 
 - Tic-tac-toe is played on a three-by-three grid by two players, who alternately place the marks X and O in one of the nine spaces in the grid <sup><b>(1)</b></sup>.
@@ -64,7 +64,7 @@ amiresponsive.co.uk/ | URI: AmIResponsive
 - Players soon discover that the best play from both parties leads to a draw as an optimal strategy. It is sometimes known as [futile game](https://en.wikipedia.org/wiki/Futile_game) <sup><b>(2)</b></sup> in game theory.
 
 **`Example GamePlay`: Wikipedia.com <sup><b>(1)</b></sup> **
-![](docs/assets/img/Tic-tac-toe-game-1.png)
+![](refs/assets/img/Tic-tac-toe-game-1.png)
 
 #### This Game Play ✅✅
 
@@ -79,12 +79,12 @@ amiresponsive.co.uk/ | URI: AmIResponsive
 - To **win** the game, the first to mark 3 indices/rows in any direction, along one of these incidence structures.
 	- 3 Horizontal Wins
 	- 3 Vertical Wins
-	- 2 Diagonal Wins 
+	- 2 Diagonal Wins
 - To **draw** the game, is when no further win along the above indices/row and all spaces are occupied or the next turn player concedes to a draw.
 `Winning Options: 3 indices in a row`
-![](docs/assets/img/Three_Men's_Morris_variant_board.svg)
+![](refs/assets/img/Three_Men's_Morris_variant_board.svg)
 - Given that Tic Tac Toe is a futile game, Players may want to have a series a rounds of games
-	- Each round is a sets 
+	- Each round is a sets
 	- Best of `2n+1` sets is a match.
 - Therefore, to score these rounds of games, scoring each will need to be tallied and kept.
 	- **`Scoring`**: is a potential feature. Credit: [Tic Tac Toe Web Browser Gameplay)](https://github.com/miloszmisiek/ci_p2_tictactoe#gameplay) <sup><b>(3)</b></sup>
@@ -118,7 +118,7 @@ amiresponsive.co.uk/ | URI: AmIResponsive
 | Game Messages      | Web App          | All:<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Desktop, Tablet, Mobile |         2nd Row,&nbsp;<br>Area | Template,<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Components   | InnerHTML Text                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | &nbsp;On Update, Update DOM                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |         |
 | Game Controls      | Web App          | All:<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Desktop, Tablet, Mobile | Bottom of Game Board           | Template,<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Grid, Button | Start Button<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Reset Button            | Button On Click                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |         |
 | Game Score         | Web App          | All:<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Desktop, Tablet, Mobile | Bottom of Game Board           | Template,<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Components   | InnerHTML Text                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | &nbsp;On Update, Update DOM                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |         |
-| Game Match Scoring | Web App          | All:<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Desktop, Tablet, Mobile | In Overlay, In Page Modal      | Template,<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Components   | InnerHTML Text<br>Start Match Button<br>Reset Match                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Opens Modal<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Button On Click |         |  
+| Game Match Scoring | Web App          | All:<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Desktop, Tablet, Mobile | In Overlay, In Page Modal      | Template,<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Components   | InnerHTML Text<br>Start Match Button<br>Reset Match                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Opens Modal<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Button On Click |         |
 ***
 ### 2.3 Developer Motivations ✅✅
 
@@ -126,10 +126,10 @@ amiresponsive.co.uk/ | URI: AmIResponsive
 - Tic Tac Toe has a simple implementation and is commonly used to instruct student developers in:
 	1. Fundamentals of *JavaScript* for interactive web design.
 	2. Basics of Game Design as a common learning pattern for interactivity.
-- This README is demonstration of the author's technical writing and structured documentation skills. 
+- This README is demonstration of the author's technical writing and structured documentation skills.
 - A preference for technical choices that demonstrate a principle of **Locality of Behaviour**
 	-  **i.e.**: The behaviour of a unit of code should be as obvious as possible by looking only at that unit of code.
-- The choice of *TailwindCSS*, as part of the requirements for the design and testing an interactive Front-End web application, is: 
+- The choice of *TailwindCSS*, as part of the requirements for the design and testing an interactive Front-End web application, is:
 	- To build on the personal preference for pre-composed *CSS* styling and a opinionated library and or framework of styling.
 	- Example of *Locality of Behaviour*.
 - The choice of *AlpineJS*, as part of the requirement to implement Front-End interactivity a *JavaScript* libraries or frameworks, is:
@@ -142,7 +142,7 @@ amiresponsive.co.uk/ | URI: AmIResponsive
 
 **For versions beyond version 0.5 / Alpha **
 
-- `Time Limits` is a potential feature 
+- `Time Limits` is a potential feature
 - **`Scoring`**: is a potential feature.
 
 ***
@@ -160,7 +160,7 @@ This author-developer's project has a strong influence, code reuse, concept and 
 **Shared Concepts**: Reused.
 	- Design: Font: Gochi-Hand
 	- JavaScript: AlpineJS in HTML and Game Code
-	- JavaScript: App Game Code 
+	- JavaScript: App Game Code
 
 ***
 > ::
@@ -187,10 +187,10 @@ _This section is a summation of select key, pre-agile:
 
 #### 3.1.3 Select a CSS Framework, like TailwindCSS, that demonstrate the Locality of Behaviour principle as a design pattern.
 
-- 
+-
 #### 3.1.4 Select a lightweight JavaScript Framework, like AlpineJS, that demonstrate the Locality of Behaviour principle and composability of behaviour.
 
-- 
+-
 
 ***
 ### 3.2 Requirements ✅
@@ -198,7 +198,7 @@ _This section is a summation of select key, pre-agile:
 To view the Project Assessments and Requirements, see the associated Repository's Wiki: [Wiki (Project)](https://github.com/iPoetDev/AlpineTicTacToe/wiki)
 
 ***
-### 3.3 Workflow ✅ 
+### 3.3 Workflow ✅
 
 The following workflow is an extract, re-sorted, of the PASS and MERIT Learning Objectives from the assessment criteria. Repurposed to define a workflow from start to finish, in semantic categories/phases. If these are surmounted, then good performance will open the possibility to a higher performance.
 #### 3.3.1 Design & UX
@@ -355,10 +355,10 @@ Any of these audiences/roles or personas are all forms of Users.
  --- | --- | --- | --- | --
 Casual Gamers | People looking for a quick and easy game to play   |  Gamer | Casuals |
 Classic Gamers | People who like the classic grid games, i.e tic-tac-toe     |  Gamer | Fans     |
-First Time Players  | People who never played a game of Tic Tac Toe    |  Player | First Timers | 
-Returning Players  | People who want to repeat a game and keep score   |  Player | Returners | 
-Frequent Players  | People who want to improve their gaming experience, across multiple form factors    | Player  | Frequents | 
-Dev Students  |     | Student  | Developer | 
+First Time Players  | People who never played a game of Tic Tac Toe    |  Player | First Timers |
+Returning Players  | People who want to repeat a game and keep score   |  Player | Returners |
+Frequent Players  | People who want to improve their gaming experience, across multiple form factors    | Player  | Frequents |
+Dev Students  |     | Student  | Developer |
 
 A gamer (role) can be one of three player types to form sub personas.
 	- i.e. Casual Gamers who are first time players.
@@ -391,14 +391,14 @@ Defining these features, within Milestones, (here), allows for alluding to the d
   - Color:
   - Whitespacing
   - Dark Mode:
-✅ Is Part Of: Web Page 
-Version: 
-✅ Benefit: 
+✅ Is Part Of: Web Page
+Version:
+✅ Benefit:
   - Implies and imparts the game's intent and context implicitly.
   - A good Brand Identity allows for an emotional and logical connection as to the design ethos of the App.
   - A strong brand allows for quick recognition of the game's purpose and intutive informational clues to how the game is played.
 Acceptance:
-  - 
+  -
 ```
 
 
@@ -408,13 +408,13 @@ Acceptance:
 ✅ Feature: The Game Banner is the page container that is composed of :
   - Game Title
   - In Game Controls
-✅ Is Part of: Web Page     
-Version: 
-✅ Benefit: 
+✅ Is Part of: Web Page
+Version:
+✅ Benefit:
   - Allows for brand identity (a Title/Heading/Icon) positioning.
   - Allows for positioning simple in-game controls (like toggles) to control game options.
 Acceptance:
-  - 
+  -
 ```
 
 - **Game Title**
@@ -423,19 +423,19 @@ Acceptance:
 ✅ Feature: The Game Title is the page element that is composed of :
   - Icon/Logo
   - Logo Heading
-✅ Is Part of: Game Brand    
-Version: 
-✅ Benefit: 
+✅ Is Part of: Game Brand
+Version:
+✅ Benefit:
   - Allows for brand identity (a Title/Heading/Icon) positioning.
   - Applying brand style and theming.
 Acceptance:
-  - 
+  -
 ```
 - Game Controls
 
 ```text
-Feature: 
-Version: 
+Feature:
+Version:
 Benefit:
 Acceptance:
 ```
@@ -443,8 +443,8 @@ Acceptance:
 - Game Board
 
 ```text
-Feature: 
-Version: 
+Feature:
+Version:
 Benefit:
 Acceptance:
 ```
@@ -453,18 +453,18 @@ Acceptance:
 - Game Score Board
 
 ```text
-Feature: 
-Version: 
+Feature:
+Version:
 Benefit:
 Acceptance:
 ```
 
 
 - Game Turn Indicator
-  
+
 ```text
-Feature: 
-Version: 
+Feature:
+Version:
 Benefit:
 Acceptance:
 ```
@@ -472,8 +472,8 @@ Acceptance:
 - Game Timer
 
 ```text
-Feature: 
-Version: 
+Feature:
+Version:
 Benefit:
 Acceptance:
 ```
@@ -481,24 +481,24 @@ Acceptance:
 - Game Messages
 
 ```text
-Feature: 
-Version: 
+Feature:
+Version:
 Benefit:
-Acceptance: 
+Acceptance:
 ```
 
 - Game FAQ
 
 ```text
-Feature: 
-Version: 
+Feature:
+Version:
 Benefit:
 Acceptance:
 ```
 ***
 ### 4.? User Stories ✅
 
-> - Stories, also called “user stories,” are short requirements or requests written from the perspective of an end user. 
+> - Stories, also called “user stories,” are short requirements or requests written from the perspective of an end user.
 > - A Story should describe a need that can be satisfied by introducing a new feature or changing an existing feature.
 > - User stories identify what an actor/user/target audience wants to accomplish with the product and why.
 
@@ -512,12 +512,12 @@ So that : User Motive/Why
 #### 4.?.1 For First Time Players who are both Casuals and Fans ✅
 > Beginners Features | Objective | Tasks
 
--  [ ] *As a* Fan, *I want* to be able to play an online Tic Tac Toe game *so that* I follow my passion for strategy and probability. 
+-  [ ] *As a* Fan, *I want* to be able to play an online Tic Tac Toe game *so that* I follow my passion for strategy and probability.
 -  [ ] *As a* Casual, *I want* to be able to play any game online like Tic Tac Toe game *so that* I can pass the time.
 -  [ ] *As a* General Player (Any Persona, Any Type), *I want* to read instructions/FAQ *so that* I can easily understand how to start / restart / end the game.
--  [ ] *As a* General Player (Any Persona, Any Type), *I want* to read instructions/FAQ *so that* I can easily understand how to play the game. 
+-  [ ] *As a* General Player (Any Persona, Any Type), *I want* to read instructions/FAQ *so that* I can easily understand how to play the game.
 -  [ ] *As a* General Player (Any Persona, Any Type), *I want* to have clearly labelled controls, i.e. intuitive usage, *so that* I can easily understand how to operate ( *new, start, reset, end* ) the game.
--  [ ] *As a* First Time General Player (Any Persona), *I want* to see status messages to know if I have won, drawn or lost *so that* I know what is the outcome of the game. 
+-  [ ] *As a* First Time General Player (Any Persona), *I want* to see status messages to know if I have won, drawn or lost *so that* I know what is the outcome of the game.
 #### 4.?.2 For Returning Players who are Casuals and Fans ✅
 > Intermediate Features | Objective | Tasks
 
@@ -546,15 +546,15 @@ g. As a user, I want to be able to give my feedback
 
 **Screen Resolution v Form Factor**
 
-Form Factor | Orrientation | Device Size | Screen Resolution | Notes 
+Form Factor | Orrientation | Device Size | Screen Resolution | Notes
 --- | --- | --- | --- | ---
-Desktop | Landscape | Laptop 13"     | 1366 x 768    |    
-Desktop | Landscape | Laptop 15"    | 1440 x 900    |    
-Tablet Standard  | Landscape     | Tablet 10" | 1024 x 768 |    
-Tablet Standard   | Portrait    | Tablet 10"    | 768 x 1024    |    
-Mobile   | Portrait    | iPhone 14*    |     |   
-Mobile   | Portrait    | iPhone 8*    |     |   
-Mobile   | Portrait    | iPhone 6*    |     |        
+Desktop | Landscape | Laptop 13"     | 1366 x 768    |
+Desktop | Landscape | Laptop 15"    | 1440 x 900    |
+Tablet Standard  | Landscape     | Tablet 10" | 1024 x 768 |
+Tablet Standard   | Portrait    | Tablet 10"    | 768 x 1024    |
+Mobile   | Portrait    | iPhone 14*    |     |
+Mobile   | Portrait    | iPhone 8*    |     |
+Mobile   | Portrait    | iPhone 6*    |     |
 
 * Equivalent: Android / iPhone
 
@@ -567,8 +567,8 @@ Mobile   | Portrait    | iPhone 6*    |     |
 
 > Users today are driven by experiences. Therefore your web design must be responsive across all devices. With the increasing number of mobile users, one cannot emphasize the importance of responsive design in customer experience.
 
- > **_What is a Breakpoint:_** 
-	- CSS Breakpoint is a “defined width” that is used in the webpage style to make the content and design responsive. 
+ > **_What is a Breakpoint:_**
+	- CSS Breakpoint is a “defined width” that is used in the webpage style to make the content and design responsive.
 	- It helps enhance user experience by delivering consistent experience on different devices.
 ##### 4.?.2.1 [Common Breakpoints For Responsive Design (browserstack.com)](https://www.browserstack.com/guide/responsive-design-breakpoints#toc3) ✅
 
@@ -605,9 +605,9 @@ Mobile | Tablets | Desktops
     - Always keep the common breakpoints for responsive design in mind. The former matches common screen sizes (480px, 768px, 1024px, and 1280px).
     - Before choosing major breakpoints, use website analytics to discern the most commonly used devices accessed by your site.
     - If they happen to be mobile devices, add mobile breakpoints for those screen sizes first.
-- **Hide or Display Elements at Certain Breakpoints:** Switch content or features at common breaking points if necessary. 
+- **Hide or Display Elements at Certain Breakpoints:** Switch content or features at common breaking points if necessary.
 	- For example, consider implementing off-canvas navigation for smaller screens and a typical navigation bar for larger ones.
-- **Don’t Define Standard Responsive Breakpoints Based on the Device Size:** The primary objective of responsive design breakpoints is to display content in the best possible way. 
+- **Don’t Define Standard Responsive Breakpoints Based on the Device Size:** The primary objective of responsive design breakpoints is to display content in the best possible way.
 	- So, let the content be the guide. Add a breakpoint when the content and design requires it.
 
 #### 4.3 Accessibility 🚧
@@ -696,24 +696,24 @@ Key Milestones highlighted here maybe:
 
 **Portrait 1366 x 768** | Notes
 --- | ---
-![](docs/assets/img/Wireframe-Desktop-Landscape-1366x768.png)| 13 Inch Laptop
+![](refs/assets/img/Wireframe-Desktop-Landscape-1366x768.png)| 13 Inch Laptop
 **Landscape 1440 x 900** | Notes
-![](docs/assets/img/Wireframe-Desktop-Landscape-1440x900.png) |...
+![](refs/assets/img/Wireframe-Desktop-Landscape-1440x900.png) |...
 
 
 ***
 ##### 6.?.1.2 Tablet 🚧
 
 **Portrait: 768 x 1024** | **Landscape 1024 x 768**
---- | --- 
-![](docs/assets/img/Wireframe-Tablet-Standard-Portrait.png) |![](docs/assets/img/Wireframe-Tablet-Standard-Landscape.png)   
+--- | ---
+![](refs/assets/img/Wireframe-Tablet-Standard-Portrait.png) |![](refs/assets/img/Wireframe-Tablet-Standard-Landscape.png)
 
 ***
 ##### 6.?.1.3 Mobile 🚧
 
 **Portrait iPhone** |  **Landscape iPhone**
---- | ---- 
-![](docs/assets/img/Wireframe-Mobile-Portrait-Base.png) | ....
+--- | ----
+![](refs/assets/img/Wireframe-Mobile-Portrait-Base.png) | ....
 
 ***
 ### 6.? Site Structure 🚧
@@ -722,7 +722,7 @@ Key Milestones highlighted here maybe:
 
 - A single page application architecture for a web browser game, i.e The App
 - The web app, The App, has:
-	- Gameplay Controls i.e. Buttons: Start and Reset. 
+	- Gameplay Controls i.e. Buttons: Start and Reset.
 	- Gameboard area
 	- Game Play FAQ area
 
@@ -744,7 +744,7 @@ Key Milestones highlighted here maybe:
 
 #### 6.?.1 Fonts+ 🚧
 
-Feature | Element | Font Name | Root Size | Desktop | Tablet | Mobile  
+Feature | Element | Font Name | Root Size | Desktop | Tablet | Mobile
 --- |--- | --- | --- | --- | --- | ---
 Web Page   | Paragraph, Text   | Kanit       | 16     | 16     | 16 x       | 16 x
 Game Title   | Headings: H1,H2,H3   | Kanit       |      |      |       |
@@ -767,24 +767,24 @@ Emoji   | Icons, Spirites   | FontAwesome       |      |      |       |
 	4. And it compliments *Gochi-Hand* as simultaneous complementary pairing.
 - Download: [Kanit - Google Fonts](https://fonts.google.com/specimen/Kanit "Designed by [Cadson Demak]")
 
-![](docs/assets/img/Font-Kanit-Reg400-48px.png)
+![](refs/assets/img/Font-Kanit-Reg400-48px.png)
 
-![](docs/assets/img/Font-Kanit-Reg400-16px.png)
+![](refs/assets/img/Font-Kanit-Reg400-16px.png)
 ##### 6.?.1.2 Gochi-Hand ✅
 
-- *Gochi Hand* is a typographic interpretation of the handwriting of a teenager. 
+- *Gochi Hand* is a typographic interpretation of the handwriting of a teenager.
 	- The style is fresh, not like the letters made by a calligrapher, but those of an ordinary person.
 	- The glyphs were carefully designed with a good curve quality that makes it able to look good when printed too.
 - *[Huerta Tipográfica](http://huertatipografica.com/)* is a collaborative Argentinian type foundry with a deep respect for design and typography.
-- Chosen for:  
+- Chosen for:
 	1. To resemble hand-drawn, or handwriting, drawing of the tokens in a game of Tic Tac Toe.
 	2. Code Reuse from *Scott Windon*, as this is the same font used in his open source code pen.
 	3. And it compliments *Kanit* as simultaneous complementary pairing.
 - Download: [Gochi-Hand - Google Fonts](https://fonts.google.com/specimen/Gochi+Hand "Designed by [Huerta Tipográfica]")
 
-![](docs/assets/img/Font-GochiHand-Reg400-48px.png)
+![](refs/assets/img/Font-GochiHand-Reg400-48px.png)
 
-![](docs/assets/img/Font-GochiHand-Reg400-36px.png)
+![](refs/assets/img/Font-GochiHand-Reg400-36px.png)
 
 > <small>Note: These screenshots of fronts come from Google Fonts for Kanit and Gochi-Hand respectively. The quotes are mundane in this project's context and have no political intention or design.</small>
 #### 6.?.2 Colour 🚧
