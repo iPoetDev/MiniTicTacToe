@@ -1,23 +1,51 @@
-# `PROJECT-NAME`
-> _"Single Intent"_
-
-## 1.0 Introduction
+# `Mini_TicTacToe`
+> _"A solved, futile, game (as a known problem solved) used to demonstrate the principles of front end web development and interactive web app design, development and deployment using version source control."_
+## 1.0 Introduction 🚧
 > Complete: ❓ | Review: 📝 | To Do: 📌
 
-Tic Tac Toe origins come from 
-### 1.1 Goals
+***Tic Tac Toe*** origins can be traced back to its progenitor of three-in-a-row boards as fare back to ancient Egypt (since 1300 BC). Early variations of tic-tac-toe come from the Roman Empire (known as *terni lapilli/three pebbles at a time*). Another variation is [three man morris](https://en.wikipedia.org/wiki/Three_men%27s_morris). For more on the [history](https://en.wikipedia.org/wiki/Tic-tac-toe#History).
+
+Tic Tac Toe is a typical entry point for student developers to learning simple coding precepts and software development projects, hence it was chosen for this project. See the following goals in sections 1.1 Goals, 2.0 Solutions and 4.0 User Experience for goals and motivations. Additionally, it can get advanced with entry points into algorithm study via disciplines of Combinatorics and types of Artificial Intelligence algorithms; this is out of scope for this projects goals and learning outcomes.
+
+Source: https://en.wikipedia.org/wiki/Tic-tac-toe
+### 1.1 Goals ✅
 > `Simple Goals, bullets points`
-#### 1.1.1 App Goals
+#### 1.1.1 App Goals ✅
 
-#### 1.1.2 Project Goals
+-  [x] To be a simple online game as a web applications demonstration.
+-  [x] To have an interactive experience of playing a futile grid game, like Tic Tac Toe.
+	- To have user feedback based on that user input.
+	- To have user control over the game experience by user input.
+	- To have an error / execution flow free experience.
+-  [x] To demonstrate the execution of a turn based game for 2 player.
 
-### 1.2 Live App
+For specific solution and user goals, see 2.0 Solution and 4.0 User Experience sections below.
+#### 1.1.2 Project Goals ✅
 
-Name | App | Repo Name | Repo URL |
+-  [x] To follow the instructions and objective of the Code Institute Assessment Criteria for the *JavaScript Essentials* module.
+	- Use of best practices in *User Experience* and Solution/Web Design in web development projects.
+	- Use of *Front End Web Technologies* to build, linting (static analysis), validate, test and deploy.
+	- Use of markdown formats for README.
+	- Use of version control for project, source code, deployment and hosting using *Git/GitHub.com*.
+-  [x] To build a simple interactive web app using the basics of *JavaScript*, *HTML* and *CSS*.
+-  [x] To employ Frameworks from *CSS* and *JavaScript* if appropriate and decided for.
+	- *TailwindsCSS* is a preferred *CSS Framework* to build any design, directly in your *HTML*; using a *Locality of Behaviour* principle, over a *Separation of Concerns*.
+	- *AlpineJS* is a preferred *VUE/jQuery* like Framework for rugged, minimal tool for composing behaviour directly in your markup; using a *Locality of Behaviour* principle, over a *Separation of Concerns*.
+-  [x] To demonstrate the author's technical and *academic* writing skills in this `README.md`. 
+	- The author is an expressive, detailed orientated and explicit technical writer.
+	- This technical writing is inside a academic context, with goals are to show learnings and capabilities.
+-  [x] To showcase the author's technical knowledge, supplementary skills beyond the scope of this assignment, such as:
+	- Agile Software & Project Management and appropriate level according to scope/complexity.
+	- Any Decision Records
+	- Mermaid Diagrams 
+
+### 1.2 Live App 🚧
+
+Name | App | Repo Name | Repo URL 
 --- | --- |--- | --- |
 `Project` | https://{{app-slug}}.github.io | `Repo` | https://github.com/iPoetDev/{{repo-slug}} |
 ***
-### 1.3 App Visual
+### 1.3 App Visual 🚧
 
 ![Image]( "")
 
@@ -26,7 +54,7 @@ amiresponsive.co.uk/ | URI: AmIResponsive
 ***
 > :: 
 ***
-## 2.0 Solution: **`Tic Tac Toe`** - A Grid Game
+## 2.0 Solution: **`Tic Tac Toe`** - A Grid Game 🚧✅
 > Complete: ✅ | Review: ❓ 
 ### 2.1 Game Play ✅✅
 
@@ -137,7 +165,7 @@ This author-developer's project has a strong influence, code reuse, concept and 
 ***
 > ::
 ***
-## 3.0 Project
+## 3.0 Project 🚧
 > Complete: ❓ | Review: 📝 | To Do: 📌
 
 _This section is a summation of select key, pre-agile:
@@ -145,7 +173,7 @@ _This section is a summation of select key, pre-agile:
 - _ii) project management activities_
 - _iii) stages of the project delivery workflows from code to hosting_
 - _iv) documentation requirements._
-### 3.1 Key Project Decisions
+### 3.1 Key Project Decisions 🚧
 
 > -  Learning Requirement: Any design decisions that contravene accepted user interaction, user experience design principles are **identified and described** (comments in code or a section in the README)
 
@@ -165,12 +193,12 @@ _This section is a summation of select key, pre-agile:
 - 
 
 ***
-### 3.2 Requirements
+### 3.2 Requirements ✅
 
 To view the Project Assessments and Requirements, see the associated Repository's Wiki: [Wiki (Project)](https://github.com/iPoetDev/AlpineTicTacToe/wiki)
 
 ***
-### 3.3 Workflow
+### 3.3 Workflow ✅ 
 
 The following workflow is an extract, re-sorted, of the PASS and MERIT Learning Objectives from the assessment criteria. Repurposed to define a workflow from start to finish, in semantic categories/phases. If these are surmounted, then good performance will open the possibility to a higher performance.
 #### 3.3.1 Design & UX
@@ -296,7 +324,7 @@ The following workflow is an extract, re-sorted, of the PASS and MERIT Learning 
 >- 🚧✅ **Learning Objective**: Demonstrate and document the development process through a version control system such as GitHub.
 
 ***
-### 3.4 Documentation
+### 3.4 Documentation ✅
 
 > - 🚧✅ **Learning Objective LO2**: LO2 Test a front-end web application through the development, implementation and deployment stages
 > 	 - [ ]  Document any bugs found and their fixes and explanation of any bugs that are left unfixed.
@@ -312,9 +340,34 @@ The following workflow is an extract, re-sorted, of the PASS and MERIT Learning 
 ***
 > ::
 ***
-## 4.0 User Experience
+## 4.0 User Experience ✅✅
 > Complete: ❓ | Review: 📝 | To Do: 📌
-### 4.? Features
+
+- While this project is not scoped for full blown Agile processes, given the simplicity of the solution context; using concepts in simple application is appropriate to showcase.
+	- **Personas**: Avatars for Types / Grouping of Users. For example: [From Personas to User Stories | Roman Pichler](https://www.romanpichler.com/blog/personas-epics-user-stories/), and useful for outline target audience groups.
+	- **Feature** definition from : [Epics Features and Stories (gla.ac.uk)](https://www.gla.ac.uk/media/Media_730149_smxx.pdf).
+	- **User Stories** from: [Epics Features and Stories (gla.ac.uk)](https://www.gla.ac.uk/media/Media_730149_smxx.pdf) .
+### 4.? Target Audience ✅
+
+Any of these audiences/roles or personas are all forms of Users.
+
+**Audience** | **Audience Goal** | **Role \| Type** | **Persona** | __
+ --- | --- | --- | --- | --
+Casual Gamers | People looking for a quick and easy game to play   |  Gamer | Casuals |
+Classic Gamers | People who like the classic grid games, i.e tic-tac-toe     |  Gamer | Fans     |
+First Time Players  | People who never played a game of Tic Tac Toe    |  Player | First Timers | 
+Returning Players  | People who want to repeat a game and keep score   |  Player | Returners | 
+Frequent Players  | People who want to improve their gaming experience, across multiple form factors    | Player  | Frequents | 
+Dev Students  |     | Student  | Developer | 
+
+A gamer (role) can be one of three player types to form sub personas.
+	- i.e. Casual Gamers who are first time players.
+	- i.e. Casual Gamers who are returners players.
+	- i.e. Casual Gamers who are frequent players.
+	- i.e. Classic Gamer who are first time players.
+	- i.e. Classic Gamer who are returners players.
+	- i.e. Classic Gamer who are frequent players.
+### 4.? Features ✅
 
 > In the context of Agile workflows: _A feature is a chunk of work from the Epic – a deliverable that adds value and moves towards completing the Epic._
 
@@ -326,7 +379,7 @@ In this context, the author-developer extracts the definition of features and al
 
 Defining these features, within Milestones, (here), allows for alluding to the developer's Agile knowledge and for planning and design activities.
 ***
-### 4.? Milestones 
+### 4.? Milestones 🚧
 #### Version 0.5
 
 - **Game Brand**: Purpose and Context
@@ -443,16 +496,53 @@ Benefit:
 Acceptance:
 ```
 ***
-### 4.? User Stories
+### 4.? User Stories ✅
 
+> - Stories, also called “user stories,” are short requirements or requests written from the perspective of an end user. 
+> - A Story should describe a need that can be satisfied by introducing a new feature or changing an existing feature.
+> - User stories identify what an actor/user/target audience wants to accomplish with the product and why.
+
+**User Story Template**: Pro-forma.
+```
+As a    : User/Role/Persona
+I want  : User Objective/Want/Task
+So that : User Motive/Why
+```
+
+#### 4.?.1 For First Time Players who are both Casuals and Fans ✅
+> Beginners Features | Objective | Tasks
+
+-  [ ] *As a* Fan, *I want* to be able to play an online Tic Tac Toe game *so that* I follow my passion for strategy and probability. 
+-  [ ] *As a* Casual, *I want* to be able to play any game online like Tic Tac Toe game *so that* I can pass the time.
+-  [ ] *As a* General Player (Any Persona, Any Type), *I want* to read instructions/FAQ *so that* I can easily understand how to start / restart / end the game.
+-  [ ] *As a* General Player (Any Persona, Any Type), *I want* to read instructions/FAQ *so that* I can easily understand how to play the game. 
+-  [ ] *As a* General Player (Any Persona, Any Type), *I want* to have clearly labelled controls, i.e. intuitive usage, *so that* I can easily understand how to operate ( *new, start, reset, end* ) the game.
+-  [ ] *As a* First Time General Player (Any Persona), *I want* to see status messages to know if I have won, drawn or lost *so that* I know what is the outcome of the game. 
+#### 4.?.2 For Returning Players who are Casuals and Fans ✅
+> Intermediate Features | Objective | Tasks
+
+-  [ ] *As a* Developer, *I want* to be able to play a game against a computer *so that* I can experience what an automation/algorithm is like to play against.
+-  [ ] *As a* Returning Player (Any Persona), *I want* to to be able to replay the game on the same web page *so that* I do not have to reload the page.
+-  [ ] *As a* Returning Player (Any Persona), *I want* to be able to see my score displayed *so that* can get a feedback is from the game.
+-  [ ] *As a* Returning Player (Any Persona), *I want* to be able to track my score from game to game *so that* I can play best of `2n + 1` matches against my opponent.
+#### 4.?.2 For Frequent Players who are Fans and maybe Casuals ✅
+> Advanced Features | Objective | Tasks
+
+-  [ ] *As a* Frequent Player, who is a Fan, *I want* a ascetically pleasing graphical visuals and brand identity *so that* I find the game to be pleasant and fun to play to keep on playing.
+-  [ ] *As a* Frequent Player, who is a Fan, *I want* to be notified of invalid moves *so that* I don't feel foolish when making a wrong move without feedback.
+-  [ ] *As a* Frequent Player, who is a Fan, *I want* to be play anywhere or on the move, i.e on handheld wireless devices *so that* I don't have to play when seated at a laptop/desktop.
+
+```
+g. As a user, I want to be able to give my feedback
+- As a user, I want to contact someone about the game
+- As a site owner, I want users to be able to play a quick game of Tic Tac Toe
+- As a site owner, I want users to be able to replay the game without having to refresh the page
+- As a site owner, I want users to be able to clearly see some basic info on the game
+```
 ***
-### 4.? User Journey
+### 4.? Form Factors ✅
 
-
-***
-### 4.? Form Factors
-
-#### 4.1 Device Screens
+#### 4.?.1 Device Screens ✅
 
 **Screen Resolution v Form Factor**
 
@@ -467,21 +557,70 @@ Mobile   | Portrait    | iPhone 8*    |     |
 Mobile   | Portrait    | iPhone 6*    |     |        
 
 * Equivalent: Android / iPhone
-#### 4.2 Responsiveness
 
+**Target Browser Compatibility**
 
-#### 4.3 Accessibility
+- GitHub: [browserslist/browserslist: 🦔 Share target browsers between different front-end tools, like Autoprefixer, Stylelint and babel-preset-env (github.com)](https://github.com/browserslist/browserslist)
+- Query: last 5 versions, last 2 node versions, not ie 6-11
+- Result: [Browserslist](https://browserslist.dev/?q=bGFzdCA1IHZlcnNpb25zLCBsYXN0IDIgbm9kZSB2ZXJzaW9ucywgbm90IGllIDYtMTE%3D)
+#### 4.?.2 Responsiveness ✅
 
+> Users today are driven by experiences. Therefore your web design must be responsive across all devices. With the increasing number of mobile users, one cannot emphasize the importance of responsive design in customer experience.
+
+ > **_What is a Breakpoint:_** 
+	- CSS Breakpoint is a “defined width” that is used in the webpage style to make the content and design responsive. 
+	- It helps enhance user experience by delivering consistent experience on different devices.
+##### 4.?.2.1 [Common Breakpoints For Responsive Design (browserstack.com)](https://www.browserstack.com/guide/responsive-design-breakpoints#toc3) ✅
+
+Assuming the default orientation is portrait for mobile and landscape for desktop.
+
+- Mobile form factor tendency is to be in a portrait **P** orientation, as default.
+- Tablet form factor tendency is to be in a portrait **P** or landscape **L** orientations, as default.
+- Desktop form factor tendency is to be in a landscape **L** orientation, as default.
+
+Mobile | Tablets | Desktops
+--- | --- | ---
+**360×640,P** | **768x1366,P** | **1280x780,L**
+**360×800,P** | **720x1280,P** | **1366x786,L**
+**375×780,P** | **810x1080,P**  | **1440x900,L**
+**375×812,P** | --- | **1536x864,L**
+**393×844,P** | --- | **1600x900,L**
+**412×915,P** | --- | **1920x1080,L**
+**414×896,P** | --- | **2560x1440,L**
+**480x896,P** | --- | ---
+##### 4.?.2.2 [Best Practices for Adding Standard Responsive Breakpoints (browserstack.com)](https://www.browserstack.com/guide/responsive-design-breakpoints#toc6) ✅
+
+- **Develop for Mobile Audience:** The developer and designer receive multiple benefits by developing and designing mobile-first content.
+    - It is more difficult to simplify a desktop experience for mobile screens than expand a mobile view for desktop screens. When a design is mobile-first, developers address what is most necessary and can then make additions to match the preferences of desktop users.
+    - Since mobile devices are more challenging to design due to smaller screens, developers and designers make tough choices initially. This saves them time later.
+    - The load time of a page is much higher when one starts with CSS and smaller assets.
+    - Developers and designers are compelled to consider functional differences occurring between different devices. For example, certain devices prioritize voice search, while others are more proficient with a keyboard or touchpad.
+    - Less coding is involved since block-level elements such as a div, heading, or section expands to fill 100% of its parent by default. Thus most content will fit a mobile screen automatically.
+- **Reduce Friction:** A responsive design automatically reconfigures the elements on the page. It uses a single fluid layout that fits any screen size. But even with a responsive design in place, it is better to reduce friction by understanding and removing the unnecessary elements in the page.
+    - Prioritise essential menu options.
+    - Remove anything visually distracting.
+    - Remove minor form fields.
+    - Highlight the main CTA.
+    - Focus on a robust search and filter function.
+    - Always keep the common breakpoints for responsive design in mind. The former matches common screen sizes (480px, 768px, 1024px, and 1280px).
+    - Before choosing major breakpoints, use website analytics to discern the most commonly used devices accessed by your site.
+    - If they happen to be mobile devices, add mobile breakpoints for those screen sizes first.
+- **Hide or Display Elements at Certain Breakpoints:** Switch content or features at common breaking points if necessary. 
+	- For example, consider implementing off-canvas navigation for smaller screens and a typical navigation bar for larger ones.
+- **Don’t Define Standard Responsive Breakpoints Based on the Device Size:** The primary objective of responsive design breakpoints is to display content in the best possible way. 
+	- So, let the content be the guide. Add a breakpoint when the content and design requires it.
+
+#### 4.3 Accessibility 🚧
 
 
 ***
 > ::
 ***
 
-## 5.0 Plan
+## 5.0 Plan 🚧
 > Complete: ❓ | Review: 📝 | To Do: 📌
 
-### 5.? Roadmap
+### 5.? Roadmap 🚧
 
 | Stage | Version | Feature | Outline | Story | Submission |
 |:----- |:------- |:------- |:------- |:----- |:---------- |
@@ -505,43 +644,43 @@ Mobile   | Portrait    | iPhone 6*    |     |
 |       |         |         |         |       |            |
 |       |         |         |         |       |            |
 ***
-### 5.? Versions
+### 5.? Versions 🚧
 
-#### v0.1 : Layout & Deployment
+#### v0.1 : Layout & Deployment 🚧
 
 -  [ ] Web Page - Header
 -  [ ] Game Arena - Layout & Surface Design
 -  [ ] Game Title - Layout & Surface Design
 -  [ ] Game Board - Layout & Surface Design
 -  [ ] Hosting Deployment - Layout & Surface Design
-#### v0.2 : Responsiveness: Devices & Form Factors
+#### v0.2 : Responsiveness: Devices & Form Factors 🚧
 
 -  [ ] Game Arena - Responsiveness: Devices & Form Factors
 -  [ ] Game Title - Responsiveness: Devices & Form Factors
 -  [ ] Game Board - Responsiveness: Devices & Form Factors
 -  [ ] Hosting Deployment - Responsiveness: Devices & Form Factors
-#### v0.3 : 
+#### v0.3 : 🚧
 
-#### v0.4 : 
+#### v0.4 : 🚧
 
-#### v0.5
+#### v0.5 : 🚧
 
-#### v0.6
+#### v0.6 : 🚧
 
-#### v0.7
+#### v0.7 : 🚧
 
-#### v0.8
+#### v0.8 : 🚧
 
-#### v0.9
+#### v0.9 : 🚧
 
-#### v1.0 
+#### v1.0  : 🚧
 
 
 ***
 > ::
 ***
 
-## 6.0 Design / UI
+## 6.0 Design / UI 🚧
 > Complete: ❓ | Review: 📝 | To Do: 📌
 
 Key Milestones highlighted here maybe:
@@ -549,11 +688,11 @@ Key Milestones highlighted here maybe:
 - **v0.8**: beta
 - **v.9**: release candidate
 - **v1.0**: submission
-### 6.? Wireframe/Skeleton: 
+### 6.? Wireframe/Skeleton: 🚧
 
-#### 6.?.1 App Page
+#### 6.?.1 App Page 🚧
 
-##### 6.?.1.1 Desktop
+##### 6.?.1.1 Desktop 🚧
 
 **Portrait 1366 x 768** | Notes
 --- | ---
@@ -563,23 +702,23 @@ Key Milestones highlighted here maybe:
 
 
 ***
-##### 6.?.1.2 Tablet
+##### 6.?.1.2 Tablet 🚧
 
 **Portrait: 768 x 1024** | **Landscape 1024 x 768**
 --- | --- 
 ![](docs/assets/img/Wireframe-Tablet-Standard-Portrait.png) |![](docs/assets/img/Wireframe-Tablet-Standard-Landscape.png)   
 
 ***
-##### 6.?.1.3 Mobile
+##### 6.?.1.3 Mobile 🚧
 
 **Portrait iPhone** |  **Landscape iPhone**
 --- | ---- 
 ![](docs/assets/img/Wireframe-Mobile-Portrait-Base.png) | ....
 
 ***
-### 6.? Site Structure
+### 6.? Site Structure 🚧
 
-#### Alpha Release 
+#### Alpha Release 🚧
 
 - A single page application architecture for a web browser game, i.e The App
 - The web app, The App, has:
@@ -587,23 +726,23 @@ Key Milestones highlighted here maybe:
 	- Gameboard area
 	- Game Play FAQ area
 
-#### Beta Release
+#### Beta Release 🚧
 
 
-#### Candidate Release
+#### Candidate Release 🚧
 
 - Version 0.5 Structure and ...
 	- Player/Computer score counter
 	- Game/Turn Timer
 
-#### Submission Release
+#### Submission Release 🚧
 
 - Candidate Release and ....
 
 ***
-### 6.? Theme/Surface
+### 6.? Theme/Surface 🚧
 
-#### 6.?.1 Fonts+
+#### 6.?.1 Fonts+ 🚧
 
 Feature | Element | Font Name | Root Size | Desktop | Tablet | Mobile  
 --- |--- | --- | --- | --- | --- | ---
@@ -648,23 +787,22 @@ Emoji   | Icons, Spirites   | FontAwesome       |      |      |       |
 ![](docs/assets/img/Font-GochiHand-Reg400-36px.png)
 
 > <small>Note: These screenshots of fronts come from Google Fonts for Kanit and Gochi-Hand respectively. The quotes are mundane in this project's context and have no political intention or design.</small>
-#### 6.?.2 Colour
+#### 6.?.2 Colour 🚧
 
-##### 6.?.2.1 Light Mode
+##### 6.?.2.1 Light Mode 🚧
 
 
-##### 6.?.2.2 Dark Mode
+##### 6.?.2.2 Dark Mode 🚧
 
 
 
 ***
 > ::
 ***
-
-## 7.0 Build
+## 7.0 Build ✅
 > Complete: ✅ | Review: ❓ | Publish: ❌
 
-### 7.1 IDE & Environments
+### 7.1 IDE & Environments ✅
 
 - [x] `Windows 22H2`: `version 11.0.22621.2715` - [Windows](https://www.microsoft.com/en-gb/windows)
 - [x] `Git`: `version 2.42` - [Git](https://git-scm.com/)
@@ -683,7 +821,7 @@ Emoji   | Icons, Spirites   | FontAwesome       |      |      |       |
 - [x] `W3C Validation` - [W3C Validation](https://plugins.jetbrains.com/plugin/7322-w3c-validation/)
 
 ***
-### 7.2 AI Agents & Services
+### 7.2 AI Agents & Services ✅
 
 - [x] `Perplexity AI`: _[`version 1.0.0`](https://www.perplexity.ai/)_ - [Perplexity AI](https://www.perplexity.ai/)
   - AI Research and Sources: Context AI Assisted Search and Secondary Searches
@@ -696,7 +834,7 @@ Emoji   | Icons, Spirites   | FontAwesome       |      |      |       |
 - [x] `GitHub Co-Pilot`: _[`version 2021.1.1`](https://plugins.jetbrains.com/plugin/8327-github/versions/stable)_ - [GitHub](https://plugins.jetbrains.com/plugin/8327-github): **Features**: Code Completion  (By Line)
 
 ***
-### 7.3 Libraries & Frameworks
+### 7.3 Libraries & Frameworks ✅
 
 #### 7.3.1 npm Tooling
 > See [`package.json`](https://github.com/iPoetDev/P2-Template/blob/main/package.json) for full list of dependencies
@@ -752,14 +890,14 @@ Emoji   | Icons, Spirites   | FontAwesome       |      |      |       |
 
 ***
 
-### 7.4 Repository & Hosting
+### 7.4 Repository & Hosting ✅
 
-#### 7.4.1 Repository (Version Source Control)
+#### 7.4.1 Repository (Version Source Control) ✅
 
 - [x] `GitHub.com`: _[`Github Respoistory`](https://www.github.com)_
 - [x] `GitHub.io`: _[`Github Pages`](https://pages.github.com/)_
 
-#### 7.4.2 Apps (Code Integration & Deployment)
+#### 7.4.2 Apps (Code Integration & Deployment) ✅
 
 - [x] `Dependabot Preview`: _[GitHub: Dependabot](https://dependabot.com/)_ - [Dependabot](https://dependabot.com/)
 - [x] `GitLive`: _[GitHub Marketplace: GitLive](https://github.com/marketplace/teamhub_ - [GitLive](https://gitlive.app/)
@@ -770,12 +908,11 @@ Emoji   | Icons, Spirites   | FontAwesome       |      |      |       |
 ***
 > ::
 ***
-## 8.0 Code
+## 8.0 Code ✅
 > Complete: ❓ | Review: 📝 | To Do: 📌
+#### 8.0.1 Version Control ✅
 
-#### 8.0.1 Version Control
-
-##### 8.0.1.1 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
+##### 8.0.1.1 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) ✅
 > A changelog is a file which contains a curated, chronologically ordered list of notable changes for each version of a
 project.
 - All notable changes to this project will be documented in this file.
@@ -788,7 +925,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [x] `Keep a ChangeLog`: _[`version 1.0.0`](https://keepachangelog.com/en/1.0.0/)_ - [Keep a ChangeLog](https://keepachangelog.com/en/1.0.0/)
 
-##### 8.0.1.2 [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+##### 8.0.1.2 [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) ✅
 > The Conventional Commits specification is a lightweight convention on top of commit messages. It provides an easy set
 of rules for creating an explicit commit history; which makes it easier to write automated tools on top of. This
 convention dovetails with [SemVer](http://semver.org/), by describing the features, fixes, and breaking changes made in commit messages.
@@ -803,7 +940,7 @@ code and what has been modified from one version to the next.
   - **MAJOR** version when you make incompatible API changes
   - **MINOR** version when you add functionality in a backward compatible manner
   - **PATCH** version when you make backward compatible bug fixes
-
+✅
 ##### 8.0.1.4 Custom Descriptive Commits
 
 - The author decided to merge and customise the two commit message standards to create a more descriptive commit message standard.
@@ -841,10 +978,10 @@ Changelog: 23-mm-dd v00.00.01.004
 Refs:
 -
 ```
+✅
+#### 8.0.2 Code Structure ✅
 
-#### 8.0.2 Code Structure
-
-###### 8.0.2.1 Design Patterns: Code Organisation
+###### 8.0.2.1 Design Patterns: Code Organisation ✅
   - <ins>**Separation of Concerns v Locality of Behaviour**</ins>
     1. **Separation of Concerns**: HTML, CSS and Javascript are kept in separate, linked files is a traditional approach to code factoring and project structure organisation.
         - Related code is groups together in a single file by (mime-)type.
@@ -854,14 +991,14 @@ Refs:
        at that unit of code.
         - .
         - .
-#### 8.0.3 Code Style
+#### 8.0.3 Code Style ✅
 
 **8.0.3.1 Style Guides**
 - [x] `HTML`: _[`HTML Style Guide`](https://www.w3schools.com/html/html5_syntax.asp)_ - [HTML Style Guide](https://www.w3schools.com/html/html5_syntax.asp)
 - [x] `CSS`: _[`CSS Style Guide`](https://www.w3schools.com/css/css_syntax.asp)_ - [CSS Style Guide](https://www.w3schools.com/css/css_syntax.asp)
 - [x] `JavaScript`: _[`JavaScript Style Guide`](https://www.w3schools.com/js/js_conventions.asp)_ - [JavaScript Style Guide](https://www.w3schools.com/js/js_conventions.asp)
 
-**8.0.3.2 Clean Code**
+**8.0.3.2 Clean Code** ✅
 
 - [ ] `Clean Code Characteristics`: Project requirements for code quality and standards.
   - [ ] Code demonstrates the characteristics of ‘clean code’
@@ -891,7 +1028,7 @@ Refs:
   - StandardJS for JavaScript
   - ESlint for JavaScript
 
-#### 8.0.4 Project Structure
+#### 8.0.4 Project Structure ✅
 
 - [ ] `Project Templates`: GitHub allows for repository to be used as templates for new projects.
     - `Directory Structure` is defined in the repository template.
@@ -901,7 +1038,7 @@ Refs:
       - `Grouping by Libraries & Frameworks`: e.g. `node_modules` directory will group related file types via sub-directories. Though `node_modules` are not always pushed the remote repository.
       - `Grouping by Features`: e.g. `components` directory will group related file types via sub-directories.
 
-#### 8.0.5 Planned Repository Structure
+#### 8.0.5 Planned Repository Structure ✅
 
 ```
 📁: Project
@@ -965,47 +1102,46 @@ Refs:
 
 ***
 
-### 8.1 HTML
+
+***
+### 8.1 HTML ✅
 
 - **Version**: HTML5
-
-#### 8.1.1 Linting / Static Code Analysis
+#### 8.1.1 Linting / Static Code Analysis ✅
 
 - The static code analysis tool you need for your HTML.
 - Rules: https://htmlhint.com/docs/user-guide/list-rules
 
-#### 8.1.2 HTML W3C Validation
+#### 8.1.2 HTML W3C Validation ✅
 
 - This validator checks the [markup validity](https://validator.w3.org/docs/help.html#validation_basics) of Web documents in HTML.
 - Use Validator: https://validator.w3.org/nu/#textarea
 - Uses NPM: https://www.npmjs.com/package/w3c-html-validator
 
 ***
+### 8.2 CSS 🚧
 
-### 8.2 CSS
+#### 8.2.1 CSS Libraries & Frameworks 🚧
 
-#### 8.2.1 CSS Libraries & Frameworks
+#### 8.2.2 Linting 🚧
 
-#### 8.2.2 Linting
-
-#### 8.2.3 HTML W3C Validation
-
-***
-
-### 8.3 JavaScript
-
-#### 8.3.1 JS Libraries & Frameworks
-
-#### 8.3.2 JS Linting
+#### 8.2.3 HTML W3C Validation 🚧
 
 ***
+### 8.3 JavaScript 🚧
 
-### 8.4 Pre-Commit
+#### 8.3.1 JS Libraries & Frameworks 🚧
+
+#### 8.3.2 JS Linting 🚧
+
+***
+### 8.4 Static Analysis
+> Linting | Pre-Commit.
+
 
 ***
 > ::
 ***
-
 ## 9.0 Test & Quality
 > Complete: ❓ | Review: 📝 | To Do: 📌
 ### 9.1 Code Quality & Validation
