@@ -7,7 +7,6 @@
 Tic Tac Toe origins come from 
 ### 1.1 Goals
 > `Simple Goals, bullets points`
-
 #### 1.1.1 App Goals
 
 #### 1.1.2 Project Goals
@@ -17,7 +16,7 @@ Tic Tac Toe origins come from
 Name | App | Repo Name | Repo URL |
 --- | --- |--- | --- |
 `Project` | https://{{app-slug}}.github.io | `Repo` | https://github.com/iPoetDev/{{repo-slug}} |
-
+***
 ### 1.3 App Visual
 
 ![Image]( "")
@@ -29,7 +28,6 @@ amiresponsive.co.uk/ | URI: AmIResponsive
 ***
 ## 2.0 Solution: **`Tic Tac Toe`** - A Grid Game
 > Complete: ✅ | Review: ❓ 
-
 ### 2.1 Game Play ✅✅
 
 - Tic-tac-toe is played on a three-by-three grid by two players, who alternately place the marks X and O in one of the nine spaces in the grid <sup><b>(1)</b></sup>.
@@ -74,7 +72,7 @@ amiresponsive.co.uk/ | URI: AmIResponsive
 <small><sup><b>3</b></sup>: Source: <a href="https://github.com/miloszmisiek/ci_p2_tictactoe#gameplay">https://github.com/miloszmisiek/ci_p2_tictactoe#gameplay</a>, Author: <b>Milosz Misiek</b> <i>https://github.com/miloszmisiek</i> (2021), Last Accessed: Dec 12, 2023</small>
 ```
 
-
+***
 ### 2.2 Game Arena ✅❓
 
 **`Key Components`**: See [4.? Features]() below for fuller outline and description.
@@ -93,7 +91,7 @@ amiresponsive.co.uk/ | URI: AmIResponsive
 | Game Controls      | Web App          | All:<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Desktop, Tablet, Mobile | Bottom of Game Board           | Template,<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Grid, Button | Start Button<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Reset Button            | Button On Click                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |         |
 | Game Score         | Web App          | All:<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Desktop, Tablet, Mobile | Bottom of Game Board           | Template,<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Components   | InnerHTML Text                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | &nbsp;On Update, Update DOM                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |         |
 | Game Match Scoring | Web App          | All:<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Desktop, Tablet, Mobile | In Overlay, In Page Modal      | Template,<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Components   | InnerHTML Text<br>Start Match Button<br>Reset Match                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Opens Modal<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Button On Click |         |  
-
+***
 ### 2.3 Developer Motivations ✅✅
 
 - This is a second shot attempt at Code Institute's *JavaScript Essentials* assignment.
@@ -111,7 +109,7 @@ amiresponsive.co.uk/ | URI: AmIResponsive
 	- A minimal tooling to compose behaviour directly in the mark up, a modernised variant of *jQuery*.
 	- Example of *Locality of Behaviour*.
 - Aims to reduce complexity and not repeat the basis of the first attempt by using AlpineJS and TailwindCSS as framworks.
-
+***
 ### 2.4 Future Features 🚧
 
 **For versions beyond version 0.5 / Alpha **
@@ -205,44 +203,44 @@ The following workflow is an extract, re-sorted, of the PASS and MERIT Learning 
 #### 3.3.2 Build
 
 > - 🚧✅ **Learning Objective**: Implement an interactive Front-End web application using HTML and CSS and JavaScript based on the principles of user experience design, accessibility and responsivity*.
-> 	- [ ] Implement a website with a flow of information layout and interaction feedback that is clear and unambiguous.
-> 	- [ ] Implement an interactive Front-End web application using HTML and CSS and JavaScript based on the principles of user experience design, accessibility and responsivity.
-> 	- [ ] Implement the (*semantic*) organisation of information on the page following the principles of user experience design.
-> 	- [ ] Implement interactivity for a web application that lets the user initiate and control actions, and gives feedback.
-> 	- [ ] Implement an interactive web application that incorporates images or graphics of usable resolution, legible, unobscured text, consistent styling, undistracted foregrounds.
+> 	- [ ]  Implement a website with a flow of information layout and interaction feedback that is clear and unambiguous.
+> 	- [ ]  Implement an interactive Front-End web application using HTML and CSS and JavaScript based on the principles of user experience design, accessibility and responsivity.
+> 	- [ ]  Implement the (*semantic*) organisation of information on the page following the principles of user experience design.
+> 	- [ ]  Implement interactivity for a web application that lets the user initiate and control actions, and gives feedback.
+> 	- [ ]  Implement an interactive web application that incorporates images or graphics of usable resolution, legible, unobscured text, consistent styling, undistracted foregrounds.
 > - 🚧✅ **Learning Objective**: *Implement Front-End interactivity, using core JavaScript, JavaScript libraries or frameworks*
-> 	- [ ] Implement appropriate working functionality for all project requirements.
+> 	- [ ]  Implement appropriate working functionality for all project requirements.
 ##### 3.3.2.1 HTML
 
 > - 🚧✅ **Learning Objective**: Design an interactive Front-End web application using HTML and CSS and JavaScript based on the principles of user experience design, accessibility and responsivity
-> 	- [ ] Write custom HTML code to create a responsive front-end web application consisting of one or more HTML pages with significant interactive functionality
+> 	- [ ]  Write custom HTML code to create a responsive front-end web application consisting of one or more HTML pages with significant interactive functionality
 > - 🚧✅ **Learning Objective**: *Test a front-end web application through the development, implementation and deployment stages*
-> 	- [ ] Write custom HTML code that passes through the official W3C validator with no issues.
-> 	- [ ] Use Semantic markup to structure HTML code
+> 	- [ ]  Write custom HTML code that passes through the official W3C validator with no issues.
+> 	- [ ]  Use Semantic markup to structure HTML code
 ##### 3.3.2.2 CSS
 
 > - 🚧✅ **Learning Objective**: Design an interactive Front-End web application using HTML and CSS and JavaScript based on the principles of user experience design, accessibility and responsivity
-> 	- [ ] Write custom CSS code to create a responsive front-end web application consisting of one or more HTML pages with significant interactive functionality
+> 	- [ ]  Write custom CSS code to create a responsive front-end web application consisting of one or more HTML pages with significant interactive functionality
 > - 🚧✅ **Learning Objective**: *Test a front-end web application through the development, implementation and deployment stages*
-> 	- [ ] Write custom CSS code that passes through the official (Jigsaw) validator with no issues.
-> 	- [ ] Use CSS media queries across the application to ensure the layout changes appropriately and maintains the page's structural integrity across device screen sizes.
+> 	- [ ]  Write custom CSS code that passes through the official (Jigsaw) validator with no issues.
+> 	- [ ]  Use CSS media queries across the application to ensure the layout changes appropriately and maintains the page's structural integrity across device screen sizes.
 ##### 3.3.2.3 JavaScript
 
 > - 🚧✅ **Learning Objective**: *Design an interactive Front-End web application using HTML and CSS and JavaScript based on the principles of user experience design, accessibility and responsivity*.
-> 	- [ ] Design interactivity for a web application that lets the user initiate and control actions, and gives feedback.
-> 	- [ ] Write custom JavaScript to create a responsive front-end web application consisting of one or more HTML pages with significant interactive functionality.
-> 	- [ ] Write JavaScript code to produce relevant responses to user actions.
+> 	- [ ]  Design interactivity for a web application that lets the user initiate and control actions, and gives feedback.
+> 	- [ ]  Write custom JavaScript to create a responsive front-end web application consisting of one or more HTML pages with significant interactive functionality.
+> 	- [ ]  Write JavaScript code to produce relevant responses to user actions.
 > - 🚧✅ **Learning Objective**:  *Test a front-end web application through the development, implementation and deployment stages*.
-> 	- [ ] Write JavaScript code that passes through a linter (e.g. Jshint) with no significant issues.
+> 	- [ ]  Write JavaScript code that passes through a linter (e.g. Jshint) with no significant issues.
 > - 🚧✅ **Learning Objective**: *Implement Front-End interactivity, using core JavaScript, JavaScript libraries or frameworks*.
-> 	- [ ] Write JavaScript functions that correctly implement compound statements.
-> 	- [ ] Write code that intelligently handles empty or invalid input data.
->     - [ ] Write code that does not generate internal errors on the page or in the console due to user actions.
->     - [ ] Organise code and assets files in directories by file type.
+> 	- [ ]  Write JavaScript functions that correctly implement compound statements.
+> 	- [ ]  Write code that intelligently handles empty or invalid input data.
+> 	- [ ]  Write code that does not generate internal errors on the page or in the console due to user actions.
+> 	- [ ]  Organise code and assets files in directories by file type.
 #### 3.3.3 Code & Project Organisation
 
 > - 🚧✅ **Learning Objective**: *Maximise future maintainability through code structure and organisation*.
->     - [ ] Clearly separate and identify code written for the website and code from external sources (e.g. libraries or tutorials).
+>     - [ ]  Clearly separate and identify code written for the website and code from external sources (e.g. libraries or tutorials).
 >     - [ ]  Organise HTML, CSS and JavaScript code into well-defined and commented sections.
 >     - [ ]  Place CSS code in external files linked to the HTML page in the HEAD element.
 >     - [ ]  Place JavaScript code in external files linked to the HTML page just above the closing body tag.
@@ -269,47 +267,47 @@ The following workflow is an extract, re-sorted, of the PASS and MERIT Learning 
 #### 3.3.5 Version Control
 
 > - 🚧✅ **Learning Objective**: *Demonstrate and document the development process through a version control system such as GitHub*.
-> 	- [ ] Use Git & GitHub for version control of an interactive web application up to deployment.
-> 	- [ ] Commit often for each feature/fix, ensuring that commits are small, well-defined and have clear, descriptive messages.
+> 	- [ ]  Use Git & GitHub for version control of an interactive web application up to deployment.
+> 	- [ ]  Commit often for each feature/fix, ensuring that commits are small, well-defined and have clear, descriptive messages.
 #### 3.3.6 Repository:
 
 > - 🚧✅ **Learning Objective**: *Demonstrate and document the development process through a version control system such as GitHub*.
-> 	- [ ] Use Git & GitHub for version control of an interactive web application up to deployment.
+> 	- [ ]  Use Git & GitHub for version control of an interactive web application up to deployment.
 ##### 3.3.6.1 Issues
 
 > - 🚧✅ **Learning Objective**: *Test a front-end web application through the development, implementation and deployment stages*.
-> 	- [ ] Document any bugs found and their fixes and explanation of any bugs that are left unfixed.
+> 	- [ ]  Document any bugs found and their fixes and explanation of any bugs that are left unfixed.
 #### 3.3.7 Testing
 
 > - 🚧✅ **Learning Objective**: *Test a front-end web application through the development, implementation and deployment stages*.
-> 	- [ ] Document any bugs found and their fixes and explanation of any bugs that are left unfixed.
+> 	- [ ]  Document any bugs found and their fixes and explanation of any bugs that are left unfixed.
 > - 🚧✅ **Learning Objective**: *Implement Front-End interactivity, using core JavaScript, JavaScript libraries or frameworks*.
-> 	- [ ] Write code that does not generate internal errors on the page or in the console due to user actions.
+> 	- [ ]  Write code that does not generate internal errors on the page or in the console due to user actions.
 #### 3.3.8 Deployment
 
 > - 🚧✅ **Learning Objective**: *Deploy a Front-End web application to a Cloud platform*.
-		- [ ] Deploy a final version of the code to a cloud-based hosting platform (e.g. GitHub Pages) and test to ensure it matches the development version.
+		- [ ]  Deploy a final version of the code to a cloud-based hosting platform (e.g. GitHub Pages) and test to ensure it matches the development version.
 > - 🚧✅ **Learning Objective**: *Demonstrate and document the development process through a version control system such as GitHub*.
-> 	- [ ] Document the deployment procedure in a section in a README file.
+> 	- [ ]  Document the deployment procedure in a section in a README file.
 #### 3.3.9 Hosting
 
 >- 🚧✅ **Learning Objective**: Deploy a Front-End web application to a Cloud platform
->	-  [ ] Deploy a final version of the code to a cloud-based hosting platform (e.g. GitHub Pages) and test to ensure it matches the development version.
+>	-  [ ]  Deploy a final version of the code to a cloud-based hosting platform (e.g. GitHub Pages) and test to ensure it matches the development version.
 >- 🚧✅ **Learning Objective**: Demonstrate and document the development process through a version control system such as GitHub.
 
 ***
 ### 3.4 Documentation
 
 > - 🚧✅ **Learning Objective LO2**: LO2 Test a front-end web application through the development, implementation and deployment stages
-> 	 - [ ] Document any bugs found and their fixes and explanation of any bugs that are left unfixed.
+> 	 - [ ]  Document any bugs found and their fixes and explanation of any bugs that are left unfixed.
 > - 🚧✅ **Learning Objective: LO4**: Maximise future maintainability through documentation.
-> 	 - [x] Write a README.md file for the web application that explains its purpose, the value that it provides to its users, and the deployment procedure.
-> 	 - [x] Present a clear rationale for the development of the project, in the README, - Key project goals, target audience
-> 	 - [x] Insert screenshots of the project features, give a brief description of what each feature does and explain its value to the user.
-> 	 - [ ] Document the deployment procedure in a section in a README file, written using consistent and effective markdown formatting that is well-structured, easy to follow, and has few grammatical errors
->      - [ ] Attribute all code from external sources to its original source via comments above the code and (for larger dependencies) in the README
+> 	 - [x]  Write a README.md file for the web application that explains its purpose, the value that it provides to its users, and the deployment procedure.
+> 	 - [x]  Present a clear rationale for the development of the project, in the README, - Key project goals, target audience
+> 	 - [x]  Insert screenshots of the project features, give a brief description of what each feature does and explain its value to the user.
+> 	 - [ ]  Document the deployment procedure in a section in a README file, written using consistent and effective markdown formatting that is well-structured, easy to follow, and has few grammatical errors
+>      - [ ]  Attribute all code from external sources to its original source via comments above the code and (for larger dependencies) in the README
 >  - 🚧✅ **Learning Objective**: *Demonstrate and document the development process through a version control system such as GitHub*.
-> 	 - [ ] Document the deployment procedure in a section in a README file, written using consistent and effective markdown formatting that is well-structured, easy to follow, and has few grammatical errors
+> 	 - [ ]  Document the deployment procedure in a section in a README file, written using consistent and effective markdown formatting that is well-structured, easy to follow, and has few grammatical errors
 
 ***
 > ::
@@ -327,7 +325,7 @@ In this context, the author-developer extracts the definition of features and al
 - Be (manually) testable - to be understandable what is to be tested to be passed in order to acceptable to the reviewer and the end user (if not the same).
 
 Defining these features, within Milestones, (here), allows for alluding to the developer's Agile knowledge and for planning and design activities.
-
+***
 ### 4.? Milestones 
 #### Version 0.5
 
@@ -444,21 +442,31 @@ Version:
 Benefit:
 Acceptance:
 ```
-
+***
 ### 4.? User Stories
 
-
-
+***
 ### 4.? User Journey
 
 
-
+***
 ### 4.? Form Factors
-
 
 #### 4.1 Device Screens
 
+**Screen Resolution v Form Factor**
 
+Form Factor | Orrientation | Device Size | Screen Resolution | Notes 
+--- | --- | --- | --- | ---
+Desktop | Landscape | Laptop 13"     | 1366 x 768    |    
+Desktop | Landscape | Laptop 15"    | 1440 x 900    |    
+Tablet Standard  | Landscape     | Tablet 10" | 1024 x 768 |    
+Tablet Standard   | Portrait    | Tablet 10"    | 768 x 1024    |    
+Mobile   | Portrait    | iPhone 14*    |     |   
+Mobile   | Portrait    | iPhone 8*    |     |   
+Mobile   | Portrait    | iPhone 6*    |     |        
+
+* Equivalent: Android / iPhone
 #### 4.2 Responsiveness
 
 
@@ -496,7 +504,7 @@ Acceptance:
 |       |         |         |         |       |            |
 |       |         |         |         |       |            |
 |       |         |         |         |       |            |
-
+***
 ### 5.? Versions
 
 #### v0.1 : Layout & Deployment
@@ -529,7 +537,6 @@ Acceptance:
 #### v1.0 
 
 
-
 ***
 > ::
 ***
@@ -546,19 +553,6 @@ Key Milestones highlighted here maybe:
 
 #### 6.?.1 App Page
 
-**Screen Resolution v Form Factor**
-
-Form Factor | Orrientation | Device Size | Screen Resolution | Notes 
---- | --- | --- | --- | ---
-Desktop | Landscape | Laptop 13"     | 1366 x 768    |    
-Desktop | Landscape | Laptop 15"    | 1440 x 900    |    
-Tablet Standard  | Landscape     | Tablet 10" | 1024 x 768 |    
-Tablet Standard   | Portrait    | Tablet 10"    | 768 x 1024    |    
-Mobile   | Portrait    | iPhone 14*    |     |   
-Mobile   | Portrait    | iPhone 8*    |     |   
-Mobile   | Portrait    | iPhone 6*    |     |        
-
-* Equivalent: Android / iPhone
 ##### 6.?.1.1 Desktop
 
 **Portrait 1366 x 768** | Notes
@@ -689,7 +683,6 @@ Emoji   | Icons, Spirites   | FontAwesome       |      |      |       |
 - [x] `W3C Validation` - [W3C Validation](https://plugins.jetbrains.com/plugin/7322-w3c-validation/)
 
 ***
-
 ### 7.2 AI Agents & Services
 
 - [x] `Perplexity AI`: _[`version 1.0.0`](https://www.perplexity.ai/)_ - [Perplexity AI](https://www.perplexity.ai/)
@@ -703,7 +696,6 @@ Emoji   | Icons, Spirites   | FontAwesome       |      |      |       |
 - [x] `GitHub Co-Pilot`: _[`version 2021.1.1`](https://plugins.jetbrains.com/plugin/8327-github/versions/stable)_ - [GitHub](https://plugins.jetbrains.com/plugin/8327-github): **Features**: Code Completion  (By Line)
 
 ***
-
 ### 7.3 Libraries & Frameworks
 
 #### 7.3.1 npm Tooling
@@ -1016,7 +1008,6 @@ Refs:
 
 ## 9.0 Test & Quality
 > Complete: ❓ | Review: 📝 | To Do: 📌
-
 ### 9.1 Code Quality & Validation
 
 #### 9.1.1 HTML
@@ -1038,17 +1029,13 @@ Page |  | Warning <br> Error |  |
 Page |  | Warning <br> Error |  |
 
 ***
-
 ### 9.2 Responsive Design
 
 ***
-
 ### 9.3 Accessibility
-
 
 ***
 ### 9.4 Bugs & Issues
-
 
 
 ***
@@ -1056,7 +1043,6 @@ Page |  | Warning <br> Error |  |
 ***
 ## 10.0 Features & User Acceptance
 > Complete: ❓ | Review: 📝 | To Do: 📌
-
 ### 10.1 Features
 
 ### 10.2 Screenshots
