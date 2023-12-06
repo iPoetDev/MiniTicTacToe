@@ -39,3 +39,4 @@ Writerside/*
 ########################### DOC CONTROL ######################################
 # Undo as needed for.
 # Tracker
+/src/libs/

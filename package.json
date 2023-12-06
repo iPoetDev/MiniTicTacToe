@@ -4,6 +4,7 @@
   "url": "https://github.com/ipoetdev",
   "private": true,
   "dependencies": {
+    "alpinejs": "^3.13.3",
     "autoprefixer": "^10.4.16",
     "chokidar": "^3.5.3",
     "glob-parent": "^6.0.2",

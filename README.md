@@ -235,21 +235,21 @@ The following workflow is an extract, re-sorted, of the PASS and MERIT Learning 
 > - 🚧✅ **Learning Objective**:  *Test a front-end web application through the development, implementation and deployment stages*.
 > 	- [ ] Write JavaScript code that passes through a linter (e.g. Jshint) with no significant issues.
 > - 🚧✅ **Learning Objective**: *Implement Front-End interactivity, using core JavaScript, JavaScript libraries or frameworks*.
->     - [ ] Write JavaScript functions that correctly implement compound statements.
->     - [ ] Write code that intelligently handles empty or invalid input data.
+> 	- [ ] Write JavaScript functions that correctly implement compound statements.
+> 	- [ ] Write code that intelligently handles empty or invalid input data.
 >     - [ ] Write code that does not generate internal errors on the page or in the console due to user actions.
 >     - [ ] Organise code and assets files in directories by file type.
 #### 3.3.3 Code & Project Organisation
 
 > - 🚧✅ **Learning Objective**: *Maximise future maintainability through code structure and organisation*.
-		- [ ] Clearly separate and identify code written for the website and code from external sources (e.g. libraries or tutorials).
-		- [ ] Organise HTML, CSS and JavaScript code into well-defined and commented sections.
-		- [ ] Place CSS code in external files linked to the HTML page in the HEAD element.
-		- [ ] Place JavaScript code in external files linked to the HTML page just above the closing body tag.
-		- [ ] Name files consistently and descriptively, without spaces or capitalisation to allow for cross-platform compatibility.
-		- [ ] Group files in directories by file type (e.g. an assets directory will contain all static files and may be organised into sub-directories such as CSS, images, etc.).
-	- 🚧✅ **Learning Objective**: *Implement Front-End interactivity, using core JavaScript, JavaScript libraries or frameworks.*
-		- [ ] Organise code and assets files in directories by file type.
+>     - [ ] Clearly separate and identify code written for the website and code from external sources (e.g. libraries or tutorials).
+>     - [ ]  Organise HTML, CSS and JavaScript code into well-defined and commented sections.
+>     - [ ]  Place CSS code in external files linked to the HTML page in the HEAD element.
+>     - [ ]  Place JavaScript code in external files linked to the HTML page just above the closing body tag.
+>     - [ ]  Name files consistently and descriptively, without spaces or capitalisation to allow for cross-platform compatibility.
+>     - [ ]  Group files in directories by file type (e.g. an assets directory will contain all static files and may be organised into sub-directories such as CSS, images, etc.).
+> - 🚧✅ **Learning Objective**: *Implement Front-End interactivity, using core JavaScript, JavaScript libraries or frameworks.*
+>     - [ ] Organise code and assets files in directories by file type.
 #### 3.3.4 Code Quality
 
 > - 🚧✅ **Learning Objective**: *Test a front-end web application through the development, implementation and deployment stages*.
