@@ -1193,9 +1193,53 @@ Refs:
 			- `x-transition:enter-start` gives the enter-start state, and applies the CSS of opacity of `Zero/0` and a `50% scale`. i.e. `opacity-0 transform scale-50`.
 			- `x-transition:enter-end` gives the enter-end state, and applies the CSS of opacity of `100`, transforming the scale to 100%. i.e. `opacity-0 transform scale-50`.
 
+#### 8.3.4 JS API
+> Move to a API.md or define in a JSDoc format
+##### class App
+- **Properties (Get/Set)**: *get|set, return type*
+	- *get, {string}* `P1()` - returns "`X`" token.
+	- *get, {string}* `P2()` - returns "`O`" token.
+	- *get, {string}* `X_TURNS_PROP()` - returns "`xTurn`".
+	- *get, {string}* `O_TURNS_PROP()` - returns "`oTurn`".
+	- *get, {integer}* `MAX_LENGTH()` - returns `9` : Max length of grid array.
+- **Methods**: *scope, return type*
+	- *{void}* `constructor()`
+		- *{string}* `this.turns`: 
+		- *{boolean}* `this.won`:
+		- *{Array()}* `this.winSeq`:
+		- *{Proxy(Array())* `this.grid`: Alpine.reactive() array
+		- *{Proxy(string)}* `this.xChars`: Alpine.reactive() array
+		- *{Proxy(string)}* `this.oChars`: Alpine.reactive() array
+		- *{string}* `this.xTurns`:
+		- *{string}* `this.oTurns`:
+	- *private, {array}* `_getRandonCharacter(characterArray)` 
+		- *{array}* `characterArray`:
+		- **return, array**: new `characterArray`
+	- *private, {void}*  `_updateTurnsAndGrid(index, characterArray, turnProperty)` 
+		- *{integer}* `index`: The indices of the grid from event handler, on-click.
+		- *{array}* `characterArray`: assigns: `this.xChars` | `this.oChars`  
+		- *{string}* `turnProperty`: assigns: `this.xTurns` | `this.oTurns` 
+	- *private, {boolean}* `_isInvalidMove(index)`
+		- *{integer}* `index`: The indices of the grid from event handler, on-click.
+		- **return, boolean**: `true` | `false`
+	- *private, {void}* `_isEvenTurn(index)`
+		- *{integer}* `index`: The indices of the grid from event handler, on-click.
+	- *public, {string}* `select(index)`
+		- *{integer}* `index`: The indices of the grid from event handler, on-click.
+		- **return,string**: `this.grid[index]`;
+	- *private, {boolean}* `_checkSequenceWin(turns, sequence)`
+		- *{string}* `turns`: assigns: `this.xTurns` | `this.oTurns` 
+		- *{string}* `sequence`:
+		- **returns, boolean**: `regExp.test(filteredTurns);`
+	- *public, {boolean}* `checkWinner()`
+		- **returns, string**: `this.won`
+	- *public, {void}* `reset()`
+
+
 ***
 ### 8.4 Static Analysis
 > Linting | Pre-Commit.
+
 
 
 ***
