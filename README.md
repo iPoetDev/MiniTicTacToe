@@ -1134,6 +1134,65 @@ Refs:
 
 #### 8.3.2 JS Linting 🚧
 
+#### 8.3.3 JS Interactions: AlpineJS 🚧
+
+- A browser extension for [AlpineJS DevTools: is installed for Debbuging/Observability](https://chromewebstore.google.com/detail/alpinejs-devtools/fopaemeedckajflibkpifppcankfmbhk).
+	- DevTools extension for debugging Alpine.js applications.
+	- It allows you to detect, inspect and edit Alpine.js data and components in the Chrome Developer Tools.
+	- To can inspect and edit its current data in the panel to the right.
+-  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- **Game App**: The initiating Function `gameApp()` instantiated the class `App()` internally and returns the `game` object.
+	- **Game Init**: The *AlpineJS* `x-data` directive initialises a HTML Component for the windows global variable `game`, which assigns and calls `gameApp()` initiating function. 
+		- **`x-data` directive**: defines a chunk of *HTML* as an *AlpineJS* component and provides the reactive data for that component to reference. 
+			- See [x-data — Alpine.js](https://alpinejs.dev/directives/data)
+		- **Scope**: Properties defined in an `x-data` directive are available to all element children.
+		- **Method**: As `x-data` is evaluated as a normal JavaScript object, in addition to state, you can store methods and even getters.
+- **Game Board**: 
+	- The game board is divided into three sections in the grid (each section corresponds to a row in a 3×3 Tic Tac Toe game). 
+		- 3 document fragments as HTML Templates are use for each row of the grid. 
+	- It's where users can make their moves.
+	- Each section uses [HTML Template ](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template) tags (as a document fragment) as well as JavaScript's template literals,
+		- [`<template>`: The Content Template element - HTML: HyperText Markup Language | MDN (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template)
+	- **Game Board's Rows**:
+		- An *AlpineJS* `x-for` directive is used for looping and it creates three (`<div>` containing `<button>)` in each row; 
+			- See [x-for — Alpine.js](https://alpinejs.dev/directives/for)
+			- When called, the `for loop` dynamically creates a copy of the template document fragment's div; up to 3 times . 
+			- The output these iterations is a grid cell within the row.
+			- Each loop iterates for the following from the `game.grid` and takes a `grid.slice()` function per row. 
+				- An `index`: The index of each grid being clicked upon.
+				- An `item`: The content of each grid's cell.
+				- A `slice` of the grid helps generate the cells in each row. 
+					- [Array.prototype.slice() - JavaScript | MDN (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice)
+					- *Row 1*: `slice(0,3)`
+					- *Row 2*: `slice(3,6)`
+					- *Row 3*: `slice(6,9)`
+	- **Game Grid's Button Click (Event) Handler**: 
+		- Each button (`<button>` tags inside `<div>` tags) has an `@click` event listener which invokes `game.select(index)`, a public methods of the game's `App` class. 
+		- This function handles the game's logic on each click for user interactivity.
+		- The `@` symbol in `@click` is *AlpineJS* shorthand and equivalent of the `x-on:click` *AlpineJS* directive for **event handling.** 
+			- See [Events — Alpine.js](https://alpinejs.dev/essentials/events)
+			- Listen for simple browser events that are dispatched on or within an element.
+		- The `@click.prevent` is the *AlpineJS* implementation of the [`preventDefault()`](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) event method (i.e. `event.preventDefault()`).
+			- When reacting to browser events, it is often necessary to "*prevent default*" (prevent the default behaviour of the browser event). 
+				- See [AlpineJS Docs: Preventing Default](https://alpinejs.dev/essentials/events#preventing-default "Preventing default (alpinejs.dev)")
+				- In this context: this prevents the click event handler from being fired on the `x-for` loop when the Game Board's button is generated from the document fragment and to await for the user click ( *Editor: I think*).
+			-  `preventDefault` - tells the [user agent](https://developer.mozilla.org/en-US/docs/Glossary/User_agent) that if the event does not get explicitly handled and its default action should not be taken as it normally would be.
+	- **Game Grid's Content as the Token**: The *AlpineJS* `x-text` directive to display the value of the `select`ed grid (by `index` on an `click` event) in the grid's array and is assigned to the game.grid's index. 
+		- See [x-text — Alpine.js](https://alpinejs.dev/directives/text)
+		- Each button has an assigned *variable* called `item`.
+		- The value of the `item` is the game's token, either `X` or `O`.
+	- **Game Grid's Token Show/Hide**: The *AlpineJS* `x-show` directive provides an expressive way to show / hide DOM elements.
+		- See [x-show — Alpine.js](https://alpinejs.dev/directives/show)
+		- Each button's default content state is null and thus hidden.
+		- Shows the `item`, i.e. the Game Token, when the `item` is `not null`, or when played (i.e. when a button is clicked).
+	- **Game Grid's Token Animation**: The *AlpineJS* `x-transition` directive, and is nominally used in conjunction with `x-show`, to provide robust smooth transitions when an element is shown/hidden.
+		- See [x-transition — Alpine.js](https://alpinejs.dev/directives/transition)
+		- Applies pleasant transition to fade/scale the revealing element by default.
+		- Conditional directives control the state of the transition and animations:
+			- `x-transition:enter` gives the default initial enter state when the event initialises, and applies the CSS to ease out over `300ms` i.e `transition ease-out duration-300`.
+			- `x-transition:enter-start` gives the enter-start state, and applies the CSS of opacity of `Zero/0` and a `50% scale`. i.e. `opacity-0 transform scale-50`.
+			- `x-transition:enter-end` gives the enter-end state, and applies the CSS of opacity of `100`, transforming the scale to 100%. i.e. `opacity-0 transform scale-50`.
+
 ***
 ### 8.4 Static Analysis
 > Linting | Pre-Commit.

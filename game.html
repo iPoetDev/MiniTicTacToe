@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en">
+<head>
+    <title>Tic Tac Toe : AlpineJS by Scott Windon </title>
+    <meta charset="UTF-8"> <!-- Character Encoding -->
+    <!-- Required Meta Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Responsive Design -->
+    <!-- Recommended Meta Tags -->
+    <meta name="description" content="Example AlpineJS Tic Tac Toe: Scott Windon"> <!-- SEO Meta Description -->
+    <meta name="keywords" content="your, tags"> <!-- SEO Keywords -->
+    <meta name="author" content="author name"> <!-- Author Information -->
+    <!-- Links to CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="docs/assets/css/style.css">
+</head>
+<body>
+<div class="min-w-screen min-h-screen bg-gray-800 flex items-center justify-center px-5 py-5">
+    <!--
+        The x-data directive is used to create a new instance of the gameApp object;
+            - using an assignment to a local variable.
+    -->
+    <div class="w-96 h-96 mx-auto text-indigo-500 rounded-md flex flex-wrap relative"
+         x-data="game = gameApp()" title="">
+        <div class="flex w-full h-1/3">
+        <!--
+            The x-for directive is used to create, via looping through the grid array, and display the game grid's first row.
+            The x-text directive is used to display the value of the item in the grid array.
+            The x-show directive is used to hide the value of the item in the grid array.
+            The x-transition directive is used to animate the display of the value of the item in the grid array.
+        -->
+            <template x-for="item, index in game.grid.slice(0,3)" :key="index">
+                <div class="border-b border-gray-700 w-1/3" :class="{'border-l':index>0}">
+                    <button class="w-full h-full outline-none focus:outline-none text-8xl leading-none"
+                            @click.prevent="
+                                    // Select the item in the grid array at the specified index
+                                    game.grid[index] = game.select(index),
+                                    /**
+                                     * The $nextTick method is used to wait for the DOM to be updated
+                                     * before updating the grid array with the selected item.
+                                     * Combined with Alpine.reactive() on the game.grid array in App class.
+                                     * @url https://alpinejs.dev/magics/nextTick
+                                     * @url https://alpinejs.dev/advanced/reactivity
+                                     */
+                                    $nextTick(() =>
+                                        // Updated select the item in the grid array at the specified index.
+                                        game.grid[index] = game.grid[index],
+                                        // Logging Confirm of successful event update
+                                        console.log('grid update:', game.grid[index])
+                                    )
+                                ">
+                        <!--suppress XmlUnboundNsPrefix -->
+                        <!--
+                            The x-show directive: showing the game.grid[index] value when the grid is not null.
+                            The x-text directive: displaying the game.grid[index] value when the grid is not null
+                                - Default: x-text is assigned on template/#doc-fragment rendering.
+                                - x-text does not automatic DOM update.
+                            The x-transition directive is used to animate the display of the value of the item in the grid array.
+                        --->
+                        <span class="inline-block"
+                            x-show="game.grid[index]!==null" x-text="game.grid[index]"
+                            x-transition:enter="transition ease-out duration-300"
+                            x-transition:enter-start="opacity-0 transform scale-50"
+                            x-transition:enter-end="opacity-100 transform scale-100"></span>
+                    </button>
+                </div>
+            </template>
+        </div>
+        <div class="flex w-full h-1/3">
+            <template x-for="item, index in game.grid.slice(3,6)" :key="index">
+                <div class="border-b border-gray-700 w-1/3" :class="{'border-l':index>0}">
+                    <button class="w-full h-full outline-none focus:outline-none text-8xl leading-none"
+                            @click.prevent="
+                                game.grid[index+3] = game.select(index+3),
+                                $nextTick(() =>
+                                    game.grid[index+3] = game.grid[index+3],
+                                    // Logging Confirm of successful event update
+                                    console.log('grid update:', game.grid[index+3])
+                                )">
+                        <span class="inline-block"
+                            x-show="game.grid[index+3]!==null" x-text="game.grid[index+3]"
+                            x-transition:enter="transition ease-out duration-300"
+                            x-transition:enter-start="opacity-0 transform scale-50"
+                            x-transition:enter-end="opacity-100 transform scale-100"></span>
+                    </button>
+                </div>
+            </template>
+        </div>
+        <div class="flex w-full h-1/3">
+            <template x-for="item, index in game.grid.slice(6, 9)" :key="index">
+                <div class="border-b border-gray-700 w-1/3" :class="{'border-l':index>0}">
+                    <button class="w-full h-full outline-none focus:outline-none text-8xl leading-none"
+                            @click.prevent="
+                                game.grid[index+6] = game.select(index+6),
+                                $nextTick(() =>
+                                    game.grid[index+6] = game.grid[index+6],
+                                    // Logging Confirm of successful event update
+                                    console.log('grid update:', game.grid[index+6])
+                                )
+                            ">
+                        <span class="inline-block"
+                            x-show="game.grid[index+6]!==null" x-text="game.grid[index+6]"
+                            x-transition:enter="transition ease-out duration-300"
+                            x-transition:enter-start="opacity-0 transform scale-50"
+                            x-transition:enter-end="opacity-100 transform scale-100"></span>
+                    </button>
+                </div>
+            </template>
+        </div>
+        <button class="absolute top-0 left-0 w-96 h-96 flex items-center justify-center outline-none focus:outline-none"
+                style="display:none;"
+                x-show="game.won||game.turns>=9"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 transform scale-50 rotate-12"
+                x-transition:enter-end="opacity-100 transform scale-100 rotate-0"
+                @click.prevent="game.reset()">
+            <span class="block transform -rotate-12 text-white text-9xl text-glow-xl"
+                x-text="game.won?'Winner!':'😔'"></span>
+        </button>
+    </div>
+</div>
+
+
+<!-- BUY ME A BEER AND HELP SUPPORT OPEN-SOURCE RESOURCES -->
+<div class="flex items-end justify-end fixed bottom-0 right-0 mb-4 mr-4 z-10">
+    <div>
+        <a title="Buy me a beer" href="https://www.buymeacoffee.com/scottwindon" target="_blank"
+            class="block w-16 h-16 rounded-full transition-all shadow hover:shadow-lg transform hover:scale-110 hover:rotate-12">
+            <img class="object-cover object-center w-full h-full rounded-full"
+                src="https://i.pinimg.com/originals/60/fd/e8/60fde811b6be57094e0abc69d9c2622a.jpg"/>
+        </a>
+    </div>
+</div>
+
+<!--<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>-->
+
+<script>
+    class App {
+        /**
+         * Gets the Player 1 Token.
+         * @returns {string} The name of the property for turns.
+         */
+        static get P1 () {
+            return "X";
+        }
+
+        /**
+         * Gets the Player 1 Token.
+         * @returns {string} The name of the property for turns.
+         */
+        static get P2 () {
+            return "O";
+        }
+
+        /**
+         * Gets the name of the property for keeping track of the number of X turns.
+         * @returns {string} The name of the property for X turns.
+         */
+        static get X_TURNS_PROP () {
+            return "xTurns";
+        }
+
+        /**
+         * Gets the name of the property for keeping track of the number of O turns.
+         * @returns {string} The name of the property for O turns.
+         */
+        static get O_TURNS_PROP () {
+            return "oTurns";
+        }
+
+        /**
+         * Returns the maximum (array/grid cell) length allowed for the grid
+         * @returns {number} The maximum length allowed.
+         */
+        static get MAX_LENGTH () {
+            return 9;
+        }
+
+        /**
+         * Returns the initialisation value for turns.
+         * @returns {number} The value for TURN_INIT.
+         */
+        static get TURN_INIT () {
+            return 0;
+        }
+
+
+        /**
+         * Constructor for the App class.
+         * Initializes the App object with default values and reactivity, for
+         * - turns,
+         * - win state,
+         * - win sequences,
+         * - game grid,
+         * - x characters |  o characters.
+         * The constructor also logs the instantiation of the ...
+         *      App object to the console.
+         * @url https://alpinejs.dev/advanced/reactivity
+         * @constructor
+         */
+        constructor () {
+            console.log('Instatiate App:', this);
+            this.turns = App.TURN_INIT;
+            this.won = false;         // The default check win state of the game
+            this.winSeq = [
+                "012", "345", "678",  // HorizontalWins
+                "036", "147",         // DiagonalWins
+                "258", "048", "246"]; // VerticalWins
+            this.grid = Alpine.reactive(Array.from({ length: App.MAX_LENGTH }, () => null)); // ES6 Arrow Function
+            this.xChars = Alpine.reactive(["x", "X"]);
+            this.oChars = Alpine.reactive(["o", "O"]);
+            this.xTurns ="";
+            this.oTurns = "";
+        }
+
+
+        /**
+         * Returns a random character from the given character array.
+         * @design
+         *  This randomiser allows variation of the game token sizes (lower case/upper case).
+         *  It mimics variation in hand strokes when hand drawing the game tokens.
+         * @param {Array} characterArray - The array containing characters.
+         * @return {string} - A random character from the character array.
+         */
+        _getRandomCharacter (characterArray) {
+            return characterArray[Math.floor(Math.random() * characterArray.length)];
+        }
+
+        /**
+         * Update the turns and grid at the specified index
+         * with a random character from the characterArray.
+         *
+         * @param {number} index - The index of the grid to update.
+         * @param {Array} characterArray - The array of characters to choose from.
+         * @param {string} turnProperty - The property to update the turns with.
+         * @return {undefined}
+         */
+        _updateTurnsAndGrid (index, characterArray, turnProperty) {
+            this.grid[index] = this._getRandomCharacter(characterArray);
+            this[turnProperty] += index;
+        }
+
+        /**
+         * Checks if the given move is invalid.
+         * @param {number} index - The index of the move.
+         * @return {boolean} - Returns true if the move is invalid, false otherwise.
+         */
+        _isInvalidMove (index) {
+            const MAX_INDEX = this.grid.length - 1;
+            console.log('isInvalidMove:', index, this.won, this.grid[index], this.turns, MAX_INDEX);
+            const isInvalidMove = this.won || this.grid[index] !== null || this.turns >= MAX_INDEX;
+            console.log('isInvalidMove:', isInvalidMove);
+            if (isInvalidMove) return true;
+            // Valid Move is valid and is False.
+            return false;
+        }
+
+        /**
+         * Determines if the turn is even and updates the turns and grid accordingly.
+         * @param {number} index - The index of the grid to be updated.
+         * @return {undefined}
+         */
+        _isEvenTurn(index) {
+            const isEvenTurn = this.turns % 2 === 0;
+            const char = isEvenTurn ? this.xChars : this.oChars;
+            const prop = isEvenTurn ? App.X_TURNS_PROP : App.O_TURNS_PROP;
+            this._updateTurnsAndGrid(index, char, prop);
+            console.log('isEvenTurn:', isEvenTurn, char, prop, index, this.grid[index])
+        }
+
+        /**
+         * Selects a cell on the game board.
+         * @param {number} index - The index of the cell to be selected.
+         * @returns {void}
+         */
+        select (index) {
+            console.log('selected index:', index);
+            // Check if move is invalid, and proceed to next turn if the return is false,
+            if (this._isInvalidMove(index)) {
+                //
+                console.log('Invalid Move: ', index);
+                return this.grid[index];
+            } else {
+                // Update the turns and grid
+                const newturn = this.turns++;
+                this._isEvenTurn(index);
+                // Check if the game has been won
+                const isWinner = this.checkWinner();
+                // Return the updated item from grid
+                console.log('Valid Move: ', newturn, this.grid[index], isWinner);
+                return this.grid[index]; // @Update 23/12/06 to return updated item/token from grid
+            }
+        }
+
+        /**
+         * Checks whether the sequence of turns is a winner.
+         * @param turns
+         * @param sequence
+         * @returns {boolean}
+         * @private
+         */
+
+        _checkSequenceWin (turns, sequence) {
+            const regExp = new RegExp(`[${sequence}]{3}`);
+            const filteredTurns = turns.replace(new RegExp(`[^${sequence}]+`, "g"), "");
+            return regExp.test(filteredTurns);
+        }
+
+        /**
+         * Checks if the sequence of turns is a winner.
+         * @param {string} turns - The sequence of turns.
+         * @param {string} sequence - The sequence of turns to check.
+         * @returns {boolean} True if the sequence of turns is a winner.
+         * @description
+         *  Refactored from original code:
+         *    - Swapped the `for` loop and used the `for...of` loop structure instead.
+         */
+
+        checkWinner () {
+            for (let sequence of this.winSeq) {
+                if (this._checkSequenceWin(this.xTurns, sequence)) {
+                    this.won = App.P1; // Player 1 wins | X wins
+                    break;
+                } else if (this._checkSequenceWin(this.oTurns, sequence)) {
+                    this.won = App.P2; // Player 2 wins | O wins
+                    break;
+                }
+            }
+            return this.won;
+        }
+
+        /**
+         * Reset the game state to its initial values.
+         * @return {void}
+         */
+        reset () {
+            this.turns = App.TURN_INIT;
+            this.won = false;
+            this.grid = Alpine.reactive(Array(App.MAX_LENGTH).fill(null));
+            this.xTurns = "";
+            this.oTurns = "";
+        }
+    }
+
+    function gameApp() {
+        let game = new App();
+        return game;
+    }
+
+    window.game = gameApp;  // Make the app function globally accessible
+</script>
+</body>
+</html>
