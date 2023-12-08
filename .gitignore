@@ -40,3 +40,10 @@ Writerside/*
 # Undo as needed for.
 # Tracker
 /src/libs/
+/uuv/cypress/
+/uuv/reports
+/uuv/.uuv-features-gen
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
