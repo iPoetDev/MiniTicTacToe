@@ -47,3 +47,5 @@ Writerside/*
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+/docs/libs/aplinejs/alpine-3.13.3/**
+/docs/libs/aplinejs/3.13.3/packages/**
