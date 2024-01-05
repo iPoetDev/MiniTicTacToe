@@ -3,7 +3,7 @@
   "url": "https://github.com/ipoetdev",
   "private": true,
   "scripts": {
-    "live-server": "ws -a 127.0.0.1 -p 80000 -open -d / ",
+    "live": "ws -a 127.0.0.1 -p 80000 -open -d / ",
     "serve": "live-server --port=8001 --open=/ --host=127.0.0.1 --entry-file=index.html",
     "game": "live-server --port=8001 --open=/ --host=127.0.0.1 --entry-file=game.html",
     "tw": "tailwindcss -i ./docs/assets/css/tailwind.css -o ./docs/assets/css/tw-style.cs --watch",
@@ -20,7 +20,7 @@
     "alpinejs": "^3.13.3",
     "autoprefixer": "^10.4.16",
     "chokidar": "^3.5.3",
-    "eslint-plugin-vue": "^9.19.2",cls
+    "eslint-plugin-vue": "^9.19.2",
     "glob-parent": "^6.0.2",
     "htmx.org": "^1.9.6",
     "postcss": "^8.4.31",
@@ -69,7 +69,7 @@
     "karma-mocha": "^2.0.1",
     "karma-webdriver-launcher": "^1.0.8",
     "live-server": "^1.1.0",
-    "local-web-server": "^5.3.0",
+    "local-web-server": "^2.2.4",
     "mocha": "^10.2.0",
     "prettier": "^3.0.3",
     "prettier-plugin-django-alpine": "^1.2.6",
