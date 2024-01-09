@@ -7,6 +7,55 @@
  * Represents the logic (state and behaviour) for a game of TicTacToe.
  */
 class GameLogic {
+
+    /**
+     * Represents an empty cell's value/primitive.
+     * @constant {null}
+     * @default null
+     */
+    static _EMPTYCELL = null
+    /**
+     * Represents the initial value of the _INITIALISE variable for arrays.
+     * @constant {null}
+     * @default null
+     */
+    static _INITIALISE = null
+    /**
+     * The shift incremented value for the first row.
+     * @constant {number}
+     * @default 0
+     */
+    static ROW_ONE = 0
+    /**
+     * The shift incremented value for the second row.
+     * @type {number}
+     */
+    static ROW_TWO = 3
+    /**
+     * The shift incremented value for the third row.
+     * @constant {number}
+     * @default
+     */
+    static ROW_THREE = 6
+    /**
+     * Represents the ref value when border hides.
+     * @constant {number}
+     * @default 0
+     */
+    static BOARDER_HIDE = 0
+    /**
+     * Represents the maximum value for negative subtraction operation/length/range.
+     * @constant {number}
+     * @default 1
+     */
+    static _MAX_MINUS = 1
+    /**
+     * Maximum number of player tokens allowed.
+     * @constant
+     * @type {number}
+     */
+    static _MAX_TOKENS = 2
+
     /**
      * @constructor
      * @param {boolean} [debug=this.DEVMODE] - Optional Flag to enable debug mode.
@@ -22,49 +71,56 @@ class GameLogic {
      * The constructor also logs the instantiation of the App object to the console.
      * @returns {void}
      */
-    // noinspection FunctionNamingConventionJS
-
-    static _EMPTYCELL = null
-    static ROW_ONE = 0
-    static ROW_TWO = 3
-    static ROW_THREE = 6
-    static BOARDER_HIDE = 0
-    static _MAX_MINUS = 1
 
     constructor(debug = false, level = 0) {
         // Enable Developer Mode for debugging
+        /** @instance public */
         this.DEBUG = typeof mode === 'boolean' ? debug : this.DEVMODE
+        /** @instance public */
         this.LEVEL = typeof type === 'number' ? level : this.LEVEL
+        this._console('Instantiate Game Logic: ',
+                      this.DEBUG, this.LEVEL, this) // jshint ignore:line
         // Instance variables set by Class Constants
-        /** @instance CONSTANT */
-         // Set initial class constants empty cell.
+        /** @instance public */
+        this.empty = null
+        // Set initial class constants empty cell.
         /** @instance private */
         this._turns = GameLogic.TURN_INIT
+        /** @instance private */
         this._currentcell = GameLogic.CELL_RESET
         /** @instance private */
-        this._grid = GameLogic.NEW_GRID
+        this._length = 9
+        // noinspection NestedFunctionCallJS,AnonymousFunctionJS,ChainedFunctionCallJS,JSUnusedLocalSymbols
         /** @instance private */
-        this._draw = GameLogic.NO_DRAW // The default check win state of the game / Set initial constants
+        this._grid =  Array.apply(this.empty, Array(this._length))
+            .map(function (v,i) { return null })
+        // The default check win state of the game / Set initial constants
         /** @instance private */
-        this._won = GameLogic.IN_PLAY // The default check win state of the game / Set initial constants
+        this._draw = GameLogic.NO_DRAW
+        // The default check win state of the game / Set initial constants
         /** @instance private */
-        this._winSeq = GameLogic.WIN_COMBINATIONS // Set initial class constants
+        this._won = GameLogic.IN_PLAY
+        // Set initial class constants
+        /** @instance private */
+        this._winSeq = GameLogic.WIN_COMBINATIONS
         /** @instance private
          * @type {array} */
-        this._xChars = GameLogic.P1_TOKENS
+        this._xChars = ['x','X']
+        this._xTokens = this._setTOKENS('X')
         // noinspection JSUnresolvedReference
         /** @instance  private */
-        this._oChars = GameLogic.P2_TOKENS
+        this._oChars = ['o','O']
+        this._oTokens = this._setTOKENS('0')
         /** @instance  private Track the length/number of X's played */
         this._xTurns = GameLogic.TURN_RESET // Set initial class constants
         /** @instance private Track the length/number of Y's played */
         this._oTurns = GameLogic.TURN_RESET // Set initial class constants
-        this._console('Instantiate Game Logic: ', this.DEBUG, this.LEVEL, this) // jshint ignore:line
     }
-    // =========================================== PROPERTY GET/SET | CLASS DEBUG MODE ===============================
+
+    // ======================= PROPERTY GET/SET | CLASS DEBUG MODE ===============================
 
     /**
-     * Retrieves the current value of the DEVMODE property.
+     * GETTER: Retrieves the current value of the DEVMODE property.
      * @property {boolean} DEVMODE
      * @public
      * @returns {boolean} The current value of the DEVMODE property.
@@ -75,7 +131,7 @@ class GameLogic {
     }
 
     /**
-     * Sets the developer mode toggle.
+     * SETTER: Sets the developer mode toggle.
      * @property {boolean} DEVMODE
      * @public
      * @param {boolean} toggle - The value to set the developer mode toggle.
@@ -88,7 +144,7 @@ class GameLogic {
     }
 
     /**
-     * Retrieves the current value of the DEVMODE property.
+     * GETTER: Retrieves the current value of the DEVMODE property.
      * @property {number} LOGLEVEL property
      * @public
      * @returns {number} The current value of the DEVMODE property.
@@ -99,21 +155,60 @@ class GameLogic {
     }
 
     /**
-     * Sets the developer mode toggle.
+     * SETTER: Sets the developer mode toggle.
      * @property {number} LOGLEVEL
      * @public
      * @param {number} consolelevel - The value to set the developer mode toggle.
      * @default {boolean} false` if `toggle` is undefined.
      */
-    set LOGLEVEL(consolelevel = 0) {
+    set LOGLEVEL(consolelevel = 1) {
         const _disabled = 0 // disabled by default or if omitted
         this.LEVEL = typeof consolelevel === 'number' ? consolelevel : _disabled
     }
 
-    // =========================================== PROPERTY STATIC GETTERS | CLASS Constants =========================
+    // ======================= PROPERTY STATIC GETTERS | CLASS Constants =========================
+    // =======================     GAME STATE                            =========================
 
     /**
-     * Gets the Player 1 Token.
+     * GAME STATE: Retrieves the initial state of a drawn game.
+     * @property {boolean} NO_DRAW -  Initial State of a drawn game, a viable initial state.
+     * @private
+     * @return {boolean} -  Initial State of a drawn game, a viable initial state.
+     * @static, Class constant
+     * @default false
+     */
+    static get NO_DRAW() {
+        return false
+    }
+
+    /**
+     * GAME STATE: Retrieves the current as an end state of the game.
+     * @property {boolean} HAS_DRAW -  Whether the game has drawn, a viable end state.
+     * @private
+     * @return {boolean} - Whether the game has drawn, a viable end state.
+     * @static, Class constant
+     * @default true
+     */
+    static get HAS_DRAW() {
+        return true
+    }
+
+    /**
+     * GAME STATE: Retrieves the initial/current state of the game.
+     * @property {boolean} IN_PLAY - The initial/current state of the game when not won.
+     * @private
+     * @return {boolean} - Whether the game is currently in play or not.
+     * @static, Class constant
+     * @default false
+     */
+    static get IN_PLAY() {
+        return false
+    }
+
+    // =========================    PLAYERS & TOKENS                      =========================
+
+    /**
+     * GETTER: Gets the Player 1 Token.
      * @property {string} P1 Player 1 Token
      * @private
      * @returns {string} The name of the property for turns.
@@ -125,7 +220,7 @@ class GameLogic {
     }
 
     /**
-     * Get the P1 tokens.
+     * GETTER: Get the P1 tokens.
      * @property P1_TOKENS
      * @private
      * @returns {string[]} The P1 tokens.
@@ -135,7 +230,7 @@ class GameLogic {
     }
 
     /**
-     * Gets the Player 1 Token.
+     * GETTER: Gets the Player 1 Token.
      * @property {string} P2 Player 2 Token
      * @private
      * @returns {string} The name of the property for turns.
@@ -148,7 +243,7 @@ class GameLogic {
     }
 
     /**
-     * Get the P2 tokens.
+     * GETTER: Get the P2 tokens.
      * @property {Array} P2_TOKENS
      * @private
      * @returns {string[]} The P2 tokens.
@@ -157,8 +252,10 @@ class GameLogic {
         return ['o', 'O']
     }
 
+    // ==========================     ALGORITHM VALUES                    =========================
+
     /**
-     * Returns the length of the search string used in regular expression.
+     * GETTER: Returns the length of the search string used in regular expression.
      * @property {number} _REG_SEARCH_LENGTH
      * @private
      * @access private
@@ -170,7 +267,7 @@ class GameLogic {
     }
 
     /**
-     * Returns the regular expression flag used to perform a global search.
+     * GETTER: Returns the regular expression flag used to perform a global search.
      * @property {string} _REG_SEARCH_FLAG
      * @private
      * @access private
@@ -184,7 +281,7 @@ class GameLogic {
     }
 
     /**
-     * Retrieves the REG_SEARCH_FILTER constant.
+     * GETTER: Retrieves the REG_SEARCH_FILTER constant.
      * @function REG_SEARCH_FILTER
      * @private
      * @access private
@@ -196,7 +293,7 @@ class GameLogic {
     }
 
     /**
-     * Returns an array of winning combinations on a Tic-Tac-Toe board.
+     * GETTER: Returns an array of winning combinations on a Tic-Tac-Toe board.
      * The combinations are represented by strings of three positions on the board.
      * Each position is denoted by a number from 0 to 8, indicating the index of the position on
      * the board array. The winning combinations consist of three positions that form a winning
@@ -220,52 +317,18 @@ class GameLogic {
     }
 
     /**
-     * Retrieves the value of the "_winSeq" property.
+     * GETTER: Retrieves the value of the "_winSeq" property.
      *
-     * @returns {any} The value of the "_winSeq" property.
+     * @returns {array} The value of the "_winSeq" property.
      */
     get WIN_SEQUENCE() {
         return this._winSeq
     }
 
-    /**
-     * Retrieves the initial state of a drawn game.
-     * @property {boolean} NO_DRAW -  Initial State of a drawn game, a viable initial state.
-     * @private
-     * @return {boolean} -  Initial State of a drawn game, a viable initial state.
-     * @static, Class constant
-     * @default false
-     */
-    static get NO_DRAW() {
-        return false
-    }
+    // ==========================    INITIALIZERS                         =========================
 
     /**
-     * Retrieves the current as an end state of the game.
-     * @property {boolean} HAS_DRAW -  Whether the game has drawn, a viable end state.
-     * @private
-     * @return {boolean} - Whether the game has drawn, a viable end state.
-     * @static, Class constant
-     * @default true
-     */
-    static get HAS_DRAW() {
-        return true
-    }
-
-    /**
-     * Retrieves the current state of the game.
-     * @property {boolean} IN_PLAY - The initial/current state of the game when not won.
-     * @private
-     * @return {boolean} - Whether the game is currently in play or not.
-     * @static, Class constant
-     * @default false
-     */
-    static get IN_PLAY() {
-        return false
-    }
-
-    /**
-     * Returns the reset value for the cell.
+     * GETTER: Returns the reset value for the cell.
      * @property {null} CELL_RESET
      * @private
      * @returns {null} The reset value for the cell.
@@ -277,7 +340,7 @@ class GameLogic {
     }
 
     /**
-     * Retrieves the value representing the turn reset.
+     * GETTER: Retrieves the value representing the turn reset.
      * @property {string} TURN_RESET
      * @private
      * @returns {string} The value representing the turn reset.
@@ -288,37 +351,37 @@ class GameLogic {
     }
 
     /**
-     * Gets the name of the property for keeping track of turns:
+     * GETTER: Gets the name of the property for keeping track of turns:
      * i.e. the string/number of move sequences made by the player.
      * @property {string} X_TURNS_PROP
      * @private
      * @returns {string} The name of the property for X turns.
      * @static, Class constant
-     * @default '_oTurn' - The name of this._oTurns
+     * @default '_xTurns' - The name of this._xTurns
      * @called: _updateTurns | _updateTurnsAndGrid
      */
     // noinspection FunctionNamingConventionJS
     static get X_TURNS_PROP() {
-        return '_xTurn'
+        return '_xTurns'
     }
 
     /**
-     * Gets the name of the property for keeping track of turns:
+     * GETTER: Gets the name of the property for keeping track of turns:
      * i.e. the string/number of move sequences made by the player.
      * @property {string} O_TURNS_PROP
      * @private
      * @returns {string} The name of the property for O turns.
      * @static, Class constant
-     * @default '_oTurn' - The name of this._oTurns
+     * @default '_oTurns' - The name of this._oTurns
      * @called: _updateTurns _updateTurnsAndGrid
      */
     // noinspection FunctionNamingConventionJS
     static get O_TURNS_PROP() {
-        return '_oTurn'
+        return '_oTurns'
     }
 
     /**
-     * Returns the maximum (array/grid cell) length allowed for the grid
+     * GETTER: Returns the maximum (array/grid cell) length allowed for the grid
      * @property {number} MAX_LENGTH
      * @private
      * @returns {number} The maximum length allowed.
@@ -330,7 +393,7 @@ class GameLogic {
         return 9
     }
     /**
-     * Returns the initialisation value for turns.
+     * GETTER: Returns the initialisation value for turns.
      * @property {number} TURN_INIT
      * @private
      * @returns {number} The value for TURN_INIT.
@@ -342,10 +405,10 @@ class GameLogic {
         return 0
     }
 
-    // =========================================== PROPERTY PUBLIC GETTERS ===========================================
+    // ============================= PROPERTY PUBLIC GETTERS ======================================
 
     /**
-     * Returns the current grid, as-is.
+     * GETTER: Returns the current grid, as-is.
      * @property {*[]|null[]|array} GRID
      * @access public
      * @returns {*[]|null[]|array} The value for private _grid.
@@ -356,7 +419,7 @@ class GameLogic {
 
     // noinspection FunctionWithInconsistentReturnsJS
     /**
-     Sets / updates the current grid, as-is, with an shallow copy overwrite of primitives.
+     * SETTER: Sets / updates the current grid, as-is, with an shallow copy overwrite of primitives.
      * @property {*[]|null[]|array} GRID
      * @access public
      * @returns {*[]|null[]|array} The value for private _grid.
@@ -372,19 +435,38 @@ class GameLogic {
     }
 
     /**
-     * Creates a new grid with the specified max, filled with the reset cell value.
+     * INITIAL: Creates a new grid with the specified max, filled with the reset cell value.
      * @property {null[]|Array<null>} NEW_GRID
      * @access private: internal use only
      * @return {null[]|Array<null>} The new grid with the specified length, filled with the reset
      *     cell value.
      */
     get NEW_GRID() {
-        // noinspection ChainedFunctionCallJS
-        return new Array(GameLogic.MAX_LENGTH).fill(GameLogic.CELL_RESET)
+        // noinspection ChainedFunctionCallJS,NestedFunctionCallJS,AnonymousFunctionJS,JSUnusedLocalSymbols
+        return Array.apply(this.empty,
+                           Array(this.MAX_LENGTH))
+                        .map(function (v,i) {return null})
+        //return Array.apply(null, Array(9)).map(function (v,i) { return null})
+        //return new Array(GameLogic.MAX_LENGTH).fill(GameLogic.CELL_RESET)
     }
 
     /**
-     * Set a new grid for the object, for constructor(), and reset().
+     * INITIAL: Sets the tokens for the game.
+     *
+     * @param {string} char - The character to use as tokens.
+     * @return {string[]}   - An array containing pairs of lower and upper case tokens.
+     *                   Returns an empty array if the input character is not a string
+     *                   or is equal to `GameLogic.P1` or `GameLogic.P2`.
+     */
+    _setTOKENS(char){
+        if (typeof char === 'string' && char !== GameLogic.P1 && char !== GameLogic.P2) {
+            return [char.toLowerCase(), char.toUpperCase()];
+        }
+        return ['🚧','🚧'];
+    }
+
+    /**
+     * SETTER: Set a new grid for the object, for constructor(), and reset().
      * @property {*[]|null[]} NEW_GRID
      * @private
      * @access private: internal use only
@@ -396,7 +478,7 @@ class GameLogic {
 
 
     /**
-     * Sets the value of IFDRAWN.
+     * SETTER:Sets the value of IFDRAWN.
      * @property {boolean} IFDRAWN
      * @public
      * @access public
@@ -411,7 +493,7 @@ class GameLogic {
     }
 
     /**
-     * Returns the default value for WIN state or winning Player for instance variable _won.
+     * GETTER | STATE: Returns the default value for WIN state or winning Player for instance variable _won.
      * @property {boolean|string} IFWON
      * @access public
      * @returns {boolean|string} The value for private instance member _won.
@@ -421,13 +503,13 @@ class GameLogic {
      */
     get IFWON() {
         if (typeof this._won === 'string') {
-            return this._won
+            return this._won === Game.Logic.P1 ? GameLogic.P1 : GameLogic.P2
         }
         return this._won === GameLogic.IN_PLAY ? GameLogic.IN_PLAY : this._won
     }
 
     /**
-     * Sets the value for _won.
+     * SETTER: STATE: Sets the value for _won.
      * @property {boolean, string} IFWON
      * @access public
      * @param {boolean, string} value The value to set for _won.
@@ -437,16 +519,15 @@ class GameLogic {
      * @return {void}
      */
     set IFWON(value) {
-
         const players = [GameLogic.P1, GameLogic.P2];
         // noinspection AnonymousFunctionJS,NestedFunctionCallJS
-        const isPlayerOneOrTwo = players.some(player =>
-                                                  value.toUpperCase() === player.toUpperCase());
+        const isPlayerOneOrTwo =
+            typeof value === 'string' &&
+            players.some(player => value.toUpperCase() === player.toUpperCase());
 
-        if (typeof value === 'string' && isPlayerOneOrTwo) {
+        if (isPlayerOneOrTwo) {
             this._won = value;
-        }
-        else if (typeof value === 'boolean') {
+        } else if (typeof value === 'boolean') {
             this._won = value;
         }
         else { // Fail-over to false if value is not string or boolean
@@ -454,8 +535,10 @@ class GameLogic {
         }
     }
 
+    // ====================================== TURNS ==============================================================
+
     /**
-     * Returns the (initialisation/current value for turns.
+     * GETTER: Returns the (initialisation/current value for turns.
      * @property {number} TURNS
      * @access public
      * @returns {number} The value for current private _turns.
@@ -465,7 +548,7 @@ class GameLogic {
     }
 
     /**
-     * Returns the maximum turn value. Array length - 1.
+     * GET | LIMIT: Returns the maximum turn value. Array length - 1.
      * @property {number} MAX_TURNS
      * @access private
      * @private
@@ -474,23 +557,20 @@ class GameLogic {
     get MAX_TURN() {
         return this._grid.length - GameLogic._MAX_MINUS
     }
+    // ====================================== UI: CELL VALUES & ACCESORS ========================================
 
     /**
-     * Retrieves the value of a cell in the grid based on a given index.
-     * @function currentCELL accessor function
-     * @param {number} index - The index of the cell to retrieve.
-     * @return {string|null} - The value of the cell at the specified index.
+     * GETTER: Retrieves the value of the current cell.
+     * @property {string} CELL
+     * @access public
+     * @returns {string} The value of the current cell.
      */
-    currentCELL(index) {
-        if (this._validCell(index)){
-            this._currentcell = this._grid[index];
-            return this._currentcell;
-        }
-        return null;
+    get CELL() {
+        return this._currentcell
     }
 
     /**
-     * Checks if the given index is a valid cell in the grid.
+     * HELPER: Checks if the given index is a valid cell in the grid.
      * @function _validCell accessor function
      * @private
      * @param {number} index - The index to check.
@@ -503,25 +583,31 @@ class GameLogic {
     }
 
     /**
-     * Retrieves the value of the current cell.
-     * @property {string} CELL
-     * @access public
-     * @returns {string} The value of the current cell.
+     * ACCESSOR: Retrieves the value of a cell in the grid based on a given index.
+     * @function currentCELL accessor function
+     * @param {number} index - The index of the cell to retrieve.
+     * @return {string|null} - The value of the cell at the specified index.
      */
-    get CELL() {
-        return this._currentcell
+
+    currentCELL(index) {
+        if (this._validCell(index)){
+            this._currentcell = this._grid[index];
+            return this._currentcell;
+        }
+        return null;
     }
 
     /**
-     * Sets the value of instance property cell in the grid based on a given index, & updates the
+     * ACCESSOR: Sets the value of instance property cell in the grid based on a given index, & updates the
      * current grid at index.
-     * @property {number} CELL - The grid's index of the cell to set.
+     * @property {number} setCELL - The grid's index of the cell to set.
      * @access public
      * @param {number} index - The index of the cell to set.
      * @param {string} value - The value to set the cell to.
      * @return {void}
      */
-    set CELL(index, value) {
+
+    setCELL(index, value) {
         // Only update the current cell if the value is a string
         if (value !== undefined && typeof value === 'string' && typeof index === 'number') {
             this._currentcell = value
@@ -529,7 +615,29 @@ class GameLogic {
         }
     }
 
-    // =========================================== PRIVATE FUNCTIONS: HELPERS =======================================
+    /**
+     * ACCESOR: Gets the value of instance property cell in the grid based on a given index, & updates the
+     * current grid at index.
+     * @property {number} getCELL - The grid's index of the cell to set.
+     * @access public
+     * @param {number} index - The index of the cell to set.
+     * @param {string} value - The value to set the cell to.
+     * @return {string} the current cell value for UI show
+     */
+
+    getCELL(index, value = '') {
+        // Only update the current cell if the value is a string
+        if (value !== '' && typeof value === 'string' && typeof index === 'number') {
+            this._currentcell = value
+            this._grid[index] = this._currentcell
+            return this._currentcell
+        }
+        return this._currentcell
+    }
+
+    // ======================================= ========================== =======================================
+    // ======================================= PRIVATE FUNCTIONS: HELPERS =======================================
+    // ======================================= ========================== =======================================
 
     /**
      * Logs a message to the console based on the specified debug and verbosity level.
@@ -599,7 +707,7 @@ class GameLogic {
     // ========================== =========================== ===================================
 
     /**
-     * Returns a random character from the given character array.
+     * SELECT(...) HELPER: Returns a random character from the given character array.
      * @design
      *  This randomizer allows variation of the game token sizes (lower case/upper case).
      *  It mimics variation in hand strokes when hand drawing the game tokens.
@@ -640,12 +748,13 @@ class GameLogic {
 
     // noinspection OverlyComplexFunctionJS
     /**
-     * Update the current instance turn property, per current cell/token, with latest move/cell ref.
+     * SELECT(...) HELPER:Update the current instance turn property, per current cell/token,
+     *    with latest move/cell ref.
      * @function _updateTurn
      * @private
      * @param {number} selectCellRef - The index (ref) of the selected cell.
      * @param {string} currentCell - The cell current value.
-     * @param {string} activeToken - The active Token (X or O) constant.
+     * @param {string} active - The active Token (X or O) constant.
      * @param {string} turnProp - The current player record.
      * @param {boolean} [debug=this.DEVMODE] - Optional Flag to enable debug mode.
      * @param {number} [level=this.LOGLEVEL] - Optional level of logging to console.
@@ -655,23 +764,23 @@ class GameLogic {
     _updateTurn(
         selectCellRef,
         currentCell,
-        activeToken,
+        active,
         turnProp,
         debug = this.DEVMODE,
         level = this.LOGLEVEL
     ) {
-        const moveRef = (currentCell.toUpperCase() === activeToken.toUpperCase()) ?
+        const moveRef = (currentCell.toUpperCase() === active.toUpperCase()) ?
             selectCellRef : '';
         if (typeof moveRef === 'number') {
-            this[turnProp] += moveRef.toString();
+            this[turnProp] += moveRef;
         }
-        this._console.log('Update Turn: ', debug, level,
-                          selectCellRef, currentCell, activeToken, turnProp, this[turnProp])
+        this._console('Update Turn: ', debug, level,
+                      selectCellRef, currentCell, active, turnProp, this[turnProp])
         return turnProp;
     }
 
-
-    /** Update the turns and grid at the specified index
+    /**
+     * SELECT(...) HELPER: Update the turns and grid at the specified index
      * with a random character from the characterArray.
      * @function _updateTurnsAndGrid
      * @private
@@ -690,7 +799,6 @@ class GameLogic {
      * @complexity 13%
      **/
 
-
     _updateTurnsAndGrid(
         index,
         characterArray,
@@ -700,17 +808,18 @@ class GameLogic {
     ) {
 
         // Set the current CELL (grid item) to a random character from the characterArray
-        this.CELL[index] = this._getRandomCharacter(characterArray)
+        // noinspection NestedFunctionCallJS
+        this.setCELL(index, this._getRandomCharacter(characterArray));
         // Update the sequence of moves via appending the turnProperty by selected index
-        const _activeToken = turnProperty === GameLogic.X_TURN_PROP ?
-                                                         GameLogic.P1 : GameLogic.P2;
+        const _token = turnProperty === GameLogic.X_TURN_PROP ?
+            GameLogic.P1 : GameLogic.P2;
         const currentSequence = this._updateTurn(index,
                                                  this.CELL,
-                                                 _activeToken,
+                                                 _token,
                                                  turnProperty);
 
         // Update the corresponding turns property based on activeToken
-        switch(activeToken) {
+        switch(_token) {
             case GameLogic.P1:
                 this._xTurns = currentSequence;
                 break;
@@ -727,16 +836,15 @@ class GameLogic {
             level,
             index,
             characterArray,
-            _activeToken,
+            _token,
             turnProperty,
-            activeTurnValue,
             this[turnProperty],
             this.CELL
         )
     }
 
     /**
-     * Checks if the given move is invalid.
+     * SELECT(...) HELPER: Checks if the given move is invalid.
      * @design
      *   - Has an inner function to DRY check the multiple invalid states:
      *      1) If Won, or 2) If Cell is not empty, or 3) IF turn COUNT is greater than or equal to
@@ -775,7 +883,7 @@ class GameLogic {
          * @return {boolean} - True if the current state is invalid, false otherwise.
          */
         const __hasInvalidState = (index, max_turn,
-                                  empty = null) => {
+                                   empty = null) => {
             return (
                 this.IFWON ||
                 this.CELL !== empty || // if not null, truthy for false
@@ -793,7 +901,7 @@ class GameLogic {
         )
         // Checks the current state for invalidity from inner function
         const ifInvalidMove = __hasInvalidState(index,
-                                               this.MAX_TURN)
+                                                this.MAX_TURN)
         // Log to Function Return to Console for debugging purposes when debug mode is enabled.
         this._console('isInvalidMove:✅: ',
                       debug, level, ifInvalidMove)
@@ -801,7 +909,7 @@ class GameLogic {
     }
 
     /**
-     * Determines if the turn is even and updates the turns and grid accordingly.
+     * SELECT(...) HELPER: Determines if the turn is even and updates the turns and grid accordingly.
      * @design:
      *  - Uses anonymous arrow functions to DRY the code over direct const assignments.
      *  - Improve maintainability/readability.
@@ -854,11 +962,11 @@ class GameLogic {
                                  debug, level)
         // Log to Function Return to Console for debugging purposes when debug mode is enabled.
         this._console('isEvenTurn:✅', debug, level,
-                      _chooseChar, _selectProp, index, this.CELL) // jshint ignore:line
+                      chars, turnprop, index, this.CELL) // jshint ignore:line
     }
 
     /**
-     * Increments the value of the TURNS property by 1.
+     * SELECT(...) HELPER: Increments the value of the TURNS property by 1.
      * @function _incrementTurn
      * @private
      * @access private
@@ -871,8 +979,9 @@ class GameLogic {
     // ======================== ================================ ==================================
     // ========================    PUBLIC FUNCTIONS: SELECT()    ==================================
     // ======================== ================================ ==================================
+
     /**
-     * Selects a cell, bu index, on the game board.
+     * SELECT(...) API: Selects a cell, bu index, on the game board.
      * @design:
      *   - Main interface method for the user interface and game board.
      *   - Uses an inner function to DRY the code over direct const assignments.
@@ -937,10 +1046,10 @@ class GameLogic {
          *   - outcome: The outcome of the move (0 - invalid move, 1 - valid move).
          */
         const __whoWins = ( index,
-                           debug, level ) => {
+                            debug, level ) => {
             // Call checkWinner and assign result
             const winCheck = this.checkWinner()
-            if (winCheck === GameLogiC.IN_PLAY) { // False
+            if (winCheck === GameLogic.IN_PLAY) { // False
                 this._console('isWinner: ❌', debug, level,
                               index, this.CELL, winCheck) // jshint ignore:line
                 return {
@@ -985,7 +1094,7 @@ class GameLogic {
          *   - outcome: The outcome of the move (0 - invalid move, 1 - valid move).
          */
         const __hasValidMove = (index,
-                                   debug, level ) => {
+                                debug, level ) => {
             if (this._isInvalidMove(index)) {
                 // Invalid Moves: Try again.
                 this._console(
@@ -1034,7 +1143,7 @@ class GameLogic {
     // ======================= ================================ ==================================
 
     /**
-     * Checks whether the sequence of turns is a winner.
+     * CHECKWINNER(...) HELPER: Checks whether the sequence of turns is a winner.
      * @design
      *   - Uses default/optional parameter values for function variable defaults.
      *   - Uses RegExp to check for a winning sequence and search sequences.
@@ -1091,12 +1200,39 @@ class GameLogic {
         return sequenceRegExp.test(filteredTurns)
     }
 
+    //
+    /**
+     * CHECKWINNER(...) HELPER: Checks if any player wins based on the given turns and sequence.
+     * @function __checkPlayerWin
+     * @param {string[]} currentMove - The array of turns by all players.
+     * @param {string} sequence - The winning sequence to check against.
+     * @returns {boolean|string} - Returns the winning player or false if no player wins.
+     */
+
+    _checkPlayerWin (currentMove, players, sequence) {
+        for(let who = 0; who < current_move.length; who++){
+            if (this._checkSequenceWin(current_move[who], sequence)) {
+                this.IFWON = players[who]
+                this._console(
+                    `checkWinner: ✅: Player: ${this.IFWON}`,
+                    debug,
+                    level,
+                    current_move[who],
+                    sequence,
+                    this.IFWON
+                )
+                return this.IFWON // i.e. {string}: P1 || P2 (not commented out code)
+            }
+        }
+        return false; // Return false if no player wins
+    }
+
     // =========================================== ================================ ===============
     // ===========================================  PUBLIC FUNCTION: CHECKWINNER()  ===============
     // =========================================== ================================ ===============
 
     /**
-     * Checks if the sequence of turns, assigns a winner, AND end state flag: False, Draw, P1, P2.
+     * CHECKWINNER(...): Checks if the sequence of turns, assigns a winner, AND end state flag: False, Draw, P1, P2.
      * @design
      *   - Loops over the list of winning sequences and calls the _checkSequenceWin method
      *   - Loops over winning combinations to check if either player has won.
@@ -1138,43 +1274,16 @@ class GameLogic {
          * @returns {string[]} An array of two strings representing the number of moves made by
          *     each player.
          */
-        const __whosMoves = () => { return [this._xTurns.toString(),
-                                                        this._oTurns.toString()];}
+        const __whosMoves = () => { return [this._xTurns,
+            this._oTurns];}
 
         let moves = __whosMoves();
         let players = [GameLogic.P1, GameLogic.P2];
 
-        // This is your closure or inner function
-        /**
-         * Checks if any player wins based on the given turns and sequence.
-         * @function __checkPlayerWin
-         * @param {string[]} current_move - The array of turns by all players.
-         * @param {string} sequence - The winning sequence to check against.
-         * @returns {boolean|string} - Returns the winning player or false if no player wins.
-         */
-        const __checkPlayerWin = (current_move,
-                                sequence) => {
-            for(let who = 0; who < current_move.length; who++){
-                if (this._checkSequenceWin(current_move[who], sequence)) {
-                    this.IFWON = players[who]
-                    this._console(
-                        `checkWinner: ✅: Player: ${this.IFWON}`,
-                        debug,
-                        level,
-                        current_move[who],
-                        sequence,
-                        this.IFWON
-                    )
-                    return this.IFWON // i.e. {string}: P1 || P2 (not commented out code)
-                }
-            }
-            return false; // Return false if no player wins
-        }
 
         // Loop over the list of winning sequences and check if either player has won
-        for (const sequence of this.WIN_SEQUENCE) {
-            let playerWin = __checkPlayerWin(moves,
-                                           sequence);
+        for (const sequence of GameLogic.WIN_COMBINATIONS) {
+            let playerWin = _checkPlayerWin(moves, players, sequence);
 
             // If a player has won, return
             if (playerWin){
@@ -1186,7 +1295,7 @@ class GameLogic {
             // Log to console.
             this._console(
                 `checkWinner: ✅: Game In Play: ${this.IFWON},`
-                         + `Current Sequence ${sequence}`,
+                + `Current Sequence ${sequence}`,
                 debug,
                 level,
                 sequence,
@@ -1218,84 +1327,84 @@ class GameLogic {
      *   - Possible values are GameLogic.P1 (X), GameLogic.P2 (Y), GameLogic.IN_PLAY (false).
      * @complexity 46%
      */
-    checkWinningPlay(debug = this.DEVMODE,
-                     level = this.LOGLEVEL) {
-        /**
-         * Assigns the winner of a game.
-         * @private
-         * @function _assignWinner
-         * @param {string} current_moves - The number of turns taken in the game.
-         * @param {string} sequence - The sequence of moves made in the game.
-         * @param {string} winner - The winner of the game.
-         * @param {boolean} debug - Indicates whether debug mode is enabled.
-         * @param {number} level - The level of debugging (0 for basic, 1 for detailed).
-         * @returns {boolean} - Returns true if the winner was assigned, false otherwise.
-         */
-        const _assignWinner = (current_moves, sequence, winner,
-                               debug, level) => {
-            if (this._checkSequenceWin(current_moves, sequence)) {
-                this.IFWON = winner
-                this._console(
-                    `checkWinner: ✅: Player: ${this.IFWON}`,
-                    debug,
-                    level,
-                    current_moves,
-                    sequence,
-                    this.IFWON
-                )
-                return true
-            }
-            return false
-        }
-
-        /**
-         * Sets IFWON to current and logs the game status, for current game round.
-         * @private
-         * @function _defaultRound
-         * @param {Array} sequence - The game sequence.
-         * @param {boolean} current - The current game status.
-         * @param {boolean} debug - Whether to enable debug logging.
-         * @param {number} level - The logging level.
-         * @returns {void}
-         */
-        const _defaultRound = (sequence, current,
-                               debug, level) => {
-            this.IFWON = current
-            this._console(
-                `checkWinner: ✅: Game In Play: ${this.IFWON}`,
-                debug,
-                level,
-                sequence,
-                current
-            )
-        }
-
-        // Loop over the sequence of winning combinations and
-        // assign the winner according to the winning sequence.
-        for (const sequence of this.WIN_SEQUENCE) {
-            if (_assignWinner(this._xTurns, sequence,
-                              GameLogic.P1, debug, level)) {
-                break // Break loop only is PLayer 1 wins, and assign to IFWON
-            } else if (_assignWinner(this._oTurns, sequence,
-                                     GameLogic.P2, debug, level)) {
-                break // Break loop only is PLayer 2 wins, and assign to IFWON
-            } else {
-                _defaultRound(sequence, GameLogic.IN_PLAY,
-                              debug, level)
-                // i.e. 'continue' is not unnecessary at last statement in loop (not code)
-            } // Default state, no winner
-
-            // No else part needed as IFWON default state is already set
-        }
-        return this.IFWON // Returns the game states: False or P1 or P2 wins.
-    }
+    // checkWinningPlay(debug = this.DEVMODE,
+    //                  level = this.LOGLEVEL) {
+    //     /**
+    //      * Assigns the winner of a game.
+    //      * @private
+    //      * @function _assignWinner
+    //      * @param {string} current_moves - The number of turns taken in the game.
+    //      * @param {string} sequence - The sequence of moves made in the game.
+    //      * @param {string} winner - The winner of the game.
+    //      * @param {boolean} debug - Indicates whether debug mode is enabled.
+    //      * @param {number} level - The level of debugging (0 for basic, 1 for detailed).
+    //      * @returns {boolean} - Returns true if the winner was assigned, false otherwise.
+    //      */
+    //     const _assignWinner = (current_moves, sequence, winner,
+    //                            debug, level) => {
+    //         if (this._checkSequenceWin(current_moves, sequence)) {
+    //             this.IFWON = winner
+    //             this._console(
+    //                 `checkWinner: ✅: Player: ${this.IFWON}`,
+    //                 debug,
+    //                 level,
+    //                 current_moves,
+    //                 sequence,
+    //                 this.IFWON
+    //             )
+    //             return true
+    //         }
+    //         return false
+    //     }
+    //
+    //     /**
+    //      * Sets IFWON to current and logs the game status, for current game round.
+    //      * @private
+    //      * @function _defaultRound
+    //      * @param {Array} sequence - The game sequence.
+    //      * @param {boolean} current - The current game status.
+    //      * @param {boolean} debug - Whether to enable debug logging.
+    //      * @param {number} level - The logging level.
+    //      * @returns {void}
+    //      */
+    //     const _defaultRound = (sequence, current,
+    //                            debug, level) => {
+    //         this.IFWON = current
+    //         this._console(
+    //             `checkWinner: ✅: Game In Play: ${this.IFWON}`,
+    //             debug,
+    //             level,
+    //             sequence,
+    //             current
+    //         )
+    //     }
+    //
+    //     // Loop over the sequence of winning combinations and
+    //     // assign the winner according to the winning sequence.
+    //     for (const sequence of this.WIN_SEQUENCE) {
+    //         if (_assignWinner(this._xTurns, sequence,
+    //                           GameLogic.P1, debug, level)) {
+    //             break // Break loop only is PLayer 1 wins, and assign to IFWON
+    //         } else if (_assignWinner(this._oTurns, sequence,
+    //                                  GameLogic.P2, debug, level)) {
+    //             break // Break loop only is PLayer 2 wins, and assign to IFWON
+    //         } else {
+    //             _defaultRound(sequence, GameLogic.IN_PLAY,
+    //                           debug, level)
+    //             // i.e. 'continue' is not unnecessary at last statement in loop (not code)
+    //         } // Default state, no winner
+    //
+    //         // No else part needed as IFWON default state is already set
+    //     }
+    //     return this.IFWON // Returns the game states: False or P1 or P2 wins.
+    // }
 
     // ======================== ================================ ==================================
     // ========================   PUBLIC FUNCTIONS: RESET()      ==================================
     // ======================== ================================ ==================================
 
     /**
-     * Reset the game state to its initial values using Class Constants (properties).
+     * INITIAlISER: Reset the game state to its initial values using Class Constants (properties).
      * @design
      *   - Reset the game state to its initial values using Class Constants (properties).
      *   - Uses Class contains to reset the game state for the current instance.
@@ -1314,7 +1423,8 @@ class GameLogic {
      * */
     reset(debug = this.DEVMODE, level = this.LOGLEVEL) {
         this._currentcell = GameLogic.CELL_RESET // Reset current cell ref to null
-        this._grid = GameLogic.NEW_GRID // Reset grid to an array of nulls
+        //this._grid = GameLogic.NEW_GRID // Reset grid to an array of nulls
+        this._grid = this._grid =  Array.apply(this.empty, Array(this._length))
         this._draw = GameLogic.NO_DRAW // reset draw state to false
         this._won = GameLogic.IN_PLAY // reset game state to false
         this._turns = GameLogic.TURN_INIT  // reset turn count
