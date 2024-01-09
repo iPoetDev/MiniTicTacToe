@@ -20,11 +20,6 @@
     <link href="docs/assets/css/style.css"
         rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
-    <script>
-        window.onload = function() {
-            //Alpine.start();
-        };
-    </script>
 </head>
 <!--                                                                         -->
 <body>
@@ -341,6 +336,9 @@
         /**
          * Returns the length of the search string used in regular expression.
          * @property {number} _REG_SEARCH_LENGTH
+         * @private
+         * @access private
+         * @default {number} 3 Number of winning moves
          * @returns {number} The length of the search string.
          */
         static get REG_SEARCH_LENGTH() {
@@ -350,6 +348,8 @@
         /**
          * Returns the regular expression flag used to perform a global search.
          * @property {string} _REG_SEARCH_FLAG
+         * @private
+         * @access private
          * @default {string} g: means regular expression will look for all instances rather than
          *     stopping at the 1st instance. e - ['g'] The mode to use for the regular expression. G is
          *     a global search.
@@ -361,7 +361,10 @@
 
         /**
          * Retrieves the REG_SEARCH_FILTER constant.
-         *
+         * @function REG_SEARCH_FILTER
+         * @private
+         * @access private
+         * @default {string} ''
          * @return {string} The REG_SEARCH_FILTER constant string.
          */
         static get REG_SEARCH_FILTER() {
@@ -564,13 +567,42 @@
         set NEW_GRID(grid) {
             this._grid = grid === undefined ? this.NEW_GRID : grid
         }
+        /**
+         * Retrieves the current status of the game as a draw
+         * @property {boolean} IFDRAWN
+         * @public
+         * @access public
+         * @default false: false on initialisation/reset. True if game is drawn.
+         * @returns {boolean} - Indicates whether the drawing is in progress or not.
+         *
+         */
+        get IFDRAWN() {
+            return this._draw
+        }
+
+        /**
+         * Sets the value of IFDRAWN.
+         * @property {boolean} IFDRAWN
+         * @public
+         * @access public
+         * @default {boolean} false:
+         *   - False on initialisation/reset, no draw.
+         *   - True if end game is drawn/no winner.
+         * @param {boolean} value - The new value for IFDRAWN.
+         * @return {void} - The new value for IFDRAWN.
+         */
+        set IFDRAWN(value) {
+            this._draw = typeof value === 'boolean' ? value : GameLogic.NO_DRAW
+        }
 
         /**
          * Returns the default value for WIN state or winning Player for instance variable _won.
-         * @property {boolean, string} IFWON
+         * @property {boolean|string} IFWON
          * @access public
-         * @returns {boolean, string} The value for private instance member _won.
+         * @returns {boolean|string} The value for private instance member _won.
          * @default {boolean} false
+         *   - False on initialisation/reset.
+         *   - GameLogic.P1 | GameLogic.P2 if game is won. Winning Player's Token
          */
         get IFWON() {
             if (typeof this._won === 'string') {
@@ -585,12 +617,26 @@
          * @access public
          * @param {boolean, string} value The value to set for _won.
          * @default {boolean} false
+         *   - False on initialisation/reset.
+         *   - GameLogic.P1 | GameLogic.P2 if game is won. Winning Player's Token
+         * @return {void}
          */
         set IFWON(value) {
-            if (typeof value === 'string') {
-                this._won = value
+
+            const players = [GameLogic.P1, GameLogic.P2];
+            // noinspection AnonymousFunctionJS,NestedFunctionCallJS
+            const isPlayerOneOrTwo = players.some(player =>
+                                                      value.toUpperCase() === player.toUpperCase());
+
+            if (typeof value === 'string' && isPlayerOneOrTwo) {
+                this._won = value;
             }
-            this._won = typeof value === 'boolean' ? value : false
+            else if (typeof value === 'boolean') {
+                this._won = value;
+            }
+            else { // Fail-over to false if value is not string or boolean
+                this._won = GameLogic.IN_PLAY;
+            }
         }
 
         /**

@@ -25,6 +25,11 @@ class GameLogic {
     // noinspection FunctionNamingConventionJS
 
     static _EMPTYCELL = null
+    static ROW_ONE = 0
+    static ROW_TWO = 3
+    static ROW_THREE = 6
+    static BOARDER_HIDE = 0
+    static _MAX_MINUS = 1
 
     constructor(debug = false, level = 0) {
         // Enable Developer Mode for debugging
@@ -155,6 +160,9 @@ class GameLogic {
     /**
      * Returns the length of the search string used in regular expression.
      * @property {number} _REG_SEARCH_LENGTH
+     * @private
+     * @access private
+     * @default {number} 3 Number of winning moves
      * @returns {number} The length of the search string.
      */
     static get REG_SEARCH_LENGTH() {
@@ -164,6 +172,8 @@ class GameLogic {
     /**
      * Returns the regular expression flag used to perform a global search.
      * @property {string} _REG_SEARCH_FLAG
+     * @private
+     * @access private
      * @default {string} g: means regular expression will look for all instances rather than
      *     stopping at the 1st instance. e - ['g'] The mode to use for the regular expression. G is
      *     a global search.
@@ -175,7 +185,10 @@ class GameLogic {
 
     /**
      * Retrieves the REG_SEARCH_FILTER constant.
-     *
+     * @function REG_SEARCH_FILTER
+     * @private
+     * @access private
+     * @default {string} ''
      * @return {string} The REG_SEARCH_FILTER constant string.
      */
     static get REG_SEARCH_FILTER() {
@@ -362,7 +375,8 @@ class GameLogic {
      * Creates a new grid with the specified max, filled with the reset cell value.
      * @property {null[]|Array<null>} NEW_GRID
      * @access private: internal use only
-     * @return {null[]|Array<null>} The new grid with the specified length, filled with the reset cell value.
+     * @return {null[]|Array<null>} The new grid with the specified length, filled with the reset
+     *     cell value.
      */
     get NEW_GRID() {
         // noinspection ChainedFunctionCallJS
@@ -372,6 +386,7 @@ class GameLogic {
     /**
      * Set a new grid for the object, for constructor(), and reset().
      * @property {*[]|null[]} NEW_GRID
+     * @private
      * @access private: internal use only
      * @param {*[]|null[]} grid - The new grid to be set. Must be an array.
      */
@@ -379,12 +394,30 @@ class GameLogic {
         this._grid = grid === undefined ? this.NEW_GRID : grid
     }
 
+
+    /**
+     * Sets the value of IFDRAWN.
+     * @property {boolean} IFDRAWN
+     * @public
+     * @access public
+     * @default {boolean} false:
+     *   - False on initialisation/reset, no draw.
+     *   - True if end game is drawn/no winner.
+     * @param {boolean} value - The new value for IFDRAWN.
+     * @return {void} - The new value for IFDRAWN.
+     */
+    set IFDRAWN(value) {
+        this._draw = typeof value === 'boolean' ? value : GameLogic.NO_DRAW
+    }
+
     /**
      * Returns the default value for WIN state or winning Player for instance variable _won.
-     * @property {boolean, string} IFWON
+     * @property {boolean|string} IFWON
      * @access public
-     * @returns {boolean, string} The value for private instance member _won.
+     * @returns {boolean|string} The value for private instance member _won.
      * @default {boolean} false
+     *   - False on initialisation/reset.
+     *   - GameLogic.P1 | GameLogic.P2 if game is won. Winning Player's Token
      */
     get IFWON() {
         if (typeof this._won === 'string') {
@@ -399,12 +432,26 @@ class GameLogic {
      * @access public
      * @param {boolean, string} value The value to set for _won.
      * @default {boolean} false
+     *   - False on initialisation/reset.
+     *   - GameLogic.P1 | GameLogic.P2 if game is won. Winning Player's Token
+     * @return {void}
      */
     set IFWON(value) {
-        if (typeof value === 'string') {
-            this._won = value
+
+        const players = [GameLogic.P1, GameLogic.P2];
+        // noinspection AnonymousFunctionJS,NestedFunctionCallJS
+        const isPlayerOneOrTwo = players.some(player =>
+                                                  value.toUpperCase() === player.toUpperCase());
+
+        if (typeof value === 'string' && isPlayerOneOrTwo) {
+            this._won = value;
         }
-        this._won = typeof value === 'boolean' ? value : false
+        else if (typeof value === 'boolean') {
+            this._won = value;
+        }
+        else { // Fail-over to false if value is not string or boolean
+            this._won = GameLogic.IN_PLAY;
+        }
     }
 
     /**
@@ -420,12 +467,12 @@ class GameLogic {
     /**
      * Returns the maximum turn value. Array length - 1.
      * @property {number} MAX_TURNS
-     * @access public
+     * @access private
+     * @private
      * @return {number} The maximum turn value.
      */
     get MAX_TURN() {
-        const ceiling = 1
-        return this._grid.length - ceiling
+        return this._grid.length - GameLogic._MAX_MINUS
     }
 
     /**
@@ -447,7 +494,8 @@ class GameLogic {
      * @function _validCell accessor function
      * @private
      * @param {number} index - The index to check.
-     * @return {boolean} - Returns true if the index is a valid type, and a valid cell, false otherwise.
+     * @return {boolean} - Returns true if the index is a valid type, and a valid cell, false
+     *     otherwise.
      * @called: currentCELL
      */
     _validCell(index) {
@@ -741,7 +789,7 @@ class GameLogic {
             this.IFWON,
             this.CELL,
             this.TURNS,
-            this.MAX_TURN
+            this.max_turn
         )
         // Checks the current state for invalidity from inner function
         const ifInvalidMove = __hasInvalidState(index,
@@ -1087,7 +1135,8 @@ class GameLogic {
         /**
          * Returns an array containing the number of moves made by each player.
          * @function _whosMoves
-         * @returns {string[]} An array of two strings representing the number of moves made by each player.
+         * @returns {string[]} An array of two strings representing the number of moves made by
+         *     each player.
          */
         const __whosMoves = () => { return [this._xTurns.toString(),
                                                         this._oTurns.toString()];}
