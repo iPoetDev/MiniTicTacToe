@@ -6,7 +6,7 @@
 /**
  * Represents the logic (state and behaviour) for a game of TicTacToe.
  */
-class GameLogic {
+export default     class GameLogic {
 
     /**
      * Represents an empty cell's value/primitive.
@@ -56,6 +56,8 @@ class GameLogic {
      */
     static _MAX_TOKENS = 2
 
+    static START = 0
+
     /**
      * @constructor
      * @param {boolean} [debug=this.DEVMODE] - Optional Flag to enable debug mode.
@@ -81,6 +83,7 @@ class GameLogic {
         this._console('Instantiate Game Logic: ',
                       this.DEBUG, this.LEVEL, this) // jshint ignore:line
         // Instance variables set by Class Constants
+        this._start = GameLogic.START
         /** @instance public */
         this.empty = null
         // Set initial class constants empty cell.
@@ -92,8 +95,8 @@ class GameLogic {
         this._length = 9
         // noinspection NestedFunctionCallJS,AnonymousFunctionJS,ChainedFunctionCallJS,JSUnusedLocalSymbols
         /** @instance private */
-        this._grid =  Array.apply(this.empty, Array(this._length))
-            .map(function (v,i) { return null })
+        // this._grid =  GameLogic.NEW_GRID
+        this._grid = Array.apply(null,Array(9)).map(function (v,i) {return null})
         // The default check win state of the game / Set initial constants
         /** @instance private */
         this._draw = GameLogic.NO_DRAW
@@ -443,9 +446,8 @@ class GameLogic {
      */
     get NEW_GRID() {
         // noinspection ChainedFunctionCallJS,NestedFunctionCallJS,AnonymousFunctionJS,JSUnusedLocalSymbols
-        return Array.apply(this.empty,
-                           Array(this.MAX_LENGTH))
-                        .map(function (v,i) {return null})
+        return Array.apply(null,
+                           Array(9)).map(function (v,i) {return null})
         //return Array.apply(null, Array(9)).map(function (v,i) { return null})
         //return new Array(GameLogic.MAX_LENGTH).fill(GameLogic.CELL_RESET)
     }
@@ -707,6 +709,23 @@ class GameLogic {
     // ========================== =========================== ===================================
 
     /**
+     * Game STATE|API: Checks if the specified player is a valid player for checking end game state.
+     * @function _declareWinner
+     * @access private
+     * @private
+     * @param {string}  isValidPlayer - The player to be checked. Possible values are 'P1' or 'P2'.
+     * @return {string|undefined} - The valid player value if the specified player is valid ('P1' or 'P2'), otherwise undefined.
+     */
+    _declareWinner(isValidPlayer){
+        if (typeof isValidPlayer === 'string') {  // i.e. {string}: P1 || P2 (not commented out code)
+            if (isValidPlayer === GameLogic.P1 || isValidPlayer === GameLogic.P2) {
+                return isValidPlayer
+            }// GameLogic.]P1 || GameLogic.P2
+        }
+        return 'inValidPlayer'
+    }
+
+    /**
      * SELECT(...) HELPER: Returns a random character from the given character array.
      * @design
      *  This randomizer allows variation of the game token sizes (lower case/upper case).
@@ -720,6 +739,8 @@ class GameLogic {
      * @param {number} [level=this.LOGLEVEL] - Optional level of logging to console.
      * @return {string} - A random character from the character array.
      */
+
+
 
     // noinspection FunctionNamingConventionJS
     _getRandomCharacter(
@@ -981,6 +1002,99 @@ class GameLogic {
     // ======================== ================================ ==================================
 
     /**
+     * Checks if a move is valid and returns the result.
+     *
+     * @access private
+     * @private
+     * @param {number} index - The index of the move.
+     * @param {function} __isWins - Flag to enable/disable wins.
+     * @param {boolean} debug - Flag to enable/disable debugging.
+     * @param {number} level - The level of the game.
+     * @returns {object} - The result of the move. see this._result
+     */
+    _hasValidMove = (index, __isWins,
+                     debug, level ) => {
+        if (this._isInvalidMove(index)) {
+            // Invalid Moves: Try again.
+            this._console(
+                `Invalid Move: 🚧 for current ${this.CELL}`,
+                debug,
+                level,
+                index,
+                this.CELL
+            ) // jshint ignore:line
+            return this._result(this.CELL,
+                                'Next',
+                                'Invalid Move',
+                                false,
+                                false,
+                                1)
+        } else {
+            // Valid Move: Proceed to next turn or declare winner.
+            // Update the turns and grid
+            this._incrementTurn()
+            this._isEvenTurn(index)
+            // Check if the game has been won
+            const isWinner = __isWins( index, debug, level)
+            // Return the updated item from grid
+            this._console(
+                'Valid Move: ✅',
+                debug,
+                level,
+                this.TURNS,
+                this.CELL,
+                isWinner.cell,
+                isWinner.next || isWinner.winner
+            )
+            return isWinner //  Returns False or Draw or P1 or P2
+        }
+    }
+
+    // noinspection OverlyComplexFunctionJS
+    /**
+     * API DATA: Returns a game result object, i.e. the state/data of the game per start/turn/end.
+     * @function _gameResult
+     * @access private
+     * @private
+     * @param {*} c - The cell value.
+     * @param {*} n - The next value.
+     * @param {string} msg - The game message.
+     * @param {boolean} s - The game state. True if game is continuing.
+     * @param {boolean} v - The validity of the game.
+     * @param {*} o - The game outcome.
+     * @param {*} [w=null] - The winner|draw of the game or none.
+     * @return {Object} - The game result object.
+     *   - cell: The current cell.
+     *   - next: The next action/command to take after the move.
+     *      - NextTurn
+     *      - GameOver
+     *   - message: A message describing the reason / ui feedback.
+     *   - state: Indicates if the game is still ongoing (false) or if someone has won or drawn (true).
+     *   - valid: Valid (1) v invalid move
+     *   - outcome: The possible outcome(s) of the game
+     *     - 0 - invalid move
+     *     - 1 - start
+     *     - 2 - valid/in play move.
+     *     - 3 - draw/no winner
+     *     - 4 - win/Player 1
+     *     - 5 - win/Player 2
+     *     - 6 - reset/initialised
+     *   - winner: The winner of the game or null.
+     */
+    _result(c, n, msg, s, v, o, w = null) {
+        // noinspection PointlessBooleanExpressionJS
+        return {
+            cell: c,
+            next: n,
+            message: msg,
+            state: s, // Game is not won, continuing
+            valid: v,
+            outcome: o,
+            winner: (w && w !== null) ? w : 'None'
+        }
+    }
+
+    /**
      * SELECT(...) API: Selects a cell, bu index, on the game board.
      * @design:
      *   - Main interface method for the user interface and game board.
@@ -1002,7 +1116,7 @@ class GameLogic {
      * @param {number} index - The index of the cell to be selected.
      * @param {boolean} [debug=this.DEVMODE] - Optional Flag to enable debug mode.
      * @param {number} [level=this.LOGLEVEL] - Optional level of logging to console.
-     * @returns {object}:
+     * @returns {object|void}:
      *   - cell: The current cell at the given index. (X or Y Token)
      *   - next: The next action to take after the move.
      *   - message: A message describing the reason for the invalid move.
@@ -1019,9 +1133,27 @@ class GameLogic {
      * */
     select(
         index,
+        cellRef = null,
+        row = null,
         debug = this.DEVMODE,
-        level = this.LOGLEVEL)
+        level = this.LOGLEVEL,
+        caller = '')
     {
+        // Enabled only for developer mode
+        if (debug) {
+            console.info('Developer Enabled\n')
+            console.log(`select API: ${caller}`, index, cellRef, (row !== null ? row : null), debug, level, caller )
+            // Exits if dev or user inputs wrong data/type and logs warning to console directly
+            if (typeof index !== 'number' || index) {
+                console.warn('select API: Invalid/ommited type: index');
+                return;
+            }
+            // Exits if dev or user inputs wrong data/type and logs warning to console directly
+            if (typeof debug !== 'boolean' || typeof level !== 'number') {
+                console.warn('select API: Invalid type: debug, level');
+                return;
+            }
+        }
         /**
          * Determines who wins based on the given index.
          * @design
@@ -1031,49 +1163,56 @@ class GameLogic {
          *  - Returns: Current cell, next turn, game message v winner, game state and game outcome.
          *  - Logs to console the function parameters for debugging purposes when debug mode is
          *     enabled.
+         *  - Calls _result for returning data to UI the current or end state values as {object}.
          * @private
          * @internal
          * @function _whoWins
          * @param {number} index - The index of the move being checked.
          * @param {boolean} debug - Indicates whether debug mode is enabled.
          * @param {number} level - The difficulty level of the game.
-         * @returns {Object} - An object containing information about the validity of the move.
-         *   - cell: The current cell at the given index.
-         *   - next: The next action to take after the move.
-         *   - message: A message describing the reason for the invalid move.
-         *   - winner: The winner of the game.
-         *   - state: Indicates if the game is still ongoing (false) or if someone has won (true).
-         *   - outcome: The outcome of the move (0 - invalid move, 1 - valid move).
+         * @returns {Object} - @calls see this._result
+         * @complexity: 60%
          */
         const __whoWins = ( index,
                             debug, level ) => {
             // Call checkWinner and assign result
-            const winCheck = this.checkWinner()
-            if (winCheck === GameLogic.IN_PLAY) { // False
+            const validmove = true // __whoWins is always valid
+            const winCheck = this.checkWinner('whoWins|Select');
+            // on every valid move, check fgr winner or draw (draw 🚧 @todo implement draw on check
+            if (winCheck === GameLogic.IN_PLAY) { // False, default state for game
+                // Next Turn Conditionals
+                const action = 'NextTurn'
+                const playmsg = 'Game in Play';
+                const nextround = false
+                const outcome = 2
                 this._console('isWinner: ❌', debug, level,
                               index, this.CELL, winCheck) // jshint ignore:line
-                return {
-                    cell: this.CELL, // Current cell in play
-                    next: 'Next Turn',
-                    message: 'Game in play',
-                    winner: 'None',
-                    state: false, // Game is not won, continuing
-                    valid: 1,
-                    outcome: 0,
-                }
+                // Returns the game result for UI state object/UI Data
+                return this._result(this.CELL,  // i.e. {string|null}
+                                    action,     // i.e. {string}
+                                    playmsg,  // i.e. {string}
+                                    nextround,  // i.e. {boolean}
+                                    validmove,  // i.e. {boolean}
+                                    outcome)    // i.e. {number}
+
             } else {
+                // Winning Move/Selection
                 this._console('isWinner: ✅', debug, level,
                               index, this.CELL, winCheck) // jshint ignore:line
-                return {
-                    cell: this.CELL, // Winning cell when played.
-                    next: 'Game Over',
-                    message: this.checkWinner() ? winCheck : 'No Winner',
-                    winner: this.checkWinner() === GameLogic.P1 ? 'Player 1' : 'Player 2',
-                    // When P1/P2 is returned the winner.
-                    state: true, // Game is won, end game.
-                    valid: 1,
-                    outcome: 1,
-                }
+                const gameend = true
+                const action = 'GameOver'
+                const winmsg = wincheck === GameLogic.P1 ? 'Player 1 Wins' :
+                    'Player 2 Wins' ;
+                const outcome = wincheck === GameLogic.P1 ? 3 : 4;
+                // Returns the game result for UI state object/UI Data
+                return this._result(this.CELL,  // i.e. {string|null}
+                                    action,     // i.e. {string}
+                                    winmsg,   // i.e. {string}
+                                    gameend,    // i.e. {boolean}
+                                    validmove,  // i.e. {boolean}
+                                    outcome,    // i.e. {number}
+                                    wincheck)   // i.e. {string}
+
             }
         }
 
@@ -1093,49 +1232,9 @@ class GameLogic {
          *   - state: Indicates if the game is still ongoing (false) or if someone has won (true).
          *   - outcome: The outcome of the move (0 - invalid move, 1 - valid move).
          */
-        const __hasValidMove = (index,
-                                debug, level ) => {
-            if (this._isInvalidMove(index)) {
-                // Invalid Moves: Try again.
-                this._console(
-                    `Invalid Move: 🚧 for current ${this.CELL}`,
-                    debug,
-                    level,
-                    index,
-                    this.CELL
-                ) // jshint ignore:line
-                return {
-                    cell: this.CELL,
-                    next: 'Try again',
-                    message: 'Invalid Move: Select a different/empty slot',
-                    state: false, // Game is not won, continuing
-                    valid: 0,
-                    outcome: 2,
-                }
-            } else {
-                // Valid Move: Proceed to next turn or declare winner.
-                // Update the turns and grid
-                this._incrementTurn()
-                this._isEvenTurn(index)
-                // Check if the game has been won
-                const isWinner = __whoWins( index,
-                                            debug, level)
-                // Return the updated item from grid
-                this._console(
-                    'Valid Move: ✅',
-                    debug,
-                    level,
-                    this.TURNS,
-                    this.CELL,
-                    isWinner.cell,
-                    isWinner.next || isWinner.winner
-                )
-                return isWinner //  Returns False or Draw or P1 or P2
-            }
-        }
 
         // Check if move is / has Valid Move, and if value move, return the updated token from grid
-        return __hasValidMove(index, debug, level )
+        return this._hasValidMove(index, __whoWins,debug, level )
     }
 
     // ======================= ================================ ==================================
@@ -1205,26 +1304,40 @@ class GameLogic {
      * CHECKWINNER(...) HELPER: Checks if any player wins based on the given turns and sequence.
      * @function __checkPlayerWin
      * @param {string[]} currentMove - The array of turns by all players.
+     * @param {string[]} currentPlayers - The array of Player Token/Players.
      * @param {string} sequence - The winning sequence to check against.
-     * @returns {boolean|string} - Returns the winning player or false if no player wins.
+     * @param {boolean} [debug=this.DEVMODE] - Optional Flag to enable debug mode.
+     * @param {number} [level=this.LOGLEVEL] - Optional level of logging to console.
+     * @returns {boolean|string} [GameLogic.IN_PLAY || GameLogic.P1 || GameLogic.P2 ]
+     *   - Returns the winning player's string token [GameLogic.P1 || GameLogic.P2]
+     *   - False if win state is reached.
      */
 
-    _checkPlayerWin (currentMove, players, sequence) {
-        for(let who = 0; who < current_move.length; who++){
-            if (this._checkSequenceWin(current_move[who], sequence)) {
-                this.IFWON = players[who]
+    _checkPlayerWin (currentMove, currentPlayers, sequence,
+                     debug = this.DEVMODE, level = this.LOGLEVEL)
+    {
+        // Loops over current moves, refs the who, then checks if they have win sequence,
+        // and assigns the current player. to the game end state property
+        for(let who = 0; who < currentMove.length; who++){
+            if (this._checkSequenceWin(currentMove[who], sequence)) {
+                this.IFWON = currentPlayers[who]
                 this._console(
-                    `checkWinner: ✅: Player: ${this.IFWON}`,
+                    `checkPlayerWin: ✅: Player: ${this.IFWON}`,
                     debug,
                     level,
-                    current_move[who],
+                    currentMove[who],
+                    currentPlayers[who],
                     sequence,
                     this.IFWON
                 )
-                return this.IFWON // i.e. {string}: P1 || P2 (not commented out code)
+                // Checks if correct type of result {string} and permitted players {string}
+                // else false if invalid. Double effort here, just overkill type sanity check.
+                return this._declareWinner(this.IFWON) === this.IFWON ?
+                    this.IFWON :
+                    GameLogic.IN_PLAY;
             }
         }
-        return false; // Return false if no player wins
+        return GameLogic.IN_PLAY; // {boolean} [false] Return false if no win state is reached
     }
 
     // =========================================== ================================ ===============
@@ -1252,7 +1365,7 @@ class GameLogic {
      * @internal @function: __checkPlayerWin
      * @param {boolean} [debug=this.DEVMODE] - Optional Flag to enable debug mode.
      * @param {number} [level=this.LOGLEVEL] - Optional level of logging to console.
-     * @returns {boolean|string} Returns false or the player string: P1, P2 (as truthy values).
+     * @returns {boolean|string|void} Returns false or the player string: P1, P2 (as truthy values).
      * @desc checks for a winner in a game. It iterates over a list of winning sequences and calls
      *     the
      * _checkSequenceWin method to check if either player has won.
@@ -1264,9 +1377,19 @@ class GameLogic {
      * @complexity 53%
      * */
 
-    checkWinner(debug = this.DEVMODE,
+    checkWinner(caller = 'Select' , debug = this.DEVMODE,
                 level = this.LOGLEVEL)
     {
+        // Enabled only for developer mode
+        if (debug) {
+            console.info('Developer Enabled\n Method: %s', caller)
+            // Exits function if parameters are not valid types for debug and level,
+            // even with optional values
+            if (typeof debug !== 'boolean' || typeof level !== 'number') {
+                console.warn('checkWinner API: Invalid type: debug, level');
+                return;
+            }
+        }
         // Type cast to Strong from GameLogic.TURN_RESET (Is a string ty)
         /**
          * Returns an array containing the number of moves made by each player.
@@ -1283,7 +1406,9 @@ class GameLogic {
 
         // Loop over the list of winning sequences and check if either player has won
         for (const sequence of GameLogic.WIN_COMBINATIONS) {
-            let playerWin = _checkPlayerWin(moves, players, sequence);
+            let playerWin = this._checkPlayerWin(moves,
+                                                 players,
+                                                 sequence);
 
             // If a player has won, return
             if (playerWin){
@@ -1301,8 +1426,8 @@ class GameLogic {
                 sequence,
                 this.IFWON
             )
-            this._console('Next Turn', debug, 1)
         }
+        this._console('Next Turn', debug, 1)
 
         return this.IFWON
         // Game in play or P1 or P2 wins (should be only game in play at this point)
@@ -1422,9 +1547,20 @@ class GameLogic {
      * - Reset _xTurns and _oTurns to empty strings.
      * */
     reset(debug = this.DEVMODE, level = this.LOGLEVEL) {
-        this._currentcell = GameLogic.CELL_RESET // Reset current cell ref to null
+        // Enabled only for developer mode
+        if (debug) {
+            console.info('Developer Enabled\n')
+            if (typeof debug !== 'boolean' || typeof level !== 'number') {
+                console.warn('reset API: Invalid type: debug, level')
+                return
+            }
+        }
+
         //this._grid = GameLogic.NEW_GRID // Reset grid to an array of nulls
-        this._grid = this._grid =  Array.apply(this.empty, Array(this._length))
+        // this._grid = Array.apply(this.empty,
+        //                          Array(this.MAX_LENGTH)).map(function (v,i) {return null})
+        // noinspection NestedFunctionCallJS,ChainedFunctionCallJS,AnonymousFunctionJS,JSUnusedLocalSymbols
+        this._grid = Array.apply(null,Array(9)).map(function (v,i) {return null})
         this._draw = GameLogic.NO_DRAW // reset draw state to false
         this._won = GameLogic.IN_PLAY // reset game state to false
         this._turns = GameLogic.TURN_INIT  // reset turn count
@@ -1445,5 +1581,3 @@ class GameLogic {
         )
     }
 }
-
-export default { GameLogic }

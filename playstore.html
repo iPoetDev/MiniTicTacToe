@@ -20,6 +20,21 @@
     <link href="docs/assets/css/style.css"
         rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
+    <script type="module">
+        import game from './docs/assets/js/game.js'
+        let { GameLogic } = game
+        window.GameLogic = GameLogic
+        console.dir("GameLogic Imported: ", GameLogic)
+
+        document.addEventListener('alpine:initialized', () => {
+            window.GameLogicInstance = window.GameLogic;
+            Alpine.store('game', {
+                board: window.GameLogicInstance,
+            });
+        });
+        let newgrid = Alpine.store('game')
+        console.dir(newgrid.GameLogic.ROW_THREE);
+    </script>
 </head>
 <!--                                                                         -->
 <body>
@@ -29,60 +44,66 @@
         The x-data directive is used to create a new instance of the gameApp object;
             - using an assignment to a local variable.
     -->
+    <div x-data="{logic: window.GameLogic}">
+        <!-- your content here -->
+
+        <button @click="logic.DEVMODE = !logic.DEVMODE">Toggle Devmode</button>
+        <button @click="tic.LOGLEVEL++">Increase Log Level</button>
+        <button @click="tic.LOGLEVEL--">Increase Log Level</button>
+        <div x-text="'Game Board: Init:' + JSON.stringify(logic)"></div>
+    </div>
     <div class="w-96 h-96 mx-auto text-indigo-500 rounded-md flex flex-wrap relative"
-        title=""
-        x-data="{
-                game: $store.board,
-                result: { }
+         title=""
+         x-data="{
+                logic: window.GameLogic,
+                surface: { },
+                result: { },
+                currentMove: function(index, pos, row, play ) {
+                     if (pos === null) {
+                        this.result = play.select(index+row)
+                        $store.board.logic.CELL
+                    }
+                }
             }"
-        x-init="console.log('Game Board: Init:', game ); game.DEVMODE = true; game.LOGLEVEL = 1;">
+         x-effect="logic.checkWinner"
+         x-init="
+            console.log('Game Board: Init:', logic );
+                logic.DEVMODE = true; logic.LOGLEVEL = 6;">
         <!--suppress GrazieInspection -->
-        <div class="flex w-full h-1/3"
-             x-effect="
-                        $refs.resultMsg.innerText = game.checkWinner()"
-            >
-            <p class="text-8xl leading-none"
-               x-show="$refs.resultMsg.innerText !== '' ">Result:<span ref="resultMsg"></span></p>
-            <div x-effect="$refs.dataResult = result">
-                <h4>Current Move:</h4>
-                The token that has been played is:
-                <span x-ref="currentMove.innerText"></span>
-                <span x-text="result.cell"></span>
-                <span x-text="result.cell"></span>
-            </div>
-        <!--
-            The x-for directive is used to create, via grid array loops, & display the game grid's first row.
-            The x-text directive is used to display the value of the item in the grid array.
-            The x-show directive is used to hide the value of the item in the grid array.
-            The x-transition directive is used to animate the display of the value of the item in the grid array.
-        -->
+        <div class="flex w-full h-1/3">
+
+            <!--
+                The x-for directive is used to create, via grid array loops, & display the game grid's first row.
+                The x-text directive is used to display the value of the item in the grid array.
+                The x-show directive is used to hide the value of the item in the grid array.
+                The x-transition directive is used to animate the display of the value of the item in the grid array.
+            -->
             <!-- position is the value of the grid, and index is the cell grid reference. -->
-            <template x-for="(position, index) in game.GRID.slice(0,3)" :key="index">
-                <div class="border-b border-gray-700 w-1/3" :class="{'border-l':index>game.BOARDER_HIDE}">
+            <template x-for="(position, index) in logic.GRID.slice(0,3)" :key="index">
+                <div class="border-b border-gray-700 w-1/3" :class="{'border-l':index>logic.BOARDER_HIDE}">
                     <button class="w-full h-full outline-none focus:outline-none text-8xl leading-none"
-                            x-effect="position === game._EMPTYCELL &&
-                                      $refs.currentMove.innerText = game.select(index+game.ROW_ONE).cell"
+                            x-effect="currentMove(index, position, logic.ROW_ONE, game)"
                             @click.prevent="
+                                logic.setCELL(index, position)
                             // Evaluating position verses an empty cell, limits players to only select a EMPTY cell.
-                                position === game._EMPTYCELL &&
-                                result = game.select(index+game.ROW_ONE)
+                                currentMove(index, position, logic.ROW_ONE, game)
                         ">
                         <!--suppress XmlUnboundNsPrefix -->
                         <!--
-                            The x-show directive: showing the game.CELL value when the grid is not null.
-                            The x-text directive: displaying the game.grid[index] value when the grid is not null
+                            The x-show directive: showing the logic.CELL value when the grid is not null.
+                            The x-text directive: displaying the logic.grid[index] value when the grid is not null
                                 - Default: x-text is assigned on template/#doc-fragment rendering.
-                                - x-text does not automatic DOM update.
+                                - x-text does not automalogic DOM update.
                             The x-transition directive is used to animate the display of the value of the item in
                             the grid array.
                         --->
                         <span class="inline-block"
-                            x-cloak
-                            x-show="game.CELL(index+game.ROW_TWO)!==game._EMPTYCELL"
-                            x-text="game.CELL(index+game.ROW_TWO)"
-                            x-transition:enter="transition ease-out duration-300"
-                            x-transition:enter-start="opacity-0 transform scale-50"
-                            x-transition:enter-end="opacity-100 transform scale-100"></span>
+                              x-cloak
+                              x-show="position !== null"
+                              x-text="logic.getCELL(index+logic.ROW_ONE)"
+                              x-transition:enter="transition ease-out duration-300"
+                              x-transition:enter-start="opacity-0 transform scale-50"
+                              x-transition:enter-end="opacity-100 transform scale-100"></span>
                     </button>
                 </div>
             </template>
@@ -98,25 +119,25 @@
                 ➖ position {null|string} is the value of the grid
                 ➖ index {number} is the cell/grid[index] reference.
             -->
-            <template x-for="(position, index) in game.grid.slice(3,6)" :key="index">
-                <div class="border-b border-gray-700 w-1/3" :class="{'border-l':index>game.BOARDER_HIDE}">
+            <template x-for="(position, index) in logic.GRID.slice(3,6)" :key="index">
+                <div class="border-b border-gray-700 w-1/3" :class="{'border-l':index>logic.BOARDER_HIDE}">
                     <button class="w-full h-full outline-none focus:outline-none text-8xl leading-none"
-                            x-effect="position === game._EMPTYCELL &&
-                                      $refs.currentMove.innerText = game.select(index+game.ROW_TWO).cell"
+                            x-effect="currentMove(index, position, logic.ROW_TWO, game)"
                             @click.prevent="
-                                // Evaluating position verses an empty cell, limits players to only select a EMPTY cell.
-                                position === game._EMPTYCELL &&
-                                result = game.select(index+game.ROW_TWO)">
+                                logic.setCELL(index, position)
+                            // Evaluating position verses an empty cell, limits players to only select a EMPTY cell.
+                                currentMove(index, position, logic.ROW_TWO, game)
+                        ">
                         <!--
                             Display the game grid's cell's text value when the grid is not null
                         -->
                         <span class="inline-block"
-                            x-cloak
-                            x-show="game.CELL(index+game.ROW_TWO)!==game._EMPTYCELL"
-                            x-text="game.CELL(index+game.ROW_TWO).cell"
-                            x-transition:enter="transition ease-out duration-300"
-                            x-transition:enter-start="opacity-0 transform scale-50"
-                            x-transition:enter-end="opacity-100 transform scale-100"></span>
+                              x-cloak
+                              x-show="position !== null"
+                              x-text="logic.getCELL(index+logic.ROW_TWO)"
+                              x-transition:enter="transition ease-out duration-300"
+                              x-transition:enter-start="opacity-0 transform scale-50"
+                              x-transition:enter-end="opacity-100 transform scale-100"></span>
                     </button>
                 </div>
             </template>
@@ -131,29 +152,31 @@
                 ➖ position {null|string} is the value of the grid. When empty, move is valid/selectable
                 ➖ index {number} is the cell/grid[index] reference.
             -->
-            <template x-for="(position, index) in game.grid.slice(6, 9)" :key="index">
-                <div class="border-b border-gray-700 w-1/3" :class="{'border-l':index>game.BOARDER_HIDE}">
+            <template x-for="(position, index) in logic.GRID.slice(6, 9)" :key="index">
+                <div class="border-b border-gray-700 w-1/3" :class="{'border-l':index>logic.BOARDER_HIDE}">
                     <!--
                         x-effect: Update the currentMove with the value of selected move when move position is empty
                         @click.prevent: prevent default action on click/page fire
                     -->
                     <button class="w-full h-full outline-none focus:outline-none text-8xl leading-none"
-                            x-effect="position === game._EMPTYCELL &&
-                                      $refs.currentMove.innerText = game.select(index+game.ROW_THREE).cell"
+                            x-effect="
+                                currentMove(index, position, logic.ROW_THREE, game),
+                                logic.setCELL(index, position)"
                             @click.prevent="
-                                // Evaluating position verses an empty cell, limits players to only select a EMPTY cell.
-                                position === game._EMPTYCELL &&
-                                result = game.select(index+game.ROW_THREE)">
+                                logic.setCELL(index, position)
+                            // Evaluating position verses an empty cell, limits players to only select a EMPTY cell.
+                                currentMove(index, position, logic.ROW_THREE, game)
+                        ">
                         <!--
                             Display the game grid's cell's text value when the grid is not null
                         -->
                         <span class="inline-block"
-                            x-cloak
-                            x-show="game.CELL(index+game.ROW_THREE)!==game._EMPTYCELL"
-                            x-text="game.CELL(index+game.ROW_THREE)"
-                            x-transition:enter="transition ease-out duration-300"
-                            x-transition:enter-start="opacity-0 transform scale-50"
-                            x-transition:enter-end="opacity-100 transform scale-100"></span>
+                              x-cloak
+                              x-show="position !== null"
+                              x-text="logic.getCELL(index+logic.ROW_THREE)"
+                              x-transition:enter="transition ease-out duration-300"
+                              x-transition:enter-start="opacity-0 transform scale-50"
+                              x-transition:enter-end="opacity-100 transform scale-100"></span>
                     </button>
                 </div>
             </template>
@@ -164,13 +187,13 @@
         -->
         <button class="absolute top-0 left-0 w-96 h-96 flex items-center justify-center outline-none focus:outline-none"
                 style="display:none;"
-                x-show="game.IFWON||game.TURNS>=game.MAX_TURN"
+                x-show="logic.IFWON||logic.TURNS>=logic.MAX_TURN"
                 x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0 transform scale-50 rotate-12"
                 x-transition:enter-end="opacity-100 transform scale-100 rotate-0"
-                @click.prevent="game.reset()">
+                @click.prevent="logic.reset()">
             <span class="block transform -rotate-12 text-white text-9xl text-glow-xl"
-                x-text="game.IFWON()?'Winner!':'😔'"></span>
+                  x-text="logic.IFWON ?'Winner!':'😔'"></span>
         </button>
         <div x-effect="$refs.dataResult = result">
             <h4>Current Move:</h4>
@@ -183,9 +206,21 @@
             <span x-ref="dataResult" x-text="result.valid"></span> ||
             <span x-ref="dataResult" x-text="result.outcome"></span>
         </div>
+        <div x-effect="$refs.resultMsg.innerText = logic.checkWinner()">
+            <p class="text-8xl leading-none"
+               x-show="$refs.resultMsg && $refs.resultMsg.innerText !== '' ">Result: <span x-ref="resultMsg"></span></p>
+            <div x-effect="$refs.dataResult = result">
+                <h4>Current Move:</h4>
+                The token that has been played is:
+                <span x-ref="currentMove" x-text="currentMove.cell"></span>
+                <span x-ref="currentMove2.cell"></span>
+                <span x-ref="currentMove3.cell"></span>
+                <span x-text="result.cell"></span>
+                <span x-text="result.cell"></span>
+            </div>
+        </div>
     </div>
 </div>
-
 
 <!-- BUY SCOTT WINDON (originator of version 1 and concept) A BEER AND HELP SUPPORT OPEN-SOURCE RESOURCES -->
 <!-- Accreditation for External Source Code, as foundational code for this project. -->
@@ -195,27 +230,12 @@
            href="https://www.buymeacoffee.com/scottwindon" target="_blank"
            title="Buy me a beer: Scott Windon">
             <img class="object-cover object-center w-full h-full rounded-full"
-                src="https://i.pinimg.com/originals/60/fd/e8/60fde811b6be57094e0abc69d9c2622a.jpg" alt="Buy ScottWindon a Coffee; tracker"/>
+                 src="https://i.pinimg.com/originals/60/fd/e8/60fde811b6be57094e0abc69d9c2622a.jpg" alt="Buy ScottWindon a Coffee; tracker"/>
         </a>
     </div>
 </div>
 
-<script type="module">
-    // Alpine.store('game', GameLogic());
-    import { GameLogic } from './docs/assets/js/game.js'
-    console.dir("GameLogic Imported: ", new GameLogic())
-    let b = new GameLogic();
-    b.console(b)
-</script>
-<script>
-    document.addEventListener('alpine:initialized', () => {
-        window.Alpine.store('board', {
-            game: new GameLogic(true, 1)
-        });
 
-        console.dir($store.board.game);
-    });
-</script>
 
 </body>
 </html>

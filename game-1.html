@@ -33,97 +33,103 @@
          title=""
          x-data="{
                 game: board,
-                surface: { },
-                result: { },
-                currentMove: function(index, pos, row, play ) {
+                /**
+                  * @property {Object} result: reactive proxy for dynamic state change for each move/result
+                  **/
+                result: Alpine.reactive({ }), // Proxy:
+                currentMove: function(index, pos, row, play, state ) {
                      if (pos === null) {
-                        this.result = play.select(index+row)
-                        this.game._console('Log')
+                        state = play.select(index+row, pos, row)
+                        this.game._grid[index] = play.select(index+row, pos, row).cell
+                        console.log('Result', this.result, this.result.cell, this.result.message, this.result.outcome,this.result.next)
+                        console.dir(this.result)
+                        return state
                     }
+                },
+                effectUpdateValidResult() {
+                    if (this.game) { console.log($refs.resultCell, $refs.resultCell.innerText, $refs.resultCellVal.innerText) }
                 }
             }"
-         x-effect="game.checkWinner"
-         x-init="console.log('Game Board: Init:', game );
-                game.DEVMODE = true; game.LOGLEVEL = 6;">
+         x-init="
+            console.log('Game Board: Init:', game );
+            game.DEVMODE = true; game.LOGLEVEL = 3;
+            console.log('Result copy1:', result, result.cell,
+                        result.message,
+                        result.outcome,
+                        result.next);
+            $watch('result', (newResult) => {
+               // react on newResult changes
+                console.log('Result change:', newResult, newResult.cell,
+                            newResult.message,
+                            newResult.outcome,
+                            newResult.next);
+                result = newResult;
+                console.log('Result copy2:', result, result.cell,
+                            result.message,
+                            result.outcome,
+                            result.next);
+            }, {deep: false})
+            $watch('game.GRID', (refreshedGRID) => {
+               // react on GameGrid changes
+                console.log('Grid Updated:', refreshedGRID);
+            })
+            $watch('game', (refreshedGAME) => {
+               // react on GameGrid changes
+                console.log('Game Updated:', refreshedGAME);
+            }, {deep: true})
+         ">
         <!--suppress GrazieInspection -->
-        <div class="flex w-full h-1/3">
+        <div class="flex w-full h-1/3"
+                x-effect="game.checkWinner('x-effect|Board Div', true, 1)">
 
-            <!--
-                The x-for directive is used to create, via grid array loops, & display the game grid's first row.
-                The x-text directive is used to display the value of the item in the grid array.
-                The x-show directive is used to hide the value of the item in the grid array.
-                The x-transition directive is used to animate the display of the value of the item in the grid array.
-            -->
-            <!-- position is the value of the grid, and index is the cell grid reference. -->
             <template x-for="(position, index) in game.GRID.slice(0,3)" :key="index">
                 <div class="border-b border-gray-700 w-1/3" :class="{'border-l':index>game.BOARDER_HIDE}">
                     <button class="w-full h-full outline-none focus:outline-none text-8xl leading-none"
-                            x-effect="currentMove(index, position, game.ROW_ONE, game)"
                             @click.prevent="
-                                game.setCELL(index, position)
                             // Evaluating position verses an empty cell, limits players to only select a EMPTY cell.
-                                currentMove(index, position, game.ROW_ONE, game)
+                                this.result = currentMove(index, position, game.ROW_ONE, game, this.result)
                         ">
-                        <!--suppress XmlUnboundNsPrefix -->
-                        <!--
-                            The x-show directive: showing the game.CELL value when the grid is not null.
-                            The x-text directive: displaying the game.grid[index] value when the grid is not null
-                                - Default: x-text is assigned on template/#doc-fragment rendering.
-                                - x-text does not automatic DOM update.
-                            The x-transition directive is used to animate the display of the value of the item in
-                            the grid array.
-                        --->
+
                         <span class="inline-block"
                               x-cloak
-                              x-show="position !== null"
-                              x-text="game.getCELL(index+game.ROW_ONE)"
+                              x-show="game.select(index+game.ROW_TWO, position).cell !== null"
+                              x-text="game._grid[index+game.ROW_ONE]"
                               x-transition:enter="transition ease-out duration-300"
                               x-transition:enter-start="opacity-0 transform scale-50"
                               x-transition:enter-end="opacity-100 transform scale-100"></span>
                     </button>
+                    <span x-text="index" style="font-size:6 "></span>
                 </div>
             </template>
         </div>
 
         <div class="flex w-full h-1/3">
-            <!--
-            ➖ The AlpineJS x-for directive: to create, via grid array loops, & display the game grid's third row.
-            ➖ Loops on the AlpineJs key: index and creates a row for cells 4 to 6 as clickable buttons.
-            ➖ @click event: to select the item in the grid array at the specified index
-            -->
             <!--
                 ➖ position {null|string} is the value of the grid
                 ➖ index {number} is the cell/grid[index] reference.
             -->
             <template x-for="(position, index) in game.GRID.slice(3,6)" :key="index">
-                <div class="border-b border-gray-700 w-1/3" :class="{'border-l':index>game.BOARDER_HIDE}">
+                <div class="border-b border-gray-700 w-1/3" :class="{'border-l':index>game.BOARDER_HIDE}"
+                    x-effect="result = game.select(index)">
                     <button class="w-full h-full outline-none focus:outline-none text-8xl leading-none"
-                            x-effect="currentMove(index, position, game.ROW_TWO, game)"
                             @click.prevent="
-                                game.setCELL(index, position)
-                            // Evaluating position verses an empty cell, limits players to only select a EMPTY cell.
-                                currentMove(index, position, game.ROW_TWO, game)
-                        ">
+                                result = currentMove(index, position, game.ROW_TWO, game, this.result)">
                         <!--
                             Display the game grid's cell's text value when the grid is not null
                         -->
                         <span class="inline-block"
                               x-cloak
-                              x-show="position !== null"
-                              x-text="game.getCELL(index+game.ROW_TWO)"
+                              x-show="game.select(index+game.ROW_TWO, position).cell !== null"
+                              x-text="game._grid[index+game.ROW_TWO]"
                               x-transition:enter="transition ease-out duration-300"
                               x-transition:enter-start="opacity-0 transform scale-50"
                               x-transition:enter-end="opacity-100 transform scale-100"></span>
                     </button>
+                    <span x-text="index+3" style="font-size:6 "></span>
                 </div>
             </template>
         </div>
         <div class="flex w-full h-1/3">
-            <!--
-            ➖ The AlpineJS x-for directive: to create, via grid array loops, & display the game grid's third row.
-            ➖ Loops on the AlpineJs key: index and creates a row for cells 7 to 9 as clickable buttons.
-            ➖ @click event: to select the item in the grid array at the specified index
-            -->
             <!--
                 ➖ position {null|string} is the value of the grid. When empty, move is valid/selectable
                 ➖ index {number} is the cell/grid[index] reference.
@@ -135,25 +141,21 @@
                         @click.prevent: prevent default action on click/page fire
                     -->
                     <button class="w-full h-full outline-none focus:outline-none text-8xl leading-none"
-                            x-effect="
-                                currentMove(index, position, game.ROW_THREE, game),
-                                game.setCELL(index, position)"
                             @click.prevent="
-                                game.setCELL(index, position)
-                            // Evaluating position verses an empty cell, limits players to only select a EMPTY cell.
-                                currentMove(index, position, game.ROW_THREE, game)
+                                result = currentMove(index, position, game.ROW_THREE, game, this.result)
                         ">
                         <!--
                             Display the game grid's cell's text value when the grid is not null
                         -->
                         <span class="inline-block"
                               x-cloak
-                              x-show="position !== null"
-                              x-text="game.getCELL(index+game.ROW_THREE)"
+                              x-show="game.select(index+game.ROW_THREE).cell !== null"
+                              x-text="game._grid[index+game.ROW_THREE]"
                               x-transition:enter="transition ease-out duration-300"
                               x-transition:enter-start="opacity-0 transform scale-50"
                               x-transition:enter-end="opacity-100 transform scale-100"></span>
                     </button>
+                    <span x-text="index+6" style="font-size:6 "></span>
                 </div>
             </template>
         </div>
@@ -163,7 +165,7 @@
         -->
         <button class="absolute top-0 left-0 w-96 h-96 flex items-center justify-center outline-none focus:outline-none"
                 style="display:none;"
-                x-show="game.IFWON||game.TURNS>=game.MAX_TURN"
+                x-show="game.IFWON === game.IN_PLAY"
                 x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0 transform scale-50 rotate-12"
                 x-transition:enter-end="opacity-100 transform scale-100 rotate-0"
@@ -171,29 +173,52 @@
             <span class="block transform -rotate-12 text-white text-9xl text-glow-xl"
                   x-text="game.IFWON ?'Winner!':'😔'"></span>
         </button>
-        <div x-effect="$refs.dataResult = result">
-            <h4>Current Move:</h4>
-            The token that has been played is:
-            <span x-ref="currentMove.innerText"></span> ||
-            <span x-ref="dataResult" x-text="result.cell"></span> ||
-            <span x-ref="dataResult" x-text="result.next"></span>  ||
-            <span x-ref="dataResult" x-text="result.message"></span> ||
-            <span x-ref="dataResult" x-text="result.winner"></span> ||
-            <span x-ref="dataResult" x-text="result.valid"></span> ||
-            <span x-ref="dataResult" x-text="result.outcome"></span>
-        </div>
-        <div x-effect="$refs.resultMsg.innerText = game.checkWinner()">
-            <p class="text-8xl leading-none"
-               x-show="$refs.resultMsg && $refs.resultMsg.innerText !== '' ">Result: <span x-ref="resultMsg"></span></p>
-            <div x-effect="$refs.dataResult = result">
-                <h4>Current Move:</h4>
-                The token that has been played is:
-                <span x-ref="currentMove" x-text="currentMove.cell"></span>
-                <span x-ref="currentMove2.cell"></span>
-                <span x-ref="currentMove3.cell"></span>
-                <span x-text="result.cell"></span>
-                <span x-text="result.cell"></span>
-            </div>
+        <BR> <BR> <BR>
+        <H2>PROPERTIES</H2>
+        <div>
+            <table title="Game Properties">
+                <colgroup span="2"></colgroup>
+                <colgroup span="2"></colgroup>
+                <colgroup span="2"></colgroup>
+
+                <thead>
+                <tr>
+                    <th colspan="2">Instance Properties</th>
+                    <th colspan="2">---</th>
+                    <th colspan="2">---</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>Name</td>
+                    <td>Value</td>
+                    <td>Name</td>
+                    <td>Return</td>
+                    <td>Game</td>
+                    <td>State</td>
+                </tr>
+                <tr x-effect="effectUpdateValidResult()">
+                    <td x-ref="resultCell">Result Cell Value</td>
+                    <td x-ref="resultCellVal" x-text="result.cell"></td>
+                    <td >1.3</td>
+                    <td></td>
+                    <td>1.5</td>
+                    <td>1.6</td>
+                </tr>
+                <tr>
+                    <td x-effect="game.CELL" x-text="game.CELL"></td>
+                    <td x-effect="game.checkWinner( 'x-effect', true, 1)"></td>
+                    <td x-effect="game.reset(true, 1)"></td>
+                    <td>1.3</td>
+                    <td>1.4</td>
+                    <td>1.5</td>
+                    <td>1.6</td>
+                </tr>
+                <!-- Repeat the above row for 10 times.  -->
+                </tbody>
+                <capion></capion>
+            </table>
         </div>
     </div>
 </div>
@@ -263,6 +288,8 @@
          */
         static _MAX_TOKENS = 2
 
+        static START = 0
+
         /**
          * @constructor
          * @param {boolean} [debug=this.DEVMODE] - Optional Flag to enable debug mode.
@@ -288,6 +315,7 @@
             this._console('Instantiate Game Logic: ',
                           this.DEBUG, this.LEVEL, this) // jshint ignore:line
             // Instance variables set by Class Constants
+            this._start = GameLogic.START
             /** @instance public */
             this.empty = null
             // Set initial class constants empty cell.
@@ -299,8 +327,8 @@
             this._length = 9
             // noinspection NestedFunctionCallJS,AnonymousFunctionJS,ChainedFunctionCallJS,JSUnusedLocalSymbols
             /** @instance private */
-            this._grid =  Array.apply(this.empty, Array(this._length))
-            .map(function (v,i) { return null })
+            // this._grid =  GameLogic.NEW_GRID
+            this._grid = Array.apply(null,Array(9)).map(function (v,i) {return null})
             // The default check win state of the game / Set initial constants
             /** @instance private */
             this._draw = GameLogic.NO_DRAW
@@ -650,9 +678,8 @@
          */
         get NEW_GRID() {
             // noinspection ChainedFunctionCallJS,NestedFunctionCallJS,AnonymousFunctionJS,JSUnusedLocalSymbols
-            return Array.apply(this.empty,
-                               Array(this.MAX_LENGTH))
-            .map(function (v,i) {return null})
+            return Array.apply(null,
+                               Array(9)).map(function (v,i) {return null})
             //return Array.apply(null, Array(9)).map(function (v,i) { return null})
             //return new Array(GameLogic.MAX_LENGTH).fill(GameLogic.CELL_RESET)
         }
@@ -1338,12 +1365,16 @@
          * */
         select(
             index,
+            cellRef = null,
+            row = null,
             debug = this.DEVMODE,
-            level = this.LOGLEVEL)
+            level = this.LOGLEVEL,
+            caller = '')
         {
             // Enabled only for developer mode
             if (debug) {
                 console.info('Developer Enabled\n')
+                console.log(`select API: ${caller}`, index, cellRef, (row !== null ? row : null), debug, level, caller )
                 // Exits if dev or user inputs wrong data/type and logs warning to console directly
                 if (typeof index !== 'number' || index) {
                     console.warn('select API: Invalid/ommited type: index');
@@ -1378,7 +1409,7 @@
                                 debug, level ) => {
                 // Call checkWinner and assign result
                 const validmove = true // __whoWins is always valid
-                const winCheck = this.checkWinner();
+                const winCheck = this.checkWinner('whoWins|Select');
                 // on every valid move, check fgr winner or draw (draw 🚧 @todo implement draw on check
                 if (winCheck === GameLogic.IN_PLAY) { // False, default state for game
                     // Next Turn Conditionals
@@ -1578,12 +1609,12 @@
          * @complexity 53%
          * */
 
-        checkWinner(debug = this.DEVMODE,
+        checkWinner(caller = 'Select' , debug = this.DEVMODE,
                     level = this.LOGLEVEL)
         {
             // Enabled only for developer mode
             if (debug) {
-                console.info('Developer Enabled\n')
+                console.info('Developer Enabled\n Method: %s', caller)
                 // Exits function if parameters are not valid types for debug and level,
                 // even with optional values
                 if (typeof debug !== 'boolean' || typeof level !== 'number') {
@@ -1627,8 +1658,8 @@
                     sequence,
                     this.IFWON
                 )
-                this._console('Next Turn', debug, 1)
             }
+            this._console('Next Turn', debug, 1)
 
             return this.IFWON
             // Game in play or P1 or P2 wins (should be only game in play at this point)
@@ -1759,9 +1790,9 @@
 
             //this._grid = GameLogic.NEW_GRID // Reset grid to an array of nulls
             // noinspection NestedFunctionCallJS,ChainedFunctionCallJS,AnonymousFunctionJS,JSUnusedLocalSymbols
-            this._grid = Array.apply(this.empty,
-                                     Array(this.MAX_LENGTH))
-            .map(function (v,i) {return null})
+            // this._grid = Array.apply(this.empty,
+            //                          Array(this.MAX_LENGTH)).map(function (v,i) {return null})
+            this._grid = Array.apply(null,Array(9)).map(function (v,i) {return null})
             this._draw = GameLogic.NO_DRAW // reset draw state to false
             this._won = GameLogic.IN_PLAY // reset game state to false
             this._turns = GameLogic.TURN_INIT  // reset turn count
