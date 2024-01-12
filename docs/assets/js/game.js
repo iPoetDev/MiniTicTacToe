@@ -1285,7 +1285,7 @@ export default class GameLogic {
      * @internal @function __whoWins
      * @internal @function __havValidMove
      * @param {number} index - The index of the cell to be selected.
-     * @param {object} [cellRef=null] - Optional reference to the cell object.
+     * @param {string|null} [cellVal=null] - Optional reference to the cell object.
      * @param {number|null} [row=null] - Optional row ID to be set.
      * @param {boolean} [debug=this.DEVMODE] - Optional Flag to enable debug mode.
      * @param {number} [level=this.LOGLEVEL] - Optional level of logging to console.
@@ -1308,7 +1308,7 @@ export default class GameLogic {
     // noinspection OverlyComplexFunctionJS
     select(
         index,
-        cellRef = null,
+        cellVal = null,
         row = null,
         debug = this.DEVMODE,
         level = this.LOGLEVEL,
@@ -1317,7 +1317,7 @@ export default class GameLogic {
         // Enabled only for developer mode
         if (debug) {
             console.info('Developer Enabled\n')
-            console.log(`select API: ${caller}`, index, cellRef,
+            console.log(`select API: ${caller} At i: %s, init val is %s, and null`, index, cellVal,
                         (row === null ? null : row), debug, level, caller )
             // Exits if dev or user inputs wrong data/type and logs warning to console directly
             if (typeof index !== 'number' || index) {
@@ -1359,13 +1359,13 @@ export default class GameLogic {
             const winCheck = this.checkWinner('whoWins|Select');
             // on every valid move, check fgr winner or draw (draw 🚧 @todo implement draw on check
             if (winCheck === GameLogic.IN_PLAY) { // False, default state for game
+                this._console('♻️isWinner: ❌', debug, level,
+                              index, this.CELL, winCheck) // jshint ignore:line
                 // Next Turn Conditionals
                 const action = 'NextTurn'
                 const playmsg = '♻️Game in Play';
                 const nextround = false
                 const outcome = this.VALID_MOVE
-                this._console('♻️isWinner: ❌', debug, level,
-                              index, this.CELL, winCheck) // jshint ignore:line
                 // Returns the game result for UI state object/UI Data
                 return this._result(this._grid[index],  // i.e. {string|null}
                                     action,     // i.e. {string}
@@ -1398,7 +1398,6 @@ export default class GameLogic {
         // noinspection NestedFunctionCallJS
         return Alpine.reactive(this._hasValidMove(index, __whoWins, debug, level));
         // Check if move is / has Valid Move, and if value move, return the updated token from grid
-        //return this._hasValidMove(index, __whoWins,debug, level )
     }
 
     // A helper method to manually tell Alpine.js to update the UI
@@ -1554,13 +1553,14 @@ export default class GameLogic {
      * @complexity 53%
      * */
 
-    checkWinner(debug = this.DEVMODE,
-                level = this.LOGLEVEL,
+    checkWinner(debug = true,
+                level = 1,
                 caller = 'checkWinner API: ' )
     {
         // Enabled only for developer mode
         if (debug) {
-            console.info('Developer Enabled\n Method: %s', caller)
+            console.info('Developer Enabled\n Method: %s, Debug: %s, Level: %s',
+                         caller, debug, level)
             // Exits function if parameters are not valid types for debug and level,
             // even with optional values
             if (typeof debug !== 'boolean' || typeof level !== 'number') {

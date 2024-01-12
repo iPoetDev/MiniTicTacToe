@@ -16,6 +16,7 @@
     <meta content="author name"
           name="author"> <!-- Author Information -->
     <!-- Links to CSS -->
+    <script defer src="./docs/assets/js/game.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="docs/assets/css/style.css"
           rel="stylesheet">
@@ -68,10 +69,9 @@
          x-init="
             console.log('Game Board: Init:', game );
             ui.ROW_ONE= 0; ui.ROW_TWO= 3; ui.ROW_THREE= 6;
-            game.DEVMODE = true; game.LOGLEVEL = 3; game.CELL = null;
-            game._currentcell = null;
-            console.log(`CurrentCell`, game._currentcell);
-            console.log('Result copy1:',
+            game.DEVMODE = true; game.LOGLEVEL = 1;
+            console.log(`CurrentCell Initial`, game._currentcell);
+            console.log('Result Initial:',
                         result, result.cell,
                         result.message,
                         result.outcome,
@@ -99,14 +99,12 @@
          ">
         <!--suppress GrazieInspection -->
         <div class="flex w-full h-1/3"
-                x-effect="game.checkWinner('x-effect|Board Div', false, 1)">
+                x-effect="game.checkWinner( false, 1, 'x-effect|Board Div',)">
 
             <template x-for="(position, index) in game.GRID.slice(0,3)" :key="index">
                 <div class="border-b border-gray-700 w-1/3" :class="{'border-l':index>game.BOARDER_HIDE}">
                     <button class="w-full h-full outline-none focus:outline-none text-8xl leading-none"
-                            x-init="
-
-                            "
+                            x-init=""
                             @click.prevent="
                             // Evaluating position verses an empty cell, limits players to only select a EMPTY cell.
                              //onclickLogger(index, position, 0, 'log');
@@ -173,7 +171,7 @@
                     <button class="w-full h-full outline-none focus:outline-none text-8xl leading-none"
                             @click.prevent="
                              onclickLogger(index, position, 6, 'log');
-                             this.result = currentMove(index, position, 6, game, this.result)
+                             this.result = currentMove(index, 6, game, this.result)
                         ">
                         <!--
                             Display the game grid's cell's text value when the grid is not null
@@ -848,7 +846,7 @@
          * @called: currentCELL
          */
         _validCell(index) {
-            return typeof index === 'number' && ( index < this._grid.length && index >= 0)
+            return typeof index === 'number' && ( index <= this._grid.length && index >= 0)
         }
 
         /**
@@ -1575,7 +1573,7 @@
                                 debug, level ) => {
                 // Call checkWinner and assign result
                 const validmove = true // __whoWins is always valid
-                const winCheck = this.checkWinner('whoWins|Select');
+                const winCheck = this.checkWinner(false, 1, 'whoWins|Select');
                 // on every valid move, check fgr winner or draw (draw 🚧 @todo implement draw on check
                 if (winCheck === GameLogic.IN_PLAY) { // False, default state for game
                     // Next Turn Conditionals
@@ -1849,77 +1847,7 @@
          *   - Possible values are GameLogic.P1 (X), GameLogic.P2 (Y), GameLogic.IN_PLAY (false).
          * @complexity 46%
          */
-        // checkWinningPlay(debug = this.DEVMODE,
-        //                  level = this.LOGLEVEL) {
-        //     /**
-        //      * Assigns the winner of a game.
-        //      * @private
-        //      * @function _assignWinner
-        //      * @param {string} current_moves - The number of turns taken in the game.
-        //      * @param {string} sequence - The sequence of moves made in the game.
-        //      * @param {string} winner - The winner of the game.
-        //      * @param {boolean} debug - Indicates whether debug mode is enabled.
-        //      * @param {number} level - The level of debugging (0 for basic, 1 for detailed).
-        //      * @returns {boolean} - Returns true if the winner was assigned, false otherwise.
-        //      */
-        //     const _assignWinner = (current_moves, sequence, winner,
-        //                            debug, level) => {
-        //         if (this._checkSequenceWin(current_moves, sequence)) {
-        //             this.IFWON = winner
-        //             this._console(
-        //                 `checkWinner: ✅: Player: ${this.IFWON}`,
-        //                 debug,
-        //                 level,
-        //                 current_moves,
-        //                 sequence,
-        //                 this.IFWON
-        //             )
-        //             return true
-        //         }
-        //         return false
-        //     }
-        //
-        //     /**
-        //      * Sets IFWON to current and logs the game status, for current game round.
-        //      * @private
-        //      * @function _defaultRound
-        //      * @param {Array} sequence - The game sequence.
-        //      * @param {boolean} current - The current game status.
-        //      * @param {boolean} debug - Whether to enable debug logging.
-        //      * @param {number} level - The logging level.
-        //      * @returns {void}
-        //      */
-        //     const _defaultRound = (sequence, current,
-        //                            debug, level) => {
-        //         this.IFWON = current
-        //         this._console(
-        //             `checkWinner: ✅: Game In Play: ${this.IFWON}`,
-        //             debug,
-        //             level,
-        //             sequence,
-        //             current
-        //         )
-        //     }
-        //
-        //     // Loop over the sequence of winning combinations and
-        //     // assign the winner according to the winning sequence.
-        //     for (const sequence of this.WIN_SEQUENCE) {
-        //         if (_assignWinner(this._xTurns, sequence,
-        //                           GameLogic.P1, debug, level)) {
-        //             break // Break loop only is PLayer 1 wins, and assign to IFWON
-        //         } else if (_assignWinner(this._oTurns, sequence,
-        //                                  GameLogic.P2, debug, level)) {
-        //             break // Break loop only is PLayer 2 wins, and assign to IFWON
-        //         } else {
-        //             _defaultRound(sequence, GameLogic.IN_PLAY,
-        //                           debug, level)
-        //             // i.e. 'continue' is not unnecessary at last statement in loop (not code)
-        //         } // Default state, no winner
-        //
-        //         // No else part needed as IFWON default state is already set
-        //     }
-        //     return this.IFWON // Returns the game states: False or P1 or P2 wins.
-        // }
+
 
         // ======================== ================================ ==================================
         // ========================   PUBLIC FUNCTIONS: RESET()      ==================================
