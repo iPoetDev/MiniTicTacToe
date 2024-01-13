@@ -7,7 +7,7 @@
 /**
  * Represents the logic (state and behaviour) for a game of TicTacToe.
  */
-export default class GameLogic {
+class GameLogic {
 
     /**
      * Represents an empty cell's value/primitive.
