@@ -86,7 +86,8 @@ let dataHandler = {
  * @returns {*} - A proxy object that wraps the data array and uses the data handler.
  * @url https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy
  */
-function watchData(dataArray, dataHandler) {
+function watchData(dataArray, dataHandler)
+{
     return new Proxy(dataArray, dataHandler);
 }
 
@@ -96,10 +97,11 @@ function watchData(dataArray, dataHandler) {
  * @param {function} callback - The callback function to be invoked when a game round is updated.
  * @return {void}
  */
-function watchRounds(callback) {
+function watchRounds(callback)
+{
     // noinspection AnonymousFunctionJS
     document.addEventListener('gameRoundUpdated',
-                              function(e)
+                                function(e)
     {
         callback(e);
     });
@@ -110,8 +112,10 @@ function watchRounds(callback) {
  * @function watchForOutcome
  * @param {string} [logType='info'] - The type of logging to be used ('info', 'table', 'trace').
  * @returns {void}
+ * @complexity 46%|low
  */
-function watchForOutcome(logType = 'info') {
+function watchForOutcome(logType = 'info')
+{
     // noinspection AnonymousFunctionJS
     /**
       * @function watchRounds
@@ -119,6 +123,7 @@ function watchForOutcome(logType = 'info') {
       * @param {object} e - Event callback for gameRoundUpdated watcher/dispatcher
       * @event gameRoundUpdated
       * @return {void} except for console output.
+      * @complexity 46%|low
       */
     watchRounds(function(e) {
         /** @type {number} outcomeZero adjusts the roundData index **/

@@ -5,27 +5,39 @@
 
 /**
  * The click event for a set of grid buttons.
- *
+ * @function gridButtonOnClick
  * @param {HTMLElement[]} gridbuttons - The array of grid buttons.
  * @param {string} handler - The event handler to attach to the buttons.
- * @param {string} ident
+ * @param {string} ident - The identifier for each grid button for user interaction.
  * @param {null[]} startgrid - The starting position.
  * @param {GameLogic} board - The game board.
  * @param {Object|{}} result - The result object.
  * @param {boolean} [debug=false] - show/hide console logging
- * @return {Object|{}} - The updated result object.
+ * @return {Object|{}} - The updated, and active result object to be passed to other UI controls.
  * @done - no more refactoring
  * @complexity: 26%|low
  */
-function gridbuttonOnClick(gridbuttons, handler, ident,
-                       startgrid, board, result,
-                       debug = false)
+function gridButtonOnClick(gridbuttons, handler, ident,
+                            startgrid, board, result,
+                            debug = false)
 {
+    /** @type {boolean} show for DRY short circuit flags for logging in DevMode **/
     const show = (debug === true)
+    /** @type {boolean} [_NORESET=false] constant value **/
     const _NORESET = false
+    /** @type {object} Empty local object **/
     let outcome = {}
     // noinspection AnonymousFunctionJS
-    gridbuttons.forEach(function(button, index) {
+    /**
+     * Loop over the grid buttons and add EventListener to each, and filter per ident.
+     * @function _ anon
+     * @param {number} index - The index of the button.
+     * @param {HTMLElement} button - The button element.
+     * @return {void}
+     */
+    gridbuttons.forEach(function(button, index)
+    {
+        // Filter for the UI button with the given ident
         if (button.id.includes(ident)) {
             // noinspection AnonymousFunctionJS
             /**
@@ -38,7 +50,7 @@ function gridbuttonOnClick(gridbuttons, handler, ident,
             button.addEventListener(handler, function(event) {
                 event.preventDefault(); //"prevent propagation until clicks"
                 // Do currentMove on game logic and update the result object for each click
-                outcome = currentMove(index, 0, board, result);
+                outcome = currentMove(index, board, result);
                 // Update Grid UI on each click
                 updateGridUI(index, startgrid, board, true);
                 // Update the round data each click, i.e. if GameLogic is alias for backend
@@ -57,7 +69,7 @@ function gridbuttonOnClick(gridbuttons, handler, ident,
 
 /**
  * Reset button click event handler.
- *
+ * @function resetButtonOnClick
  * @param {HTMLElement} resetButton - The reset button element.
  * @param {string} handler - The event handler name.
  * @param {string} ident - The identifier string.
@@ -68,13 +80,18 @@ function gridbuttonOnClick(gridbuttons, handler, ident,
  * @return {void} except for console statements.
  */
 function resetButtonOnClick (resetButton, handler, ident,
-                             startgrid, board, result,
-                             debug = false)
+                            startgrid, board, result,
+                            debug = false)
 {
+    /** @type {boolean} show for DRY short circuit flags for logging in DevMode **/
     const show = (debug === true)
+    /** @type {string} logType PROPERTY for logging in DevMode **/
     const logType = 'table'
-    const _RESET  = true
+    /** @type {boolean} _RESET constant value **/
+    const _RESET =  true
+    /** @type {Object} outcome empty object literal for reset result object **/
     let outcome = {}
+    /** @type {string} cellIdent PROPERTY actually resetting the grid cells **/
     const cellIdent = 'cell-id-'
     // noinspection AnonymousFunctionJS
     resetButton.addEventListener(handler, function(event) {
@@ -82,9 +99,10 @@ function resetButtonOnClick (resetButton, handler, ident,
             event.preventDefault(); //"prevent propagation until clicks"
             //Reset Game Instance OBJECT
             board.reset()
-            result = outcome
-            //show && alert(outcome.cell)
+            // noinspection AssignmentToFunctionParameterJS
+            result = outcome // reset with empty object literal
             resetGrid(cellIdent, startgrid.length, show)
+            // When enabled, log to console with table type
             show && window.myLoggerWriteLog('Reset', '🔍',
                                             `Reset Button Click by Button ${ident}`,
                                             logType,
@@ -98,19 +116,38 @@ function resetButtonOnClick (resetButton, handler, ident,
     });
 }
 
-function updateRoundData(result, reset = false,  debug = false){
+/**
+ * Updates the round data in the global variable `window.GameRound.roundData`.
+ *
+ *  - Alternates to using: a) localStorage, b) sessionStorage or c) cookie.
+ *  - Data in memory between clicks is ephemeral, so temporary assignment to higher scope is used.
+ * @function updateRoundData
+ * @param {any} result - The result to be added to the round data.
+ * @param {boolean} [reset=false] - Indicates whether to reset the round data.
+ *   @see resetButtonOnClick
+ *   @see gridButtonOnClick
+ * @param {boolean} [debug=false] - Indicates whether to enable debug mode for logging.
+ * @return {void}
+ * @complexity 20%|low
+ */
+function updateRoundData(result, reset = false,  debug = false)
+{
+    /** @type {boolean} show for short circuit flags for logging in DevMode **/
     const show = (debug === true)
+    /** @type {string} logType PROPERTY for logging in DevMode **/
+    const logType = 'table'
+    /** @type {any[]} _RESET constant value **/
     const _RESET =  []
     // noinspection NonBlockStatementBodyJS
     if (reset) {
-        window.GameRound.roundData = _RESET;
+        window.GameRound.roundData = _RESET; // Reset the global variable
     } else {
-        window.GameRound.roundData.push(result);
+        window.GameRound.roundData.push(result); // Update the global variable
     }
-
+    // Log GameRound roundData to console as a table if DevMode is enabled for show
     show && window.myLoggerWriteLog('Round Data', '🔍',
                                     `updateRoundData`,
-                                    'table',
+                                    logType,
                                     `Windows GameRound roundData`,
                                     window.GameRound.roundData);
 }
@@ -123,12 +160,16 @@ function updateRoundData(result, reset = false,  debug = false){
  * @return {HTMLElement[]} - An array of HTMLElements containing the button elements found.
  * @complexity: 20%|low
  */
-function findButtons(ident, length) {
+function findButtons(ident, length)
+{
+    /** @type {number} **/
     const _START = 0
+    /** @type {null} **/
     const _EMPTY = null
-    // Find all spans
+    /** @type {HTMLElement[]} Collect of Buttons  **/
     let cell_buttons = [];
     for(let cell = _START; cell < length; cell++) {
+        /** @type {HTMLElement}  Current button **/
         let cell_button = document.getElementById(ident + cell);
         if(cell_button !== _EMPTY) {
             cell_buttons.push(cell_button);
@@ -138,14 +179,15 @@ function findButtons(ident, length) {
 }
 
 /**
- * Reset the grid by setting the content of each cell to empty string.
+ * Reset the grid via setting the content of each cell to empty string.
  * @function resetGrid
  * @param {string} ident - The identifier of the grid.
  * @param {number} gridlength - The length of the grid.
  * @param {boolean} [debug=false] - Optional debug flag. Default is false.
  * @return {void}
  */
-function resetGrid(ident, gridlength, debug = false) {
+function resetGrid(ident, gridlength, debug = false)
+{
     /** @type {number} **/
     const _START = 0
     /** @type {string} **/
@@ -171,7 +213,8 @@ function resetGrid(ident, gridlength, debug = false) {
  * @return {HTMLElement[]} - An array of HTML elements representing the found cells.
  * @complexity: 20%|low
  */
-function findCells(ident, length) {
+function findCells(ident, length)
+{
     const _START = 0
     const _EMPTY = null
     // Find all spans
@@ -185,11 +228,30 @@ function findCells(ident, length) {
     return spans
 }
 
-function currentMove(index, row, board, state) {
-    board.CLICK = index+row;
-    let newState = { ...state, ...board.select(index+row, row)};
-    //board.CELL = newState.cell;
-    return newState;
+/**
+ * Returns the updated outcome object after selecting a move on the board.
+ * @function currentMove - Wrapper for the board.select() API.
+ * @param {number} index - The index of the move on the board.
+ * @param {GameLogic} board - The current board state.
+ * @param {Object} outcome - The current outcome object for a result {}.
+ * @param {boolean} [debug=false] - A flag to enable debugging mode.
+ * @return {Object} - The updated outcome object after selecting the move.
+ * @complexity: 6%|low
+ */
+function currentMove(index, board, outcome,
+                     debug = false)
+{
+    /** @type {boolean} show for short circuit flags for logging in DevMode **/
+    const show = (debug === true)
+    /** @type {string} logType PROPERTY for logging in DevMode **/
+    const logType = 'table'
+    /** @type {object} renewed outcome **/
+    let newOutcome = { ...outcome, ...board.select(index)};
+    // When enabled, logs to console in table format
+    show && window.myLoggerWriteLog('Current Move', '🔍', 'currentMove',
+                                    logType,
+                                    'Current Move', newOutcome);
+    return newOutcome;
 }
 
 /**
@@ -203,7 +265,7 @@ function currentMove(index, row, board, state) {
  * @param {string} [level=log] - Optional log level to use for debug output.
  * @param {string} [caller=updateGridUI] - Optional caller function name to use for debug output.
  * @return {void}
- * @complexity: 86%|medium
+ * @complexity: 93%|medium
  */
 function updateGridUI(selected, start, board,
                       debug = false, level='log',
@@ -267,7 +329,8 @@ function updateGridUI(selected, start, board,
  * @return {void}
  * @complexity: ??%|low
  */
-function renderElement(el) {
+function renderElement(el)
+{
     // noinspection InnerHTMLJS
     const originalHTML = el.innerHTML;
     el.innerHTML = '';
@@ -281,7 +344,8 @@ function renderElement(el) {
  * @return {void}
  * @complexity: ??%|low
  */
-function clickLogger(obj) {
+function clickLogger(obj)
+{
     window.myLoggerWriteLog('Click','🔍', 'clickLogger', 'table',
                             'Current', obj);
 }

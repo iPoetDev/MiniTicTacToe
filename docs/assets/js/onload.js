@@ -15,6 +15,7 @@ function oninitload(newgame) {
         //Initialize gameLogic class and assign to game
         /** @type {GameLogic} **/
         let game = newgame;
+        /** @type {boolean} Toggle to enable/disable DevMode **/
         let devmode = true
         // Init starting array to compare board for null v complete compare
         /** @type {(null)[]} **/
@@ -22,9 +23,9 @@ function oninitload(newgame) {
         //Initialize result object
         /** @type {object|{}} **/
         let result = {}; // Init game result object
-        /** @type {object[]} **/
-        let roundData = []
+        /** @type {object} Global Variable with data property to watch **/
         window.GameRound = {roundData: []}
+        // Proxy-ify the Global variable's data structure for watching for changes.
         window.GameRound.roundData = watchData(window.GameRound.roundData,
                                               dataHandler)
         //Find all grid buttons i.e. cells/clicks
@@ -33,17 +34,24 @@ function oninitload(newgame) {
                                           game.MAX)
         /** @type {HTMLElement} **/
         let resetBtn = document.getElementById('reset');
-
         // Initialize the game' eventHandlers
-        result = gridbuttonOnClick(buttons_on_grid,
+        // and link the result container for each move to the grid
+        result = gridButtonOnClick(buttons_on_grid,
                                    'click',
                                    'cell-',
                                    startgrid,
                                    game,
                                    result)
+        // Dynamically initialize the reset on load,
+        // and link the result of a move to the reset
+        resetButtonOnClick(resetBtn,
+                           'click',
+                           'reset',
+                           startgrid,
+                           game,
+                           result,
+                           devmode );
 
-        resetButtonOnClick(resetBtn, 'click', 'reset',
-                           startgrid, game, result, devmode );
         clickLogger(result)
     });
 }
