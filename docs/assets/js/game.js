@@ -49,7 +49,7 @@ class GameLogic {
      * @constant {number}
      * @default 1
      */
-    static _MAX_MINUS = 1
+    static _CHECK_FROM = 1
     /**
      * Maximum number of player tokens allowed.
      * @constant
@@ -59,7 +59,7 @@ class GameLogic {
 
     static START = 0
     static INVALID = 1
-    static VALID = 2
+    static NEXT = 2
     static PLAYER1 = 3
     static PLAYER2 = 4
     static DRAW = 5
@@ -67,8 +67,9 @@ class GameLogic {
 
     /**
      * @constructor
+     * @param {function} [logger=gameConsole{}] - Optional logger function
      * @param {boolean} [debug=this.DEVMODE] - Optional Flag to enable debug mode.
-     * @param {number} [level=this.LOGLEVEL] - Optional level of logging to console.
+     * @param {number} [mode=this.LOGLEVEL] - Optional level of logging to console.
      * Constructor for the App class.
      * Uses Class Constants to initialises values.
      * Initializes the App object with default values and reactivity for:
@@ -81,16 +82,17 @@ class GameLogic {
      * @returns {void}
      */
 
-    constructor(debug = false, level = 0) {
+    constructor(logger = null, debug = false, mode = 0) {
         // Enable Developer Mode for debugging
-
         /** @instance public */
-        this.DEBUG = typeof mode === 'boolean' ? debug : this.DEVMODE
+        this.DEBUG =  debug
         // this.DEBUG = false
         /** @instance public */
-        this.LEVEL = typeof type === 'number' ? level : this.LEVEL
-        this._console('Instantiate Game Logic: ',
-                      this.DEBUG, this.LEVEL, this) // jshint ignore:line
+        this.mode = 0
+        this.LEVEL = this.LOGLEVEL
+        this.logger = logger
+        this.writer = 'local'
+        //logger('Instantiate Game Logic: ',this.DEBUG, this.LEVEL, this) // jshint ignore:line
         // Instance variables set by Class Constants
         this._start = GameLogic.START
         /** @instance public */
@@ -104,10 +106,11 @@ class GameLogic {
         this._currentcell = GameLogic.CELL_RESET
         /** @instance private */
         this._length = 9
-        // noinspection NestedFunctionCallJS,AnonymousFunctionJS,ChainedFunctionCallJS,JSUnusedLocalSymbols
+        //  works best when class in Proxy'ed in Alpine.Js
+        // noinspection NestedFunctionCallJS,AnonymousFunctionJS
         /** @instance private */
-        // this._grid =  GameLogic.NEW_GRID
-        this._grid = Array.apply(null,Array(9)).map(function (v,i) {return null})
+        this._grid = Array.apply(null,Array(9))
+                          .map(function (v,i) {return null})
         // The default check win state of the game / Set initial constants
         /** @instance private */
         this._draw = GameLogic.NO_DRAW
@@ -130,6 +133,44 @@ class GameLogic {
         /** @instance private Track the length/number of Y's played */
         this._oTurns = GameLogic.TURN_RESET // Set initial class constants
     }
+
+    /**
+     * Initializes the object with default values for debug, level, and mode properties.
+     *
+     * @function init
+     * @returns {void}
+     */
+    init() {
+        this.debug = this.DEBUG
+        this.level = this.LEVEL
+        this.mode = 0
+    }
+
+    /**
+     * Generates a report with the provided information.
+     * @function report
+     * @param {string} label - The label for the report.
+     * @param {string} step - The step of the report.
+     * @param {string} emoji - The emoji associated with the report.
+     * @param {string} caller - The caller of the report.
+     * @param {string} writer - The writer of the report.
+     * @param {string} level - The level of the report.
+     * @param {object} obj - The object containing report data.
+     * @param {boolean} [data=true] - Flag indicating whether to display data in the report. (default: true)
+     * @param {boolean} [collapse=false] - Flag indicating whether to collapse the report groups. (default: false)
+     * @returns {void}
+     */
+    report(label, step, emoji, caller, writer,
+           level, obj, data = true, collapse = false)
+    {
+        collapse === true && console.groupCollapsed(label);
+        this.logger(step, '➡️', caller, writer, level, obj);
+        collapse === true && console.groupCollapsed(`${label}: Table:`);
+        data === true && console.table(obj);
+        collapse === true && console.groupEnd()
+        collapse === true && console.groupEnd()
+    }
+
 
     get CLICK() {
         return this._click
@@ -598,14 +639,14 @@ class GameLogic {
     }
 
     /**
-     * GET | LIMIT: Returns the maximum turn value. Array length - 1.
+     * GET | LIMIT: Returns the maximum turn value.
      * @property {number} MAX_TURNS
      * @access private
      * @private
      * @return {number} The maximum turn value.
      */
     get MAX_TURN() {
-        return this._grid.length - GameLogic._MAX_MINUS
+        return this._grid.length
     }
     // ====================================== UI: CELL VALUES & ACCESSORS ========================================
 
@@ -629,7 +670,7 @@ class GameLogic {
      * @called: currentCELL
      */
     _validCell(index) {
-        return typeof index === 'number' && ( index < this._grid.length && index >= 0)
+        return typeof index === 'number' && ( index <= this._grid.length && index >= 0)
     }
 
     /**
@@ -746,7 +787,7 @@ class GameLogic {
                 break
             default:
             // do nothing for default. If true, and level is not used, clears the console.
-            // if (debug && level === 0) {
+            // if (debug === true && level === 0) {
             //     console.clear()
             // }
         }
@@ -755,27 +796,6 @@ class GameLogic {
     // ========================== =========================== ===================================
     // ========================== PRIVATE FUNCTIONS: SELECT() ===================================
     // ========================== =========================== ===================================
-
-    /**
-     * Game STATE|API: Checks if the specified player is a valid player for checking end game
-     * state.
-     * @function _declareWinner
-     * @access private
-     * @private
-     * @param {string}  isValidPlayer - The player to be checked. Possible values are 'P1' or 'P2'.
-     * @param {string} [caller='_declareWinner'] - The name of the caller function.
-     * @return {string|undefined} - The valid player value if the specified player is valid ('P1'
-     *     or 'P2'), otherwise undefined.
-     */
-    _declareWinner(isValidPlayer, caller = '_declareWinner'){
-        if (typeof isValidPlayer === 'string') {  // i.e. {string}: P1 || P2 (not commented out code)
-            if (isValidPlayer === GameLogic.P1 || isValidPlayer === GameLogic.P2) {
-                console.log(`${caller} Declare Winner: ${isValidPlayer}`, isValidPlayer)
-                return isValidPlayer
-            }// GameLogic.]P1 || GameLogic.P2
-        }
-        return 'inValidPlayer'
-    }
 
     /**
      * SELECT(...) HELPER: Returns a random character from the given character array.
@@ -791,8 +811,6 @@ class GameLogic {
      * @param {number} [level=this.LOGLEVEL] - Optional level of logging to console.
      * @return {string} - A random character from the character array.
      */
-
-
 
     // noinspection FunctionNamingConventionJS
     _getRandomCharacter(
@@ -819,7 +837,6 @@ class GameLogic {
         }
         return characterArray[index]
     }
-
 
     /**
      * SELECT(...) HELPER: Checks if the given move is invalid.
@@ -849,11 +866,14 @@ class GameLogic {
      */
     _isInvalidMove(
         index,
-        debug = false,
+        debug = true,
         level = this.LOGLEVEL,
         caller = `_isInValidMove`
     ) {
-        if (debug) {console.log(`incrementTurn: Called by %s`, caller)}
+        if (debug) {
+            //console.log(`incrementTurn: Called by %s`, caller)
+            this.logger('4.2.1', '⛔', caller, this.writer,'log', false, `Enter ${index}`)
+        }
         /**  Inner function declaration (restrict for scope)
          * Determines if the current state is invalid.
          * @function _hasInvalidState
@@ -866,31 +886,24 @@ class GameLogic {
          */
         const __hasInvalidState = (index, cell, max_turn,
                                    empty = null, caller= '_hasInvalidState') => {
-            if (debug) {console.log(`%s: Index %s, Current Cell %, Max_Turn %s, Empty %s`, caller, index, cell, max_turn, empty)}
-
+            if (debug) {
+                this.logger('4.2.2.1', '🫸🛑', 'CHECK Invalid State', this.writer,'log',false,
+                            `Index: ${index}, Cell: ${cell}, Max ${max_turn}`, this)
+            }
             return (
-                this.IFWON, //|| // FALSE, p1 OR p2
-                    //this.CELL !== empty || // if not null, truthy for false
-                this.TURNS >= max_turn
+                this.IFWON || this.TURNS >= max_turn
             ) // More than max turns, truthy for false
-        }
-        // Log to Function Params to Console for debugging purposes when debug mode is enabled.
-        if (debug) {
-            console.log(
-                'isInvalidMove:❓: DEBUG %s, level %s, index %s, win %s, click %s, player %s, cell %s, turns %s',
-                debug, level, index,
-                this.IFWON, this.CLICK, this._currentPlayer, this.CELL, this.TURNS
-            )
         }
         // Checks the current state for invalidity from inner function
         const ifInvalidMove = __hasInvalidState(index, this.CELL,
                                                 this.MAX_TURN)
-        // Log to Function Return to Console for debugging purposes when debug mode is enabled.
+        // Log to Function Params to Console for debugging purposes when debug mode is enabled.
         if (debug) {
-            console.log('isInvalidMove:✅: debug %s, level %s, ifInvalidMove %s',
-                        debug, level, ifInvalidMove)
+            this.logger('4.2.2.2', '🫸🛑', 'SET Invalid State', this.writer,'log', false,
+                        `Index: ${index}, IFWON: ${this.IFWON},<Max ${this.MAX_TURN} : ${this.TURNS}, Invalid Flag ${ifInvalidMove}\n`,
+                        this)
         }
-        return ifInvalidMove
+        return ifInvalidMove // return Invalid False||True: If True: Invalid move
     }
 
     /**
@@ -905,30 +918,45 @@ class GameLogic {
      * @return {number|*}
      * @complexity: 86%
      */
-    _incrementTurn(firstplayer, secondplayer, debug = false, caller = '_incrementTurn') {
-        //if (debug) { console.log(`incrementTurn: Called by %s`, caller);}
-
+    _incrementTurn(firstplayer, secondplayer, debug = true, caller = '_incrementTurn') {
+        if (debug)  {
+            this.logger('4.4.1', '🏁', caller, this.writer,'info', false, `Turn Counter Enter`)
+        }
         let currentturn = this._turns
         //console.log('B4 Increment Turn: %s', currentturn)
-        if (currentturn === undefined) {
-            this._turns = 1; // increment turns here
-            //this._currentcell = null
-            //this._currentPlayer = GameLogic.P1
-            if (debug)  {console.log(`Game Restarted: Error with turns`, this._turns, this._currentcell, this._currentPlayer)}
-            //this.reset()
+        if  (this._turns === 0 && this._currentPlayer === firstplayer) {
+            this._turns = 0; // increment turns here
+            this._turns += 1
+            this._currentPlayer = firstplayer;
+            let even = this._turns % 2 === 0;
+            //
+            if (debug)  {
+                this.logger('4.4.1.A', '🏁 1ST TURN', caller, this.writer,'log', false,
+                            `START: Turn %s, Cell %s, Player %s,  Even: %s`,
+                            this._turns, this._currentcell, this._currentPlayer, even)
+
+            }
             return this._turns
         } else if (currentturn > 0 && currentturn < 8) {
             this._turns += 1 // increment turns here
             let even = this._turns % 2 === 0;
             this._currentPlayer = even ? firstplayer : secondplayer;
-            if (debug)  {console.log(`🆕 Assign New Turn: ${caller}, Turn %s, Cell %s, Player %s,  Even: %s`, this._turns, this._currentcell, this._currentPlayer, even)}
+            //
+            if (debug)  {
+                this.logger('4.4.1.B', '♻️ NEXT TURN', caller, this.writer,'log', false,
+                            `NEXT: Turn %s, Cell %s, Player %s,  Even: %s`,
+                            this._turns, this._currentcell, this._currentPlayer, even)}
+
             return this._turns
-        } else if (this._turns === 0 && this._currentPlayer === firstplayer) {
-            this._turns = 0; // increment turns here
-            this._turns += 1
-            this._currentPlayer = firstplayer;
-            let even = this._turns % 2 === 0;
-            if (debug)  {console.log(`👋🏁 Start Turn: ${caller}, Turn %s, Cell %s, Player %s,  Even: %s`, this._turns, this._currentcell, this._currentPlayer, even)}
+        } else if (currentturn === undefined) {
+            this._turns = 1; // increment turns here
+            //
+            if (debug)  {
+                this.logger('4.4.1.C', '⚠️ ERROR TURN', caller, this.writer,'error', false,
+                            `STOP: Game Restarted: Error with turns`,
+                            this._turns, this._currentcell, this._currentPlayer)
+            }
+            //this.reset()
             return this._turns
         }
 
@@ -967,10 +995,15 @@ class GameLogic {
     _isEvenTurn(
         index,
         debug = false,
-        level = this.LOGLEVEL
+        level = this.LOGLEVEL,
+        caller = '_isEvenTurn'
     ){
-        // New Turn Counter
-        let newTurn = this._incrementTurn('X', 'O', '_isEvenTurn')
+        if (debug)  {
+            this.logger('4.4', '🏁', caller, this.writer,'info', false,
+                        `_isEvenTurn: Enter | Current Turn: ${this._turns},
+                            Current Player: ${this._currentPlayer}, Current Cell: ${this._currentcell}`)
+        }
+
         // Determines if the turn is even or odd.
         /**
          * Determines if the current turn is even.
@@ -980,19 +1013,18 @@ class GameLogic {
          * @returns {boolean|void} - `true` if the current turn is even, `false` otherwise.
          * @throws {function} Console error if `this._turns` is undefined.
          */
-        const __isTurnEven = (method, debug = false) => {
+        const __isTurnEven = (debug = false, caller = '__isTurnEven') => {
             if (this._turns === undefined) {
-                console.error('Error: this._turns is undefined: %', this._turns)
+                debug === true && console.error('Error: this._turns is undefined: %', this._turns)
+                throw new Error('this._turns is undefined')
             } else {
-                // noinspection UnnecessaryLocalVariableJS
                 let evenOrOdd = this._turns % 2 === 0
-                //if (debug) console.log(`${method}: Even/True/P1 || Odd/False/P2: %s, Turn: %s`, evenOrOdd, this._turns)
                 return evenOrOdd
             }
         }
         // Chooses the character to be used
-        let evenOdd = __isTurnEven('__isTurnEven')
-
+        let evenOdd = __isTurnEven(debug)  // evenOdd the state of the turn/validMnve
+        this._turnFlag = evenOdd
         if (typeof evenOdd === 'boolean') {
 
             const __selectPlayer = () => {
@@ -1021,7 +1053,7 @@ class GameLogic {
             let turnsSequence = __chooseSequenceStore() // select the per player store for click value/turn sequences
             //let charArray = __chooseCharArray() // select the per player store for click value/turn sequences
             let turnprop = __selectProp() // X Prop for odd or O Prop for even
-            console.log('↪️🛞B4 updateTurnsAndGrid🐛: Current Turn %s, Sequence: %s, Prop: %s ', newTurn, turnsSequence, turnprop)
+            console.log('↪️🛞B4 updateTurnsAndGrid🐛: Current Turn %s, Sequence: %s, Prop: %s ', currentPlayer, turnsSequence, turnprop)
             // Update the turns and grid
             this._updateTurnsAndGrid(index, evenOdd, currentPlayer,
                                      turnsSequence, turnprop,
@@ -1030,6 +1062,7 @@ class GameLogic {
             this._console('isEvenTurn:✅', debug, level,
                           turnsSequence, turnprop, index, this.CELL) // jshint ignore:line
         }
+        let newTurn = this._incrementTurn('X', 'O', '_isEvenTurn')
     }
 
 
@@ -1179,18 +1212,18 @@ class GameLogic {
      * @returns {object} - The result of the move. see this._result
      */
     _hasValidMove = (index, __isWins,
-                     debug, level,
+                     level,
+                     debug = true,
                      caller = '_hasValidMove' ) => {
+        (debug === true ) && this.logger('4.2.0.A', '🏁🟢', caller, this.writer, 'log', false,
+                                         'Enter\n')
         if (this._isInvalidMove(index)) {
-            // Invalid Moves: Try again.
-
-            console.log(
-                `🛑 Invalid Move: 🚧 for current ${this.CELL}, [%s, %s], Selected %s, Grid %s`,
-                debug,
-                level,
-                index,
-                this.CELL
-            ) // jshint ignore:line
+            // Invalid Moves: Try again. / Output to Console
+            if (debug)  {
+                this.logger('', '🛑', caller, this.writer, 'log', false,
+                            'Cell ID: %s, isInvalid %s, Return: %s', index,
+                            `✅ Invalid for ${this.CELL}`, `Return result: invalid obj` )
+            }
             return this._result(this.CELL,
                                 'STOP',
                                 '🛑 Invalid Move',
@@ -1200,8 +1233,14 @@ class GameLogic {
         } else {
             // Valid Move: Proceed to next turn or declare winner.
             // Update the turns and grid
+            (debug === true ) && this.logger('4.2.0.B', '🏁🟢', caller, this.writer, 'log', false,
+                                             'ELSE\n')
             let whoWins = __isWins(index)
-            console.log(`🏁 ${caller} B4 EvenTurns: %s: index %s, WhoWins %s`, caller, index, whoWins)
+            if (debug === true)  {
+                this.logger('4.2.3', '🏁✅', caller, this.writer, 'log', false,
+                            'Cell ID: %s Click: %s, VALID %s', index, `Current: ${this.CLICK}`,
+                            `✅ Valid for ${this.CELL}`, whoWins )
+            }
             this._isEvenTurn(index)
             // Check if the game has been won
             const isWinner = __isWins( index, debug, level)
@@ -1285,7 +1324,7 @@ class GameLogic {
      * @internal @function __whoWins
      * @internal @function __havValidMove
      * @param {number} index - The index of the cell to be selected.
-     * @param {string|null} [cellVal=null] - Optional reference to the cell object.
+     * @param {object} [cellRef=null] - Optional reference to the cell object.
      * @param {number|null} [row=null] - Optional row ID to be set.
      * @param {boolean} [debug=this.DEVMODE] - Optional Flag to enable debug mode.
      * @param {number} [level=this.LOGLEVEL] - Optional level of logging to console.
@@ -1308,31 +1347,31 @@ class GameLogic {
     // noinspection OverlyComplexFunctionJS
     select(
         index,
-        cellVal = null,
+        cellRef = null,
         row = null,
-        debug = this.DEVMODE,
+        debug = false,
         level = this.LOGLEVEL,
         caller = 'Select:')
     {
         // Enabled only for developer mode
         if (debug) {
-            console.info('Developer Enabled\n')
-            console.log(`select API: ${caller} At i: %s, init val is %s, and null`, index, cellVal,
-                        (row === null ? null : row), debug, level, caller )
+            console.info('Developer Mode | Logging Enabled\n')
+            debug === true && this.logger('4.0', '❓🏁', caller, this.writer, 'log', false,
+                                          `Cell:${index}, ${cellRef}, Row ${row}`)
             // Exits if dev or user inputs wrong data/type and logs warning to console directly
             if (typeof index !== 'number' || index) {
-                console.warn('select API: Invalid/omitted type: index');
+                debug === true && this.logger('4.0.B', '❓🏁', caller, this.writer, 'warn', false,
+                                              `select API: invalid index`);
                 return;
             }
             // Exits if dev or user inputs wrong data/type and logs warning to console directly
             if (typeof debug !== 'boolean' || typeof level !== 'number') {
-                console.warn('select API: Invalid type: debug, level');
+                debug === true && this.logger('4.0.C', '❓🏁', caller, this.writer, 'warn', false,
+                                              `select API: Invalid type: ${debug}, ${level}`);
                 return;
             }
         }
-        // if (!this._currentcell) {
-        //     this._currentcell = GameLogic.P1
-        // }
+
         /**
          * Determines who wins based on the given index.
          * @design
@@ -1349,55 +1388,75 @@ class GameLogic {
          * @param {number} index - The index of the move being checked.
          * @param {boolean} debug - Indicates whether debug mode is enabled.
          * @param {number} level - The difficulty level of the game.
+         * @param {string} [caller='_whoWins'] - Optional string to identify the caller of the
+         *     method.
          * @returns {Object} - @calls see this._result
          * @complexity: 60%
          */
         const __whoWins = ( index,
-                            debug, level ) => {
+                            debug, level,
+                            caller = '__whoWins') =>
+        {
             // Call checkWinner and assign result
+            let cell = this._grid[index]
             const validmove = true // __whoWins is always valid
-            const winCheck = this.checkWinner('whoWins|Select');
+            const winCheck = this.checkWinner(false, 0,
+                                              ' __whoWins > checkWinner = winCheck');
+
+            debug === true && this.logger('4.6', '❓🏁', caller, this.writer, 'log', false,
+                                          `Enter: Index${index} | Next/Win: ${winCheck}`);
+
+            const ___processResult = (n, cell, action,
+                                      message, nextOrEnd,
+                                      outcome, valid, debug = false,
+                                      caller=`___processResult: `,
+                                      conculsion='' ) => {
+                // End Game Result
+                const result = this._result(cell, action, message,
+                                            nextOrEnd, valid, outcome, conculsion);
+                // Log the result object
+                if (debug) {
+                    const logText = `${message}: ✅🏁: Cell ID: %s Click: %s, ${action} %s`;
+                    this.logger(`4.6.${n}.A`, '✅🏁', caller, this.writer, 'log', false,
+                                `${logText}`, index, `Current: ${this.CLICK}`,
+                                `✅ Valid OF Cell ${this.CELL}`, winCheck)
+                    this.logger(`4.6.${n}.A.1: State`, '✅🏁', caller, this.writer, 'table', true,
+                                this)
+                    this.logger(`4.6.${n}.A.2: Return`, '✅🏁', caller, this.writer, 'table', true,
+                                result)
+                }
+                return result;
+            };
+
             // on every valid move, check fgr winner or draw (draw 🚧 @todo implement draw on check
             if (winCheck === GameLogic.IN_PLAY) { // False, default state for game
-                this._console('♻️isWinner: ❌', debug, level,
-                              index, this.CELL, winCheck) // jshint ignore:line
-                // Next Turn Conditionals
-                const action = 'NextTurn'
-                const playmsg = '♻️Game in Play';
-                const nextround = false
-                const outcome = this.VALID_MOVE
-                // Returns the game result for UI state object/UI Data
-                return this._result(this._grid[index],  // i.e. {string|null}
-                                    action,     // i.e. {string}
-                                    playmsg,  // i.e. {string}
-                                    nextround,  // i.e. {boolean}
-                                    validmove,  // i.e. {boolean}
-                                    outcome)    // i.e. {number}
+                return ___processResult(1, cell, 'Next-Turn',
+                                        '♻️Game in Play', false,
+                                        2,validmove,  debug,
+                                        `Result: Next` )
+            }
+            else if (winCheck === GameLogic.HAS_DRAW) {
+                // Draw Move/Outcome
+                return ___processResult(2,cell, 'Draw-End',
+                                        '🚧 Draw 🚧', true,
+                                        3,validmove,  debug,
+                                        `Result: Draw`)
 
             } else {
                 // Winning Move/Selection
-                this._console('❤️isWinner: ✅', debug, level,
-                              index, this.CELL, winCheck) // jshint ignore:line
-                const gameend = true
-                const action = '❤️GameOver'
-                const winmsg = wincheck === GameLogic.P1 ? 'Player 1 Wins' :
-                    'Player 2 Wins' ;
-                const outcome = wincheck === GameLogic.P1 ? this.PLAYER1 : this.PLAYER2;
                 // Returns the game result for UI state object/UI Data
-                return this._result(this._grid[index],  // i.e. {string|null}
-                                    action,     // i.e. {string}
-                                    winmsg,   // i.e. {string}
-                                    gameend,    // i.e. {boolean}
-                                    validmove,  // i.e. {boolean}
-                                    outcome,    // i.e. {number}
-                                    wincheck)   // i.e. {string}
-
+                return  ___processResult(3,cell, 'Win-End',
+                                         winmsg, true,
+                                         outcome,validmove,  debug,
+                                         `Result: Win`, wincheck)
             }
         }
 
         // noinspection NestedFunctionCallJS
-        return Alpine.reactive(this._hasValidMove(index, __whoWins, debug, level));
+        return Alpine.reactive(this._hasValidMove(index, __whoWins,
+                                                  debug, level));
         // Check if move is / has Valid Move, and if value move, return the updated token from grid
+        //return this._hasValidMove(index, __whoWins,debug, level )
     }
 
     // A helper method to manually tell Alpine.js to update the UI
@@ -1405,7 +1464,8 @@ class GameLogic {
         // noinspection AnonymousFunctionJS
         Alpine.nextTick(() => {
             // add the operations you want to perform after the DOM update here
-            console.log(`Signature of this log guarantees that the DOM has been updated with _click value of ${property}`);
+            console.log(`Signature of this log guarantees that the DOM has
+            been updated with _click value of ${property}`);
         });
     }
 
@@ -1457,59 +1517,119 @@ class GameLogic {
             streak.replace(searchRegExp, GameLogic.REG_SEARCH_FILTER)
         // Logs to the console the algorithm/regex for
         // inspecting the WIN_COMBINATION individual sequence.
-        this._console(
-            'checkSequenceWin: ✅',
-            debug,
-            level,
-            streak,
-            sequence,
-            sequenceRegExp,
-            searchRegExp,
-            filteredTurns
-        )
+        this.logger('5.0.1.A', '⛔', caller, this.writer, 'log', group,
+                    `checkSequenceWin: ✅, streak: ${streak}, sequence: ${sequence},
+                     Filtered by ${filteredTurns}`)
         // Returns true if the filtered string contains a sequence of three consecutive characters
         return sequenceRegExp.test(filteredTurns)
+    }
+
+    /**
+     * Game STATE|API: Checks if the specified player is a valid player for checking end game
+     * state.
+     * @function _declareWinner
+     * @access private
+     * @private
+     * @param {string}  isValidPlayer - The player to be checked. Possible values are 'P1' or 'P2'.
+     * @param {boolean} [group=false] Show/hide collapsable groups in console
+     * @param {string} [caller='_declareWinner'] - The name of the caller function.
+     * @param {boolean} [debug=true] - Optional Flag to enable debug mode.
+     * @return {string|boolean|undefined} - The valid player value if the specified player is valid ('P1'
+     *     or 'P2'), otherwise undefined.
+     */
+    _declareWinner(isValidPlayer, group = false,
+                   caller = '_declareWinner', debug = true){
+        if (typeof isValidPlayer === 'string') {  // i.e. {string}: P1 || P2 (not commented out code)
+            if (isValidPlayer === GameLogic.P1 || isValidPlayer === GameLogic.P2) {
+                (debug === true) && this.logger('5.2.1', '👨🏼🏁✅', caller, this.writer, 'log', group,
+                                                `Declare Winner: ${isValidPlayer}`)
+                return isValidPlayer
+            }// GameLogic.P1 || GameLogic.P2
+            else {
+                (debug === true) && this.logger('5.2.2', '🟰🏁✅', caller, this.writer, 'log', group,
+                                                `Drawn Game: ${isValidPlayer}`)
+                return GameLogic.HAS_DRAW
+            }  // if ValidPlayer is ANY OTHER STRING
+        } else if (typeof isValidPlayer === 'boolean' && isValidPlayer === GameLogic.IN_PLAY ) {
+            (debug === true) && this.logger('5.2.3', '♻️🔁✅', caller, this.writer, 'log', group,
+                                            `Next Turn: ${isValidPlayer}`)
+            return GameLogic.IN_PLAY
+            // i.e. {boolean}: IN_PLAY: false
+        } else {
+            // Log an error to console in debug mode
+            (debug === true) && this.logger('5.2.4', '⚠️', caller, this.writer, 'error', group,
+                                            `Illegal Type : ${isValidPlayer}`)
+        }
     }
 
     //
     /**
      * CHECKWINNER(...) HELPER: Checks if any player wins based on the given turns and sequence.
-     * @function __checkPlayerWin
-     * @param {string[]} currentMove - The array of turns by all players.
+     * @function __checkOutcome
+     * @param {string[]} currentMoves - The array of played turns per player/{_x|_o}Turn.
      * @param {string[]} currentPlayers - The array of Player Token/Players.
      * @param {string} sequence - The winning sequence to check against.
      * @param {boolean} [debug=this.DEVMODE] - Optional Flag to enable debug mode.
      * @param {number} [level=this.LOGLEVEL] - Optional level of logging to console.
+     * @param {string} [caller='_checkOutcome'] - Optional string to identify the caller of method
+     * @param group
      * @returns {boolean|string} [GameLogic.IN_PLAY || GameLogic.P1 || GameLogic.P2 ]
      *   - Returns the winning player's string token [GameLogic.P1 || GameLogic.P2]
-     *   - False if win state is reached.
+     *   - Returns the draw string token [GameLogic.DRAWN]
+     *   - Returns GameLogic.IN_PLAY
      */
 
-    _checkPlayerWin (currentMove, currentPlayers, sequence,
-                     debug = this.DEVMODE, level = this.LOGLEVEL)
+    // noinspection FunctionWithInconsistentReturnsJS
+    _checkOutcome (currentMoves, currentPlayers, sequence,
+                   debug = false, level = this.LOGLEVEL,
+                   caller = '_checkOutcome', group = false,)
     {
+        // 5.1.1
+        const __logOutcome = (step, emoji, message, possible) => {
+            (debug === true) && this.logger(`${step}`, emoji, `${caller}:LOG+Declare`, this.writer,
+                                            'log', group, message, this.IFWON, this.IFDRAWN, this);
+            return this._declareWinner(possible);
+        };
+        // 5.1.2
+        const P1 = 0; // 1st in Array: 1st player
+        const P2 = 1; // 2nd in Array: 2nd player
+        const totalTurns = currentMoves[P1].length + currentMoves[P2].length;
         // Loops over current moves, refs the who, then checks if they have win sequence,
-        // and assigns the current player. to the game end state property
-        for(let who = 0; who < currentMove.length; who++){
-            if (this._checkSequenceWin(currentMove[who], sequence)) {
-                this.IFWON = currentPlayers[who]
-                this._console(
-                    `checkPlayerWin: ✅: Player: ${this.IFWON}`,
-                    debug,
-                    level,
-                    currentMove[who],
-                    currentPlayers[who],
-                    sequence,
-                    this.IFWON
-                )
-                // Checks if correct type of result {string} and permitted players {string}
-                // else false if invalid. Double effort here, just overkill type sanity check.
-                return this._declareWinner(this.IFWON) === this.IFWON ?
-                    this.IFWON :
-                    GameLogic.IN_PLAY;
+        // ELSE ASSUMES _checkSeqquenceWin === false for following and that only checks
+        //      outcome for on turns possible
+        // 5.1.3
+        let outcome = GameLogic.IN_PLAY // Default before any end state
+        for (let play = 0; play < currentMoves.length; play++) {
+            // 5.1.3 => 5.2 : true
+            if ( this._checkSequenceWin(currentMoves[play], sequence) ) {
+                //5.1.3.1.A assumes win sequence for current player
+                let winner = currentPlayers[play] // Single call to array: check on each
+                let played = currentMoves[play]   // Single call to array: check on each
+                outcome = __logOutcome('5.1.3.1.A', '🏁✅',
+                                      `For ${winner}: Play Moves${played} v ${sequence}`,
+                                      winner);
+                // outcome = this._declareWinner(currentPlayers[play]); @todo REMOVE CODE
+            }
+            // 5.1.3.2 => 5.2 : false
+            else if ( !this._checkSequenceWin(currentMoves[play], sequence) ) {
+                // Assumes no win sequence and that this is for === MAX turns
+                if (totalTurns >= GameLogic.MAX_TURN) {
+                    //5.1.3.2.A (<= 5.1.1)
+                    outcome = __logOutcome('5.1.3.2.A', '🏁🟰',
+                                           `Game Drawn after maximum turns reached`,
+                                           this.IFDRAWN);
+                    // outcome = this._declareWinner(this.IFDRAWN); @todo REMOVE CODE
+                }
+                // Assumes no win sequence and that this is for NEXT turn
+                else if (totalTurns < GameLogic.MAX_TURN) {
+                    //5.1.3.2.B (<= 5.1.1) Not Outcome before MAX turns
+                    outcome = __logOutcome('5.1.3.2.B', '♻️🔁',
+                                         `Next Turn before maximum turns reached`, this.IFWON);
+                    //outcome = this._declareWinner(this.IFWON); @todo REMOVE CODE
+                }
             }
         }
-        return GameLogic.IN_PLAY; // {boolean} [false] Return false if no win state is reached
+        return outcome
     }
 
     // =========================================== ================================ ===============
@@ -1538,6 +1658,7 @@ class GameLogic {
      * @internal @function: __checkPlayerWin
      * @param {boolean} [debug=this.DEVMODE] - Optional Flag to enable debug mode.
      * @param {number} [level=this.LOGLEVEL] - Optional level of logging to console.
+     * @param {boolean} [group=false] Show/hide collapsable groups in console
      * @param {string} [caller='checkWinner'] - Optional string to identify the caller of the
      *     method.
      * @returns {boolean|string|void} Returns false or the player string: P1, P2 (as truthy
@@ -1552,155 +1673,62 @@ class GameLogic {
      * The method returns the value of the won variable, indicating the winner of the game.
      * @complexity 53%
      * */
-
-    checkWinner(debug = true,
-                level = 1,
+    // HAPPY ✅
+    checkWinner(debug = false,
+                level = this.LOGLEVEL,
+                group = false,
                 caller = 'checkWinner API: ' )
     {
+        // 5.0.1  a) Manages the (end) game state & b) set the class properties to the propriate, for each WIN CHECK
         // Enabled only for developer mode
         if (debug) {
-            console.info('Developer Enabled\n Method: %s, Debug: %s, Level: %s',
-                         caller, debug, level)
+            this.logger('5.0.1', '🏁🏁', caller, this.writer, 'info', group, `Developer Enabled\n `)
             // Exits function if parameters are not valid types for debug and level,
             // even with optional values
             if (typeof debug !== 'boolean' || typeof level !== 'number') {
-                console.warn('checkWinner API: Invalid type: debug, level');
+                this.logger('5.0.1.A', '⛔', caller, this.writer, 'error', group,
+                            `checkWinner API: Invalid type: debug, level`);
                 return;
             }
         }
-        // Type cast to Strong from GameLogic.TURN_RESET (Is a string ty)
-        /**
-         * Returns an array containing the number of moves made by each player.
-         * @function _whosMoves
-         * @returns {string[]} An array of two strings representing the number of moves made by
-         *     each player.
-         */
-        const __whosMoves = () => { return [this._xTurns,
-            this._oTurns];}
 
-        let moves = __whosMoves();
-        let players = [GameLogic.P1, GameLogic.P2];
+        let moves = [this._xTurns, this._oTurns]  // Stores of the current played moves as string sequnece
+        let players = [GameLogic.P1, GameLogic.P2]; // Possible players
 
-
-        // Loop over the list of winning sequences and check if either player has won
+        // 5.0.2 Loop over the list of winning sequences and check if either player has won
         for (const sequence of GameLogic.WIN_COMBINATIONS) {
-            let playerWin = this._checkPlayerWin(moves,
-                                                 players,
-                                                 sequence);
-
-            // If a player has won, return
-            if (playerWin){
-                return playerWin;
+            // 5.1 _checkPlayerWin
+            let outcome = this._checkOutcome(moves, players, sequence);
+            // If a player has won, return who
+            if (outcome === (GameLogic.P1 || GameLogic.P2)) {
+                this.IFWON = outcome;
+                this.IFDRAWN = GameLogic.NO_DRAW;
+                this.logger('5.0.2.A', '🔁❓', caller, this.writer, 'info', group,
+                            `checkWinner: ✅: Game WON: ${this.IFWON}, Winnning Sequence ${sequence}`,
+                            this.IFWON, this.IFDRAWN, this );
+                return outcome;
             }
-
-            // If no player has won yet i.e. (playerWin ==== false)
-            this.IFWON = GameLogic.IN_PLAY // Game in play
-            // Log to console.
-            this._console(
-                `checkWinner: ✅: Game In Play: ${this.IFWON},`
-                + `Current Sequence ${sequence}`,
-                debug,
-                level,
-                sequence,
-                this.IFWON
-            )
+            /// If Drawn return drawn outcome
+            if (outcome === GameLogic.HAS_DRAW ) {
+                this.IFWON = outcome;
+                this.IFDRAWN = outcome;
+                this.logger('5.0.2.B', '🔁❓', caller, this.writer, 'info', group,
+                            `checkWinner: ✅: Game Drawn: ${this.IFWON}, Last Sequence ${sequence}`,
+                            this.IFWON, this.IFDRAWN, this );
+                return outcome;
+            }
+            // Next Turn
+            if (outcome === GameLogic.IN_PLAY) {
+                // If no player has won yet i.e. (playerWin ==== false)
+                this.IFWON = GameLogic.IN_PLAY;
+                this.IFDRAWN = GameLogic.NO_DRAW;
+                this.logger('5.0.2.C', '🔁❓', caller, this.writer, 'info', group,
+                            `checkWinner: ✅: Game In Play: ${this.IFWON}, Current Sequence ${sequence}`,
+                            this.IFWON, this.IFDRAWN, this );
+                return outcome;
+            }
         }
-        this._console('Next Turn', debug, 1)
-
-        return this.IFWON
-        // Game in play or P1 or P2 wins (should be only game in play at this point)
     }
-
-    /**
-     * Checks if there is a winning play in the game.
-     * @design
-     *   - Uses internal functions for complex conditional boolean logic.
-     *   - Use internal function to be DRY and improve maintainability/readability using named
-     *     functions/intent.
-     *   - Uses default/optional parameter values for function variable defaults.
-     *   - Use class properties to set the IFWON state.
-     *   - Logs to console the function parameters and return values for debugging purposes when
-     *     debug mode is enabled.
-     * @function checkWinningPlay
-     * @public
-     * @access public
-     * @param {boolean} [debug=this.DEVMODE] - Optional Flag to enable debug mode.
-     * @param {number} [level=this.LOGLEVEL] - Optional level of logging to console.
-     * @return {string} - The current state of the game.
-     *   - Possible values are GameLogic.P1 (X), GameLogic.P2 (Y), GameLogic.IN_PLAY (false).
-     * @complexity 46%
-     */
-    // checkWinningPlay(debug = this.DEVMODE,
-    //                  level = this.LOGLEVEL) {
-    //     /**
-    //      * Assigns the winner of a game.
-    //      * @private
-    //      * @function _assignWinner
-    //      * @param {string} current_moves - The number of turns taken in the game.
-    //      * @param {string} sequence - The sequence of moves made in the game.
-    //      * @param {string} winner - The winner of the game.
-    //      * @param {boolean} debug - Indicates whether debug mode is enabled.
-    //      * @param {number} level - The level of debugging (0 for basic, 1 for detailed).
-    //      * @returns {boolean} - Returns true if the winner was assigned, false otherwise.
-    //      */
-    //     const _assignWinner = (current_moves, sequence, winner,
-    //                            debug, level) => {
-    //         if (this._checkSequenceWin(current_moves, sequence)) {
-    //             this.IFWON = winner
-    //             this._console(
-    //                 `checkWinner: ✅: Player: ${this.IFWON}`,
-    //                 debug,
-    //                 level,
-    //                 current_moves,
-    //                 sequence,
-    //                 this.IFWON
-    //             )
-    //             return true
-    //         }
-    //         return false
-    //     }
-    //
-    //     /**
-    //      * Sets IFWON to current and logs the game status, for current game round.
-    //      * @private
-    //      * @function _defaultRound
-    //      * @param {Array} sequence - The game sequence.
-    //      * @param {boolean} current - The current game status.
-    //      * @param {boolean} debug - Whether to enable debug logging.
-    //      * @param {number} level - The logging level.
-    //      * @returns {void}
-    //      */
-    //     const _defaultRound = (sequence, current,
-    //                            debug, level) => {
-    //         this.IFWON = current
-    //         this._console(
-    //             `checkWinner: ✅: Game In Play: ${this.IFWON}`,
-    //             debug,
-    //             level,
-    //             sequence,
-    //             current
-    //         )
-    //     }
-    //
-    //     // Loop over the sequence of winning combinations and
-    //     // assign the winner according to the winning sequence.
-    //     for (const sequence of this.WIN_SEQUENCE) {
-    //         if (_assignWinner(this._xTurns, sequence,
-    //                           GameLogic.P1, debug, level)) {
-    //             break // Break loop only is PLayer 1 wins, and assign to IFWON
-    //         } else if (_assignWinner(this._oTurns, sequence,
-    //                                  GameLogic.P2, debug, level)) {
-    //             break // Break loop only is PLayer 2 wins, and assign to IFWON
-    //         } else {
-    //             _defaultRound(sequence, GameLogic.IN_PLAY,
-    //                           debug, level)
-    //             // i.e. 'continue' is not unnecessary at last statement in loop (not code)
-    //         } // Default state, no winner
-    //
-    //         // No else part needed as IFWON default state is already set
-    //     }
-    //     return this.IFWON // Returns the game states: False or P1 or P2 wins.
-    // }
 
     // ======================== ================================ ==================================
     // ========================   PUBLIC FUNCTIONS: RESET()      ==================================
@@ -1717,6 +1745,9 @@ class GameLogic {
      * @access public
      * @param {boolean} [debug=this.DEVMODE] - Optional Flag to enable debug mode.
      * @param {number} [level=this.LOGLEVEL] - Optional level of logging to console.
+     * @param {boolean} [group=false] Show/hide collapsable groups in console
+     * @param {string} [caller='reset'] - Optional string to identify the caller of the
+     *     method.
      * @return {void}
      * @desc that resets the game state to its initial values.
      * - Resets turns to a predefined value
@@ -1724,12 +1755,14 @@ class GameLogic {
      * - Reset grid to an empty array.
      * - Reset _xTurns and _oTurns to empty strings.
      * */
-    reset(debug = this.DEVMODE, level = this.LOGLEVEL) {
+    reset(debug = this.DEVMODE, level = this.LOGLEVEL,
+          group = false, caller='reset') {
         // Enabled only for developer mode
         if (debug) {
             console.info('Developer Enabled\n')
             if (typeof debug !== 'boolean' || typeof level !== 'number') {
-                console.warn('reset API: Invalid type: debug, level')
+                this.logger('6.0', '🏁', caller, this.writer,'info', group,
+                            `reset API: Invalid type: debug, level`)
                 return
             }
         }
@@ -1742,24 +1775,15 @@ class GameLogic {
         this._currentcell = null
         this._currentPlayer = 'X'
         // noinspection AnonymousFunctionJS,NestedFunctionCallJS
-        this._grid = Array.apply(null,Array(9)).map(function (v,i) {return null})
+        this._grid = Array.apply(null,Array(9))
+        .map(function (v,i) {return null})
         this._draw = false// reset draw state to false
         this._won = false // reset game state to false
         this._turns = 0  // reset turn count
         this._xTurns = '' // reset move sequences for xTurns
         this._oTurns = '' // reset move sequences for oTurns
         // Logs to the console for the instance  variables on reset class instance.
-        this._console(
-            'Reset:✅',
-            debug,
-            level,
-            this._currentcell,
-            this._grid, // Initial/end grid properties.
-            this._draw,
-            this._won, // Initial/end game state properties.
-            this._turns,
-            this._xTurns,
-            this._oTurns // Initial/end turn properties.
-        )
+        this.logger('6.0.1', '🛟', caller, this.writer, 'info', group, `Reset:✅`, this)
+        this.logger('6.0.2', '🛟', caller, this.writer, 'table', true, `Reset:Data🗄️`, this)
     }
 }

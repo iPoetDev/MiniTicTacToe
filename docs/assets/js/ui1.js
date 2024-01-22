@@ -27,6 +27,7 @@ function gridButtonOnClick(gridbuttons, handler, ident,
     const _NORESET = false
     /** @type {object} Empty local object **/
     let outcome = {}
+    let final = {}
     // noinspection AnonymousFunctionJS
     /**
      * Loop over the grid buttons and add EventListener to each, and filter per ident.
@@ -52,9 +53,9 @@ function gridButtonOnClick(gridbuttons, handler, ident,
                 // Do currentMove on game logic and update the result object for each click
                 outcome = currentMove(index, board, result);
                 // Update Grid UI on each click
-                updateGridUI(index, startgrid, board, true);
+                updateGridUI(index, startgrid, board, false);
                 // Update the round data each click, i.e. if GameLogic is alias for backend
-                updateRoundData(outcome, _NORESET, true)
+                updateRoundData(outcome, _NORESET, false)
                 // Watch/observe state/data changes for the outcome of the game's underlying data
                 // as a positive side effect of each data update action
                 watchForOutcome() // @todo: once result data declares a winner, update the UI
@@ -66,6 +67,12 @@ function gridButtonOnClick(gridbuttons, handler, ident,
     return outcome
 }
 
+function displayOutcome(index, outcome, ident, reset = false) {
+    const outcomeDiv = document.getElementById(ident);
+    if(outcomeDiv != null && !reset) {
+        outcomeDiv.innerText = `The winner of round ${index} is: ${outcome.final}`;
+    }
+}
 
 /**
  * Reset button click event handler.
@@ -110,10 +117,22 @@ function resetButtonOnClick (resetButton, handler, ident,
                                             board);
             // Reset Current Round Result Data
             updateRoundData(result, _RESET, show)
+            window.hasFinal = null
         } else {
             show && console.warn('No grid button found with id: ' + resetButton.id)
         }
     });
+}
+
+function initUI() {
+    /** @type {String} **/
+    const outcome = 'outcome'
+    const reset = true
+    /** @type {HTMLElement} **/
+    const outcomeDiv = document.getElementById(outcome);
+    if(outcomeDiv != null) {
+        outcomeDiv.innerText = 'No Result';
+    }
 }
 
 /**

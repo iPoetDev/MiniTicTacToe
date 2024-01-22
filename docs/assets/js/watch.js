@@ -95,58 +95,48 @@ function watchData(dataArray, dataHandler)
  * Watches for updates of game rounds and invokes a callback function when an update occurs.
  * @function watchRounds Refactored for testing and reuse
  * @param {function} callback - The callback function to be invoked when a game round is updated.
+ * @param {string} [action='add'] - The type of action to be performed ('add', 'remove').
  * @return {void}
  */
-function watchRounds(callback)
+function watchRounds(callback, action = 'add')
 {
     // noinspection AnonymousFunctionJS
-    document.addEventListener('gameRoundUpdated',
-                                function(e)
-    {
+    const handler = function(e) {
         callback(e);
-    });
+    };
+    if (action === 'add') {
+        document.addEventListener('gameRoundUpdated', handler, { once: true });
+    } else if (action === 'remove') {
+        document.removeEventListener('gameRoundUpdated', handler);
+    }
 }
 
 /**
  * Watches the outcome of each round, logs the result and updates the UI.
  * @function watchForOutcome
- * @param {string} [logType='info'] - The type of logging to be used ('info', 'table', 'trace').
- * @returns {void}
+ * @param {string} [logType='info'] - The type of logging to be used ('info', 'table', 'trace')
+ * @param {boolean} [debug=true].- Optional debug flag
+ * @returns {null|object}
  * @complexity 46%|low
  */
-function watchForOutcome(logType = 'info')
-{
-    // noinspection AnonymousFunctionJS
-    /**
-      * @function watchRounds
-      * @callback {function(e)}
-      * @param {object} e - Event callback for gameRoundUpdated watcher/dispatcher
-      * @event gameRoundUpdated
-      * @return {void} except for console output.
-      * @complexity 46%|low
-      */
-    watchRounds(function(e) {
-        /** @type {number} outcomeZero adjusts the roundData index **/
-        const outcomeZero = 1
-        /** @type {object} outcome alias for roundData array **/
+function watchForOutcome(logType = 'table', debug = false) {
+    /** @type {boolean} show for DRY short circuit flags for logging in DevMode **/
+    const show = (debug === true)
+    let callback = function(e) {
         let outcome = e.detail;
-        /** @type {number} roundData index **/
-        let index = outcome.index + outcomeZero;
-        /** @type {object} update/refreshed result proxy object **/
+        let index = Number(outcome.index);
+        index += 1
         let isFinal = outcome.newOutcome;
 
-        // Log the outcome of each round
-        if (logType === ('table' || 'trace')) {
-            console[logType](isFinal);
-        } else {
-            console[logType](`Element at index: ${index} changed to:`,
-                             isFinal);
-        }
         // Declare the Winner to the UI
-        if (isFinal && isFinal.winner) {
-            console.log(`The winner of round ${index} is:
-                        ${isFinal.winner}`);
+        if (isFinal && isFinal.final !== 'NONE') {
+            show && console.log(`The winner of round ${index} is: ${isFinal.final}`);
+            console.log('--------------------');
+            show && console[logType](isFinal);
+            window.hasFinal = {...isFinal}
+            displayOutcome(index, isFinal, 'outcome');
+            watchRounds(callback, 'remove');  // here we remove the event listener
         }
-        // @todo: Update the UI directly or indirectly
-    });
+    };
+    watchRounds(callback, 'add');  // here we add the event listener
 }
