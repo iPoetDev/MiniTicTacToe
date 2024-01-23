@@ -1,5 +1,5 @@
 // eslint-disable-next-line vue/html-self-closing
-/* jshint esversion: 6 */
+/* jshint esversion: 9 */
 
 // noinspection AnonymousFunctionJS,InnerHTMLJS
 
@@ -17,7 +17,7 @@
  * @done - no more refactoring
  * @complexity: 26%|low
  */
-function gridButtonOnClick(gridbuttons, handler, ident,
+function gridButtonOnClick(gridbuttons, handler, ident, // jshint ignore:line
                             startgrid, board, result,
                             debug = false)
 {
@@ -27,7 +27,6 @@ function gridButtonOnClick(gridbuttons, handler, ident,
     const _NORESET = false
     /** @type {object} Empty local object **/
     let outcome = {}
-    let final = {}
     // noinspection AnonymousFunctionJS
     /**
      * Loop over the grid buttons and add EventListener to each, and filter per ident.
@@ -58,18 +57,29 @@ function gridButtonOnClick(gridbuttons, handler, ident,
                 updateRoundData(outcome, _NORESET, false)
                 // Watch/observe state/data changes for the outcome of the game's underlying data
                 // as a positive side effect of each data update action
-                watchForOutcome() // @todo: once result data declares a winner, update the UI
+                watchForOutcome() // jshint ignore:line
             });
         } else {
-            show && console.warn('No grid button found with id: ' + button.id)
+            show && console.warn('No grid button found with id: ' + button.id) // jshint ignore:line
         }
     });
     return outcome
 }
 
-function displayOutcome(index, outcome, ident, reset = false) {
+/**
+ * Displays the outcome of a round.
+ *
+ * @param {number} index - The round index.
+ * @param {object} outcome - The outcome of the round.
+ * @param {string} ident - The identifier of the HTML element to display the outcome.
+ * @param {boolean} [reset=false] - Determines if the outcome should be reset.
+ * @return {void}
+ * @see watchForOutcome
+ * @see watch.js
+ */
+function displayOutcome(index, outcome, ident, reset = false) { // jshint ignore:line
     const outcomeDiv = document.getElementById(ident);
-    if(outcomeDiv != null && !reset) {
+    if(outcomeDiv !== null && !reset) {
         outcomeDiv.innerText = `The winner of round ${index} is: ${outcome.final}`;
     }
 }
@@ -86,7 +96,7 @@ function displayOutcome(index, outcome, ident, reset = false) {
  * @param {boolean} [debug=false] - Optional, indicates whether to enable debug mode.
  * @return {void} except for console statements.
  */
-function resetButtonOnClick (resetButton, handler, ident,
+function resetButtonOnClick (resetButton, handler, ident, // jshint ignore:line
                             startgrid, board, result,
                             debug = false)
 {
@@ -101,7 +111,7 @@ function resetButtonOnClick (resetButton, handler, ident,
     /** @type {string} cellIdent PROPERTY actually resetting the grid cells **/
     const cellIdent = 'cell-id-'
     // noinspection AnonymousFunctionJS
-    resetButton.addEventListener(handler, function(event) {
+    resetButton.addEventListener(handler, function(event) { // jshint ignore:line
         if (resetButton.id.includes(ident)) {
             event.preventDefault(); //"prevent propagation until clicks"
             //Reset Game Instance OBJECT
@@ -114,23 +124,37 @@ function resetButtonOnClick (resetButton, handler, ident,
                                             `Reset Button Click by Button ${ident}`,
                                             logType,
                                             `Game Reset UI Cells ${cellIdent}`,
-                                            board);
+                                            board); // jshint ignore:line
             // Reset Current Round Result Data
             updateRoundData(result, _RESET, show)
             window.hasFinal = null
         } else {
-            show && console.warn('No grid button found with id: ' + resetButton.id)
+            show && console.warn('No grid button found with id: ' + resetButton.id) // jshint ignore:line
         }
     });
 }
 
-function initUI() {
-    /** @type {String} **/
+/**
+ * Initializes the user interface.
+ * This method is responsible for setting up the initial state of the UI.
+ * @function initUI
+ * @see oninitload.js
+ */
+function initUI(){ // jshint ignore:line
+    /**
+     * Represents the outcome variable.
+     *
+     * @type {string}
+     */
     const outcome = 'outcome'
-    const reset = true
-    /** @type {HTMLElement} **/
+    /**
+     * Get the element with the specified ID and assign it to the variable outcomeDiv.
+     *
+     * @param {string} outcome - The ID of the element to retrieve.
+     * @returns {Element|null} The element with the specified ID, or null if no element is found.
+     */
     const outcomeDiv = document.getElementById(outcome);
-    if(outcomeDiv != null) {
+    if(outcomeDiv !== null) {
         outcomeDiv.innerText = 'No Result';
     }
 }
@@ -168,7 +192,7 @@ function updateRoundData(result, reset = false,  debug = false)
                                     `updateRoundData`,
                                     logType,
                                     `Windows GameRound roundData`,
-                                    window.GameRound.roundData);
+                                    window.GameRound.roundData); // jshint ignore:line
 }
 
 /**
@@ -179,7 +203,7 @@ function updateRoundData(result, reset = false,  debug = false)
  * @return {HTMLElement[]} - An array of HTMLElements containing the button elements found.
  * @complexity: 20%|low
  */
-function findButtons(ident, length)
+function findButtons(ident, length)// jshint ignore:line
 {
     /** @type {number} **/
     const _START = 0
@@ -187,7 +211,7 @@ function findButtons(ident, length)
     const _EMPTY = null
     /** @type {HTMLElement[]} Collect of Buttons  **/
     let cell_buttons = [];
-    for(let cell = _START; cell < length; cell++) {
+    for(let cell = _START; cell < length; cell += 1) {
         /** @type {HTMLElement}  Current button **/
         let cell_button = document.getElementById(ident + cell);
         if(cell_button !== _EMPTY) {
@@ -214,13 +238,13 @@ function resetGrid(ident, gridlength, debug = false)
     /** @type {HTMLElement[]} **/
     let spans = findCells(ident, gridlength);
     if (spans.length === gridlength) {
-        for(let i= _START; i < spans.length; i++) {
+        for(let i= _START; i < spans.length; i += 1) {
             spans[i].innerText = _RESET;  // reset span content
         }
         debug && window.myLoggerWriteLog('Reset','🔍', 'resetCells',
-                                'info', 'Grid UI Reset');
+                                'info', 'Grid UI Reset'); // jshint ignore:line
     } else {
-        debug && onsole.warn('UI grid is not as per game grid: ' + gridlength)
+        debug && console.warn('UI grid is not as per game grid: ' + gridlength) // jshint ignore:line
     }
 }
 
@@ -238,7 +262,7 @@ function findCells(ident, length)
     const _EMPTY = null
     // Find all spans
     let spans = [];
-    for (let cell = _START; cell < length;cell++) {
+    for (let cell = _START; cell < length; cell += 1) {
         let span = document.getElementById(ident + cell);
         if (span !== _EMPTY) {
             spans.push(span);
@@ -269,7 +293,7 @@ function currentMove(index, board, outcome,
     // When enabled, logs to console in table format
     show && window.myLoggerWriteLog('Current Move', '🔍', 'currentMove',
                                     logType,
-                                    'Current Move', newOutcome);
+                                    'Current Move', newOutcome); // jshint ignore:line
     return newOutcome;
 }
 
@@ -286,58 +310,44 @@ function currentMove(index, board, outcome,
  * @return {void}
  * @complexity: 93%|medium
  */
-function updateGridUI(selected, start, board,
+function updateGridUI(selected, start, board, // jshint ignore:line
                       debug = false, level='log',
                       caller = 'updateGridUI')
 {
     // Strings: read, main, clarity, efficiency, testability
     const target = 'cell-id-'
-    const _EMPTY = null
     // DRY assignments: read, main, clarity, efficiency
     const show = (debug === true)
     const haslog = (window.myLoggerWriteLog !== undefined)
     // GamePlay
     const playedToken = board._grid[selected]
     const typeOfToken = typeof playedToken === 'string'
-    // Short circuit conditionals
-    show && console.log(playedToken);
-    show && console.table(board._grid);
     // UI elements, refs
     const cell = document.getElementById(target + selected);
     const cellNotEmpty = !cell.innerText.trim()
     const parentDiv = cell.parentNode; // get the parent div
-    // Compound Boolean Checks
-    const isFreeToPlay = start[selected] === _EMPTY && playedToken;
     const mostRecentMove = typeOfToken && playedToken;
     const hasBeenPlayed = mostRecentMove && typeof cell.innerText === 'string';
     // Logic Flows: (Checks UI and data structure is move is valid)
     // @todo improvements on the logic as PlayedToken is already string in this method, never {null}
     if (mostRecentMove && cellNotEmpty) {
         cell.innerText = playedToken;
-        show && haslog && window.myLoggerWriteLog(`Grid Cell ${selected}`, '🔍',
-                                                  caller, level,
-                                                  `Cell ${selected} is free to play `,
-                                                  cell.innerText); // Log the UI output
-    } //
+    }
     else if (hasBeenPlayed && cellNotEmpty) {
         cell.innerText = playedToken;
-        show && haslog && window.myLoggerWriteLog(`Grid Cell ${selected}`, '🔍',
-                                                  caller, level,
-                                                  `Cell ${selected} is not free to play `,
-                                                  cell.innerText); // Log the UI output
     } else {
         show && haslog && window.myLoggerWriteLog(`Grid Cell ${selected}`, '🔍',
                                                   caller, level,
                                                   `Cell ${selected} is not free to play` +
                                                            ' Cell has not been played',
-                                                  cell.innerText); // Log the UI ouTput
+                                                  cell.innerText); // jshint ignore:line
     }
     // store parent div innerHTML, clear it, then set it back: this will cause a re-render
     renderElement(parentDiv);
     // Log the state of the game board
     show && haslog && window.myLoggerWriteLog('UI Update','🔍',
                                               caller, 'table',
-                                              'log per cell', board);
+                                              'log per cell', board); // jshint ignore:line
 }
 
 // noinspection InnerHTMLJS
@@ -363,7 +373,7 @@ function renderElement(el)
  * @return {void}
  * @complexity: ??%|low
  */
-function clickLogger(obj)
+function clickLogger(obj)// jshint ignore:line
 {
     window.myLoggerWriteLog('Click','🔍', 'clickLogger', 'table',
                             'Current', obj);

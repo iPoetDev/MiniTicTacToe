@@ -23,9 +23,10 @@
  * @name dataHandler - object that defines the custom behavior of the proxy.
  * @type {Object}
  * @return {Object}
- * @url https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/Proxy#handler
+ *@url https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/Proxy
+ * @see oninitload.js
  */
-let dataHandler = {
+let dataHandler = { // jshint ignore:line
     /**
      * This intercepts attempts to retrieve a property on the target object
      * @function _ get trap
@@ -85,8 +86,9 @@ let dataHandler = {
  * @param dataHandler - The data handler object to be used for handling the changes.
  * @returns {*} - A proxy object that wraps the data array and uses the data handler.
  * @url https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy
+ * @see oninitload.js
  */
-function watchData(dataArray, dataHandler)
+function watchData(dataArray, dataHandler) // jshint ignore:line
 {
     return new Proxy(dataArray, dataHandler);
 }
@@ -119,10 +121,10 @@ function watchRounds(callback, action = 'add')
  * @returns {null|object}
  * @complexity 46%|low
  */
-function watchForOutcome(logType = 'table', debug = false) {
+function watchForOutcome(logType = 'table', debug = false) { // jshint ignore:line
     /** @type {boolean} show for DRY short circuit flags for logging in DevMode **/
     const show = (debug === true)
-    let callback = function(e) {
+    let callback = function(e) { // jshint ignore:line
         let outcome = e.detail;
         let index = Number(outcome.index);
         index += 1
@@ -130,11 +132,12 @@ function watchForOutcome(logType = 'table', debug = false) {
 
         // Declare the Winner to the UI
         if (isFinal && isFinal.final !== 'NONE') {
-            show && console.log(`The winner of round ${index} is: ${isFinal.final}`);
-            console.log('--------------------');
-            show && console[logType](isFinal);
-            window.hasFinal = {...isFinal}
-            displayOutcome(index, isFinal, 'outcome');
+            show && console.log(`The winner of round ${index} is: ${isFinal.final}`); // jshint ignore:line
+            console.log('--------------------'); // jshint ignore:line
+            show && console[logType](isFinal); // jshint ignore:line
+            window.hasFinal = {...isFinal} // jshint ignore:line
+            /** @see ui1.js **/
+            displayOutcome(index, isFinal, 'outcome'); // jshint ignore:line
             watchRounds(callback, 'remove');  // here we remove the event listener
         }
     };
