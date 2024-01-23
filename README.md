@@ -65,7 +65,7 @@ For specific solution and user goals, see 2.0 Solution and 4.0 User Experience s
 
 ### 1.3 App Visual 🚧
 
-![Image]("")
+![](refs/assets/img/AmIResponsive-co-uk.png)
 
 amiresponsive.co.uk/ | URI: AmIResponsive
 
@@ -646,7 +646,7 @@ Design difference between final and implemented
 - The Inter project is led by Rasmus Andersson, a Swedish maker–of–software living in San Francisco. To contribute, see github.com/rems/inter
 - Download: [Inter - Google Fonts](https://fonts.google.com/specimen/Inter)
 
-![](.README_images/Font-Inter-regular400-48px.png)
+![](refs/assets/img/Font-Inter-regular400-48px.png)
 
 
 ##### 4.3.1.4 Gochi-Hand ✅
@@ -678,7 +678,7 @@ Design difference between final and implemented
 
 #### 4.3.2.1 Palette Variations: Shades ✅
 
-![](.README_images/CoolorsPalateVariations.png)
+![](refs/assets/img/CoolorsPalateVariations.png)
 
 #### 4.3.2.2 Palette Contrast ✅
 
@@ -686,11 +686,11 @@ Design difference between final and implemented
 
 | **All Palate Pairs**                                         | **Accessible Pairs**                                         |
 |-------------------------------------------------------------|--------------------------------------------------------------|
-| ![](.README_images/AllColorPairs.png)| ![](.README_images/4.5.1AccessibleColors.png) |
+| ![](refs/assets/img/AllColorPairs.png)| ![](refs/assets/img/4.5.1AccessibleColors.png) |
 
 #### 4.3.2.3 Chosen Colors ✅
 
-![](.README_images/ChoosenColors.png)
+![](refs/assets/img/ChoosenColors.png)
 
 ---
 
