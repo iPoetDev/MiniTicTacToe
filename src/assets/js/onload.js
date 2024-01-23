@@ -34,7 +34,7 @@ function oninitload(newgame) { // jshint ignore:line
         window.hasFinal = null
         /** @see watch.js **/
         initUI() // jshint ignore:line
-
+        // helpButton(); // jshint ignore:line
         //Find all grid buttons i.e. cells/clicks
         /** @type {HTMLElement[]}
          * @see ui1.js **/

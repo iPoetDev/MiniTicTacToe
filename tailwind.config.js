@@ -1,4 +1,4 @@
-/** @type {import("tailwindcss").Config} */
+
 module.exports = {
     content: {
         relative: true,
@@ -15,12 +15,23 @@ module.exports = {
             center: true,
         },
         fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            serif: ['Inter', 'sans-serif'],
+            'inter': ['Inter', 'sans-serif'],
         },
-        extend: {},
+        extend: {
+            colors: {
+                'x': 'rgba(240, 46, 170, 0.7)',  // RED for X
+                'o': 'indigo'   // BLUE for O
+            },
+        },
+        screens: {
+            'sm': '336px', // Mobile
+            'md': '768px', // Tablet
+            'lg': '1024px', // Tablet Landscape
+            'xl': '1366px', // Desktop Portrait
+            '2xl': '1440px' // Full HD
+        }
     },
     plugins: [
-        require('tailwindcss-owl')
+
     ],
 }
