@@ -43,7 +43,7 @@ For specific solution and user goals, see 2.0 Solution and 4.0 User Experience s
   - *TailwindsCSS* is a preferred *CSS Framework* to build any design, directly in your *HTML*; using a *Locality of Behaviour* principle, over a *Separation of Concerns*.
   - *NativeJS: ECMAScript v6*: Previous iterations of this solution attempted AlpineJS. There was a breaking change as reverted to NativeJS for the following
     - Significant constraints by the support for AlpineJS/Javascript Frameworks from Tutoring as AlpineJs was not in course material.
-    - Conceptaul headaches and semantic challenges with employing AlpineJS and time sunk into fixing these.
+    - Conceptual headaches and semantic challenges with employing AlpineJS and time sunk into fixing these.
 - [X]  To demonstrate the author's technical and *academic* writing skills in this `README.md`.
   - The author is an expressive, detailed orientated and explicit technical writer.
   - This technical writing is inside an academic context, with goals are to show learnings and capabilities.
@@ -132,7 +132,7 @@ amiresponsive.co.uk/ | URI: AmIResponsive
 - A preference for technical choices that demonstrate a principle of **Locality of Behaviour**
   - **i.e.**: The behaviour of a unit of code should be as obvious as possible by looking only at that unit of code.
 - The choice of *TailwindCSS*, as part of the requirements for the design and testing an interactive Front-End web application, is:
-  - To build on the personal preference for pre-composed *CSS* styling and a opinionated library and or framework of styling.
+  - To build on the personal preference for pre-composed *CSS* styling and an opinionated library and or framework of styling.
   - Example of *Locality of Behaviour*.
   -
 
@@ -151,9 +151,7 @@ amiresponsive.co.uk/ | URI: AmIResponsive
 
 #### 2.5.1 Early Development: Upto Breaking Change and Bump to v2.0
 
-Initially this project concept was to follow the author-developer, (myself), preferences for certain styles of programming and paradigms by using Tailwinds and AlpineJS.
-
-This author-developer's project has a strong influence, code reuse, concept and implementation and bearing from [Scott Windon - Buy Him a Coffee]([Scott Windon | Linktree](https://linktr.ee/scottwindon "Buy Scot a Coffee").
+Initially this project concept was to follow the author-developer, (myself), preferences for certain styles of programming and paradigms by using Tailwinds .
 
 - *CodePen*: [Scott Windon - AlpineJS Tic Tac Toe (codepen.io)](https://codepen.io/ScottWindon/pen/eYBMXQO "Scott Windon")
 - *AlpineToolBox*: [Alpine Toolbox - Alpine.js Examples](https://www.alpinetoolbox.com/examples/)
@@ -171,7 +169,7 @@ This author-developer's project has a strong influence, code reuse, concept and 
 #### 2.5.2 Alpine Abandoned:
 
 - **AlpineJS** as Javascript framework was abandoned (2024/01/15) in lieu of **NativeJS/ECMAScript v6**.
-- The influneced of the AlpineJS Effect/Reactivity paradigm persisted howevever when handling asynchronous updates of JS Arrays (which are not reactive to updates) via the following design pattern:
+- The influenced of the AlpineJS Effect/Reactivity paradigm persisted however when handling asynchronous updates of JS Arrays (which are not reactive to updates) via the following design pattern:
   - Proxy Object in `watch.js` of the game's result object in the global scope.
   - Defining a Watcher behaviour using the Browser custom event handling
   - Updating the UI dynamically when certain end state conditions are met.
@@ -185,14 +183,14 @@ This author-developer's project has a strong influence, code reuse, concept and 
 
 ## 3.0 User Experience ✅✅
 
-> Complete: ❓ | Review: 📝 | To Do: 📌
+> <small><sup> Complete: ✅ 24/01/23</sup></small>
 
 - While this project is not scoped for full-blown Agile processes, given the simplicity of the solution context; using concepts in simple application is appropriate to showcase.
   - **Personas**: Avatars for Types / Grouping of Users. For example: [From Personas to User Stories | Roman Pichler](https://www.romanpichler.com/blog/personas-epics-user-stories/), and useful for outline target audience groups.
   - **Feature** definition from : [Epics Features and Stories (gla.ac.uk)](https://www.gla.ac.uk/media/Media_730149_smxx.pdf).
   - **User Stories** from: [Epics Features and Stories (gla.ac.uk)](https://www.gla.ac.uk/media/Media_730149_smxx.pdf).
 
-### 3.1 Target Audience ✅⛔
+### 3.1 Target Audience ✅
 
 Any of these audiences/roles or personas are all forms of Users.
 
@@ -215,7 +213,7 @@ A gamer (role) can be one of three player types to form sub personas.
 - i.e. Classic Gamer who are returners players.
 - i.e. Classic Gamer who are frequent players.
 
-### 3.2 Features ✅⛔
+### 3.2 Features ✅
 
 > In the context of Agile workflows: _A feature is a chunk of work from the Epic – a deliverable that adds value and moves towards completing the Epic._
 
@@ -230,21 +228,21 @@ Defining these features, within Milestones, (here), allows for alluding to the d
 
 ---
 
-### 3.3 Milestones 🚧⛔
+### 3.3 Milestones ✅
 
-#### Version 0.5 ⛔
+#### Submission ⛔
 
 - **Game Brand**: Purpose and Context
 
 ```text
 ✅ Feature: App Branding & Brand Identity:
-  - Icon:
-  - Title/Text:
-  - Color:
-  - Whitespacing
-  - Dark Mode:
+  - Icon: None, Future Version
+  - Title/Text: Mini Tic Tac Toe, in a cursive hand written script
+  - Color: See 4.3.2 for colors, theme is dark blue grey/gunmetal/indigo's
+  - Whitespacing: Minimalist in style: few component
+  - Dark Mode: Yes
 ✅ Is Part Of: Web Page
-Version:
+Version: 2.0.1.11
 ✅ Benefit:
   - Implies and imparts the game's intent and context implicitly.
   - A good Brand Identity allows for an emotional and logical connection as to the design ethos of the App.
@@ -258,9 +256,11 @@ Acceptance:
 ```text
 ✅ Feature: The Game Banner is the page container that is composed of :
   - Game Title
-  - In Game Controls
+  - ByLine:
+    - Link to User Profile
+    - Link to Project Repository on GitHub.com
 ✅ Is Part of: Web Page
-Version:
+Version: 2.0.1.11
 ✅ Benefit:
   - Allows for brand identity (a Title/Heading/Icon) positioning.
   - Allows for positioning simple in-game controls (like toggles) to control game options.
@@ -272,87 +272,91 @@ Acceptance:
 
 ```text
 ✅ Feature: The Game Title is the page element that is composed of :
-  - Icon/Logo
-  - Logo Heading
+  - Logo Heading: Mini Tic Tac Toe
 ✅ Is Part of: Game Brand
-Version:
+Version: 2.0.1.11
 ✅ Benefit:
-  - Allows for brand identity (a Title/Heading/Icon) positioning.
-  - Applying brand style and theming.
+  - Allows for brand identity (a Title/Heading) positioning.
+  - Applying brand style and theming. See colors and fonts in section 4.0
 Acceptance:
   -
 ```
 
-- Game Controls
+- **Game Controls**
 
 ```text
-Feature:
-Version:
-Benefit:
+✅ Feature:
+  - Grid Cell Button x9: Receives the users click, to start the game and make each turn, as display the outcome of each turn
+  - Reset Button: Rest the GameLogic engine AND the Game UI
+  - Help Button: To Open the Game FAQ Modal/Pop Up
+  - Close Buttons x2: To Close the Game FAQ Modal/Pop Up
+✅ Version:
+✅ Benefit:
+  - Essential initiators of user interaction.
+  - Additional surface for UI visuals and interactivity when user points a cursor
+  - Display outcome of the user selection.
+  - Show/hide hidden context/surfaces for additional contextual information
 Acceptance:
 ```
 
-- Game Board
+- **Game Board**
 
 ```text
-Feature:
-Version:
-Benefit:
+✅ Feature:
+  - 3 Rows of 3 grid Cells,each with an id of cell-id-{i} where i: 0>= i <=8
+  - Each Cell is made up of Button for user interaction, event handling and action outcome, as well as animation effects.
+✅ Version:
+✅ Benefit:
+  - Use of buttons, which are natural event handlers for interactions, simplifies good design and implementation for each user selection
 Acceptance:
 ```
 
-- Game Score Board
+- **Game Messages**
 
 ```text
-Feature:
-Version:
-Benefit:
+✅ Feature:
+  A) Feedback on the game outcome
+  - Update the Outcome button at top of Game Area
+  - Default ot `No Result`
+  - Possible Outcome messages:
+    1. Winner of X Round is X i.e. X is the number of rounds
+    2. Winner of X Round is O
+    3. ⛔ The game is a Draw (not yet finalised).
+  B) Visuals from the interaction
+    - Tokens bounce in animation
+    - The selected grid panels on selection, in focus, when active, also animate per grid cell
+✅ Version:
+✅ Benefit:
+   - Provides signals to the user that they:
+     1) Have made their turn
+     2) Have reached the end of the game
+     3) ⛔ To have made an illegal/bad move (Not yet implemented)
 Acceptance:
 ```
 
-- Game Turn Indicator
+- **Game FAQ: `? Help`**
 
 ```text
-Feature:
-Version:
-Benefit:
-Acceptance:
-```
-
-- Game Timer
-
-```text
-Feature:
-Version:
-Benefit:
-Acceptance:
-```
-
-- Game Messages
-
-```text
-Feature:
-Version:
-Benefit:
-Acceptance:
-```
-
-- Game FAQ
-
-```text
-Feature:
-Version:
-Benefit:
+✅ Feature: A Pop out help panel that
+  - Informs of History fo the game with links to Wikipedia.
+  - How the game is played convention.
+  - How the current version of the game is to be played.
+  - The current limitations, bugs, issues withe the game.
+  - The future improvements scheduled on the roadmap.
+✅ Version:
+✅ Benefit:
+  - Provides contextual and game instruction awareness to target audiences
+  - Inform openly and transparent the bugs and limitations to the assessor/code reviewer for assessment/evaluation purposes.
 Acceptance:
 ```
 
 ---
 
-### 3.4 User Stories ✅⛔
+### 3.4 User Stories ✅
 
 > - Stories, also called “user stories,” are short requirements or requests written from the perspective of an end user.
 > - A Story should describe a need that can be satisfied by introducing a new feature or changing an existing feature.
-> - User stories identify what an actor/user/target audience wants to accomplish with the product and why.
+> - User stories identify what an actor/user/target audience wants to achieve with the product and why.
 
 **User Story Template**: Pro forma.
 
@@ -362,41 +366,44 @@ I want  : User Objective/Want/Task
 So that : User Motive/Why
 ```
 
-#### 3.4.1 For First Time Players who are both Casuals and Fans ✅⛔
+#### 3.4.1 For First Time Players who are both Casuals and Fans ✅
 
 > Beginners Features | Objective | Tasks
 
-- [ ]  *As a* Fan, *I want* to be able to play an online Tic Tac Toe game *so that* I follow my passion for strategy and probability.
-- [ ]  *As a* Casual, *I want* to be able to play any game online like Tic Tac Toe game *so that* I can pass the time.
-- [ ]  *As a* General Player (Any Persona, Any Type), *I want* to read instructions/FAQ *so that* I can easily understand how to start / restart / end the game.
-- [ ]  *As a* General Player (Any Persona, Any Type), *I want* to read instructions/FAQ *so that* I can easily understand how to play the game.
-- [ ]  *As a* General Player (Any Persona, Any Type), *I want* to have clearly labelled controls, i.e. intuitive usage, *so that* I can easily understand how to operate (*new, start, reset, end* ) the game.
-- [ ]  *As a* First Time General Player (Any Persona), *I want* to see status messages to know if I have won, drawn or lost *so that* I know what is the outcome of the game.
+- [x] ✅ *As a* Fan, *I want* to be able to play an online Tic Tac Toe game *so that* I follow my passion for strategy and probability.
+- [x] ✅ *As a* Casual, *I want* to be able to play any game online like Tic Tac Toe game *so that* I can pass the time.
+- [x] ✅ *As a* General Player (Any Persona, Any Type), *I want* to read instructions/FAQ *so that* I can easily understand how to start / restart / end the game.
+- [x] ✅ *As a* General Player (Any Persona, Any Type), *I want* to read instructions/FAQ *so that* I can easily understand how to play the game.
+- [x] ✅ *As a* General Player (Any Persona, Any Type), *I want* to have clearly labelled controls, i.e. intuitive usage, *so that* I can easily understand how to operate (*reset, help, close* ) the game.
+- [ ] ⛔ *As a* First Time General Player (Any Persona), *I want* to see status messages to know if I have won, drawn or lost *so that* I know what is the outcome of the game.
+  - ✅ Can Win a Game, and my inference, the opposing player knows who lost.
+  - ⛔ Unable determine if I have draw a game
+  - ⛔ Cannot tell a bad move, or over move (move after win game)
 
-#### 3.4.2 For Returning Players who are Casuals and Fans ✅⛔
+#### 3.4.2 For Returning Players who are Casuals and Fans ✅
 
 > Intermediate Features | Objective | Tasks
 
-- [ ]  *As a* Developer, *I want* to be able to play a game against a computer *so that* I can experience what an automation/algorithm is like to play against.
-- [ ]  *As a* Returning Player (Any Persona), *I want* to be able to replay the game on the same web page *so that* I do not have to reload the page.
-- [ ]  *As a* Returning Player (Any Persona), *I want* to be able to see my score displayed *so that* can get a feedback is from the game.
-- [ ]  *As a* Returning Player (Any Persona), *I want* to be able to track my score from game to game *so that* I can play best of `2n + 1` matches against my opponent.
+- [ ]  ⛔ *As a* Developer, *I want* to be able to play a game against a computer *so that* I can experience what an automation/algorithm is like to play against.
+- [x]  ✅ *As a* Returning Player (Any Persona), *I want* to be able to replay the game on the same web page *so that* I do not have to reload the page. (the reset button does this)
+- [ ]  ⛔*As a* Returning Player (Any Persona), *I want* to be able to see my score displayed *so that* can get a feedback is from the game.
+- [ ]  ⛔ *As a* Returning Player (Any Persona), *I want* to be able to track my score from game to game *so that* I can play best of `2n + 1` matches against my opponent.
 
-#### 3.4.2 For Frequent Players who are Fans and maybe Casuals ✅⛔
+#### 3.4.2 For Frequent Players who are Fans and maybe Casuals ✅
 
 > Advanced Features | Objective | Tasks
 
-- [ ]  *As a* Frequent Player, who is a Fan, *I want* an ascetically pleasing graphical visuals and brand identity *so that* I find the game to be pleasant and fun to play to keep on playing.
-- [ ]  *As a* Frequent Player, who is a Fan, *I want* to be notified of invalid moves *so that* I don't feel foolish when making a wrong move without feedback.
-- [ ]  *As a* Frequent Player, who is a Fan, *I want* to be play anywhere or on the move, i.e. on handheld wireless devices *so that* I don't have to play when seated at a laptop/desktop.
+- [x] ❓✅ *As a* Frequent Player, who is a Fan, *I want* an ascetically pleasing graphical visuals and brand identity *so that* I find the game to be pleasant and fun to play to keep on playing.
+- [ ]  ⛔ *As a* Frequent Player, who is a Fan, *I want* to be notified of invalid moves *so that* I don't feel foolish when making a wrong move without feedback.
+- [x]  ✅ *As a* Frequent Player, who is a Fan, *I want* to be play anywhere or on the move, i.e. on handheld wireless devices *so that* I don't have to play when seated at a laptop/desktop.
 
-```
-g. As a user, I want to be able to give my feedback
-- As a user, I want to contact someone about the game
-- As a site owner, I want users to be able to play a quick game of Tic Tac Toe
-- As a site owner, I want users to be able to replay the game without having to refresh the page
-- As a site owner, I want users to be able to clearly see some basic info on the game
-```
+> Other Stories
+- [ ] ⛔ As a user, I want to be able to give my feedback
+- [ ] ⛔ As a user, I want to contact someone about the game
+- [x] ✅ As a site owner, I want users to be able to play a quick game of Tic Tac Toe
+- [x] ✅ As a site owner, I want users to be able to replay the game without having to refresh the page
+- [x] ✅ As a site owner, I want users to be able to clearly see some basic info on the game
+- [x] ✅ As a student developer, I want to be able to log to the console each game, turn and outcome game of Tic Tac Toe in the DevTools
 
 ---
 
@@ -406,16 +413,13 @@ g. As a user, I want to be able to give my feedback
 
 **Screen Resolution v Form Factor**
 
-
-| Form Factor     | Orrientation | Device Size | Screen Resolution | Notes |
-| --------------- | ------------ | ----------- | ----------------- | ----- |
-| Desktop         | Landscape    | Laptop 13"  | 1366 x 768        |       |
-| Desktop         | Landscape    | Laptop 15"  | 1440 x 900        |       |
-| Tablet Standard | Landscape    | Tablet 10"  | 1024 x 768        |       |
-| Tablet Standard | Portrait     | Tablet 10"  | 768 x 1024        |       |
-| Mobile          | Portrait     | iPhone 14*  |                   |       |
-| Mobile          | Portrait     | iPhone 8*   |                   |       |
-| Mobile          | Portrait     | iPhone 6*   |                   |       |
+| Form Factor     | Orientation | Device Size | Screen Resolution | Notes |
+|-----------------| ------------ |-------------|-------------------| ----- |
+| Desktop HD      | Landscape    | Laptop 15"  | 1440 x 900        |       |
+| Desktop Wide    | Landscape    | Laptop 13"  | 1366 x 768        |       |
+| Tablet Standard | Landscape    | Tablet 9.7" | 1024 x 768        |       |
+| Tablet Standard | Portrait     | Tablet 9.7" | 768 x 1024        |       |
+| Mobile *        | Portrait     | iPhone 14*  | 393 x 660         |       |
 
 * Equivalent: Android / iPhone
 
@@ -429,6 +433,25 @@ g. As a user, I want to be able to give my feedback
 
 > Users today are driven by experiences. Therefore, your web design must be responsive across all devices. With the increasing number of mobile users, one cannot emphasize the importance of responsive design in customer experience.
 
+##### 3.5.1 Choose Breakpoints
+
+- In accordance with Tailwinds CSS Config:
+- Map into [Polypane for Responsive Design & Testing: https://polypane.app/](https://polypane.app/)
+
+```js
+module.exports = {
+    theme: {
+        screens: {
+            'sm': '336px', // Mobile
+            'md': '768px', // Tablet
+            'lg': '1024px', // Tablet Landscape
+            'xl': '1366px', // Desktop Portrait
+            '2xl': '1440px' // Full HD
+        }
+    },
+}
+```
+
 > **_What is a Breakpoint:_**
 >
 > - CSS Breakpoint is a “defined width” that is used in the webpage style to make the content and design responsive.
@@ -441,7 +464,6 @@ Assuming the default orientation is portrait for mobile and landscape for deskto
 - Mobile form factor tendency is to be in a portrait **P** orientation, as default.
 - Tablet form factor tendency is to be in a portrait **P** or landscape **L** orientations, as default.
 - Desktop form factor tendency is to be in a landscape **L** orientation, as default.
-
 
 | Mobile         | Tablets        | Desktops        |
 | -------------- | -------------- | --------------- |
@@ -490,41 +512,49 @@ Assuming the default orientation is portrait for mobile and landscape for deskto
 
 ---
 
-## 4.0 Design / UI 🚧
+## 4.0 Design / UI ✅
 
 > Complete: ❓ | Review: 📝 | To Do: 📌
 
-### 4.1 Wireframe/Skeleton: 🚧
+### 4.1 Wireframe/Skeleton: ✅
 
 > AUTHOR NOTES: The Excalidraw master file for the following wireframes has been deleted. As a direct result, the author-developer was unable to edit and adjust the final design/implementation to look like the initial designs hereto presented.
 
 So a hack &amp; fix for this is:
 - [x] List the features that are to be in a future version
 - [x] Put the UI controls on the page, as place-holders to align with initial design, but disable these controls and annotate
-- [ ] Best effort design to align with implementation without some interactivity
+- [x] Best effort design to align with implementation without some interactivity
 
 Design difference between final and implemented
 
 1. Dark Color scheme over a light scheme as represented below.
 
-#### 4.1.1 App Page 🚧
+#### 4.1.1 App Page ✅
 
-##### 4.1.1.1 Desktop 🚧
+- See Section 9.2 for Responsive Design User Acceptance
+
+##### 4.1.1.1 Desktop ✅
+
+> Note: The final design is different from the advertised design as the master design file was deleted by accident.
+> See 9.2.4 & 9.2.5 for Final View for Desktop Wide, Desktop HD.
 
 ###### Breakpoints for Project
 
-- [ ]  **Portrait 1366 x 768**
-- [ ]  **Landscape 1440 x 900**
+- [ ]  **Desktop Wide Landscape 1366 x 768**
+- [ ]  **Desktop HD Landscape 1440 x 900**
 
-| **Portrait 1366 x 768**                                       | Notes          |
+| **Desktop Wide Landscape 1366 x 768**                                       | Notes          |
 | ------------------------------------------------------------- | -------------- |
 | ![](refs/assets/img/Wireframe-Desktop-Landscape-1366x768.png) | 13 Inch Laptop |
-| **Landscape 1440 x 900**                                      | Notes          |
+| **Desktop HD Landscape 1440 x 900**                                      | Notes          |
 | ![](refs/assets/img/Wireframe-Desktop-Landscape-1440x900.png) | ...            |
 
 ---
 
-##### 4.1.1.2 Tablet 🚧
+##### 4.1.1.2 Tablet ✅
+
+> Note: The final design is different from the advertised design as the master design file was deleted by accident.
+> See 9.2.2 & 9.2.3 for Final View for Tablet Portrait, Tablet Landscape.
 
 - [ ] **Portrait: 768 x 1024**
 - [ ] **Landscape 1024 x 768**
@@ -535,9 +565,12 @@ Design difference between final and implemented
 
 ---
 
-##### 4.1.1.3 Mobile 🚧
+##### 4.1.1.3 Mobile ✅
 
-- **Portrait iPhone**
+> Note: The final design is different from the advertised design as the master design file was deleted by accident.
+> See 9.2.1 for Final View for Mobile
+
+- **Portrait iPhone 14 Pro**
 
 | **Portrait iPhone**                                     | **Landscape iPhone** |
 | ------------------------------------------------------- | -------------------- |
@@ -545,73 +578,78 @@ Design difference between final and implemented
 
 ---
 
-### 4.2 Site Structure 🚧
+### 4.2 Site Structure ✅
 
-#### Alpha Release 🚧
+- A single page: `index.html`
+- In line anchors to Wikipedia and GitHub for external links, using a new page
 
-- A single page application architecture for a web browser game, i.e The App
-- The web app, The App, has:
-  - Gameplay Controls i.e. Buttons: Start and Reset.
-  - Gameboard area
-  - Game Play FAQ area
+#### Submission Release ✅
 
-#### Beta Release 🚧
-
-#### Candidate Release 🚧
-
-- Version 0.5 Structure and ...
-  - Player/Computer score counter
-  - Game/Turn Timer
-
-#### Submission Release 🚧
-
-- Candidate Release and ....
+- Game Banner
+  - Header Text/Identifier
+  - By Line with links to
+      - iPoetDev GitHub Profile
+      - Project Repository
+- Gameplay Controls i.e. Buttons:
+   - Game Tokens:
+        - Alternating Colors: Pink for X, Indigo for C
+        - Animated Bouncing Icon
+        - Glow on Hover
+   - Per Grid Cell Buttons
+      - Animate/Highlight Grid Cell
+   - Outcome Button: Display Winner Text or Draw (#15)
+   - Reset Button.
+   - Help Button
+- Game Board Area
+  - Grid 3×3 with each 1 button and span for text.innerText for playing tokens
+- Game Play Help area
+    - Modal Button: `? Help`
+    - Modal/Pop Up with
+        1. Background to Game
+        2. Game Play
+        3. This Game Play
+        4. Current Game Limitations:
+        5. Future Improvements
+    - Two Close Buttons: Close modal
 
 ---
 
-### 4.3 Theme/Surface 🚧
+### 4.3 Theme/Surface ✅
 
-#### 4.3.1 Fonts+ 🚧
+#### 4.3.1 Fonts+ ✅
 
-##### 4.3.1.1  Web Safe Fonts
+##### 4.3.1.1  Web Safe Fonts ✅
 
 - These font from Google where convert from `.ttf` to web safe variants i.e. `.WOFF`, `.WOFF2`
-- Using then my URL handles these web safe versions as they are automatic unpacked by the Browser.
+- Using then my URL handles these web safe versions as they are automatically unpacked by the Browser.
 - While NOT used in the project per se, they are kep in repository for reference and design guidance purpose.
-- Also for licence and Googele web URI fail-over/dependencies if there is a bug in web access or web performance issues, like the layout shift as fonts & page render.
+- Also for licence and Google web URI fail-over/dependencies if there is a bug in web access or web performance issues, like the layout shift as fonts & page render.
 - **`URL: Converter`**: https://transfonter.org/
 
 > The @font-face CSS rule allows web developers to specify online fonts to display text on their web pages. By allowing authors to provide their own fonts, @font-face eliminates the need to depend on the limited number of fonts users have installed on their computers.
 
-#### 4.3.1.2 Feature & Use
+#### 4.3.1.2 Feature & Use ✅
+
+|    Feature    | Element                         | Font Name   | Root Size | Desktop | Tablet | Mobile |
+|:-------------:|---------------------------------|-------------| --------- | ------- | ------ | ------ |
+|   Web Page    | Paragraph, Text                 | Gochi-Hand  | 16        | 16      | 16 x   | 16 x   |
+|  Game Title   | Headings: H1,H2,H3              | Gochi-Hand  |           |         |        |        |
+| Game Controls | Inputs, Buttons, Label, Toggles | Gochi-Hand  |           |         |        |        |
+| Game Statuses | Paragraph, Text, Span           | Gochi-Hand       |           |         |        |        |
+|  Game Tokens  | Spa, Div, Text                  | Gochi-Hand  |           |         |        |        |
+|     Emoji     | Icons, Spirites                 | FontAwesome |           |         |        |        |
+|  Game Play Help  | H2, H3, P, Em, Strong, A        | Inter          |           |         |        |        |
 
 
-| Feature       | Element                         | Font Name   | Root Size | Desktop | Tablet | Mobile |
-| ------------- | ------------------------------- | ----------- | --------- | ------- | ------ | ------ |
-| Web Page      | Paragraph, Text                 | Kanit       | 16        | 16      | 16 x   | 16 x   |
-| Game Title    | Headings: H1,H2,H3              | Kanit       |           |         |        |        |
-| Game Controls | Inputs, Buttons, Label, Toggles | Kanit       |           |         |        |        |
-| Game Statuses | Paragraph, Text                 | Kanit       |           |         |        |        |
-| Game Tokens   | Spa, Div, Text                  | Gochi-Hand  |           |         |        |        |
-| Emoji         | Icons, Spirites                 | FontAwesome |           |         |        |        |
-|               |                                 |             |           |         |        |        |
-|               |                                 |             |           |         |        |        |
+##### 4.3.1.3 Inter ✅
 
-##### 4.3.1.3 Kanit ✅
+- *Inter* is a variable font family carefully crafted & designed for computer screens.
+- Inter features a tall x-height to aid in readability of mixed-case and lower-case text. Several OpenType features are provided as well, like contextual alternates that adjusts punctuation depending on the shape of surrounding glyphs, slashed zero for when you need to disambiguate "0" from "o", tabular numbers, etc.
+- The Inter project is led by Rasmus Andersson, a Swedish maker–of–software living in San Francisco. To contribute, see github.com/rems/inter
+- Download: [Inter - Google Fonts](https://fonts.google.com/specimen/Inter)
 
-- *Kanit* means mathematics in Thai, and the Kanit typeface family is a formal Loopless Thai and Sans Latin design.
-- A notable detail is that the stroke terminals have flat angles, which allows the design to enjoy decreased spacing between letters while preserving readability and legibility at smaller point sizes.
-- The *Kanit* project is led by *[Cadson Demak](https://fonts.google.com/?query=Cadson%20Demak)*, a type foundry in Thailand. To contribute, see [github.com/cadsondemak/kanit](http://github.com/cadsondemak/kanit)
-- Chosen for:
-  1. Suitability for responsiveness and scaling over smaller responsive form factors.
-  2. Also has a strong design case for Title Fonts when stronger at 900 and light for lower scoring.
-  3. For a personal style preference for Asian Typescript.
-  4. And it compliments *Gochi-Hand* as simultaneous complementary pairing.
-- Download: [Kanit - Google Fonts](https://fonts.google.com/specimen/Kanit "Designed by [Cadson Demak]")
+![](.README_images/Font-Inter-regular400-48px.png)
 
-![](refs/assets/img/Font-Kanit-Reg400-48px.png)
-
-![](refs/assets/img/Font-Kanit-Reg400-16px.png)
 
 ##### 4.3.1.4 Gochi-Hand ✅
 
@@ -620,16 +658,41 @@ Design difference between final and implemented
   - The glyphs were carefully designed with a good curve quality, which makes it able to look good when printed too.
 - *[Huerta Tipográfica](http://huertatipografica.com/)* is a collaborative Argentinian type foundry with a deep respect for design and typography.
 - Chosen for:
-  1. To resemble hand-drawn, or handwriting, drawing of the tokens in a game of Tic Tac Toe.
-  2. Code Reuse from *Scott Windon*, as this is the same font used in his open source code pen.
-  3. And it compliments *Kanit* as simultaneous complementary pairing.
+  1. To resemble hand-drawn, or handwriting, drawing of the tokens in a game of Tic Tac Toe
+  3. And it compliments *Inter* as simultaneous complementary pairing.
 - Download: [Gochi-Hand - Google Fonts](https://fonts.google.com/specimen/Gochi+Hand "Designed by [Huerta Tipográfica]")
 
 ![](refs/assets/img/Font-GochiHand-Reg400-48px.png)
 
 ![](refs/assets/img/Font-GochiHand-Reg400-36px.png)
 
-> <small>Note: These screenshots of fronts come from Google Fonts for Kanit and Gochi-Hand respectively. The quotes are mundane in this project's context and have no political intention or design.</small>
+> <small>Note: These screenshots of fronts come from Google Fonts for Inter and Gochi-Hand respectively. The quotes are mundane in this project's context and have no political intention or design.</small>
+
+#### 4.3.2 Coolors and Accessibility ✅
+> Color Matching Service: [Coolors.com ](https://coolors.co/2e3444-6366f1-000000-e5e7eb-f1f6fe-6e2b63 "Coolors.com")
+
+- Gunmental
+- Neon Blue
+- Black
+- Anti-flash White
+- Alice Blue
+- Byzantium
+
+#### 4.3.2.1 Palette Variations: Shades ✅
+
+![](.README_images/CoolorsPalateVariations.png)
+
+#### 4.3.2.2 Palette Contrast ✅
+
+- Colors have to match or exceed a rating of 4.5:1
+
+| **All Palate Pairs**                                         | **Accessible Pairs**                                         |
+|-------------------------------------------------------------|--------------------------------------------------------------|
+| ![](.README_images/AllColorPairs.png)| ![](.README_images/4.5.1AccessibleColors.png) |
+
+#### 4.3.2.3 Chosen Colors ✅
+
+![](.README_images/ChoosenColors.png)
 
 ---
 
@@ -660,7 +723,7 @@ Design difference between final and implemented
 
 ### 5.2 AI Agents & Services ✅
 
-> AUTHORS NOTE: AI Assistance is here to stay, as a developer *tool*. The author it is as random as a fellow human in the quality of the output based on it level of skill/domain it knows; as well as the quality of the prompt/input by the author-developer. It can be super helpful if the knowledge is a known problem domain. It can super mis-leading is the domain is an unknown or unfamiliar issue/concept. Any code here submitted is by the developers own submission, and with probabale assisted by the AI Agent, and well tested to be working by the author's own experience and hard effort/man-hours.
+> AUTHORS NOTE: AI Assistance is here to stay, as a developer *tool*. The author it is as random as a fellow human in the quality of the output based on it level of skill/domain it knows; as well as the quality of the prompt/input by the author-developer. It can be super helpful if the knowledge is a known problem domain. It can super mis-leading is the domain is an unknown or unfamiliar issue/concept. Any code here submitted is by the developers own submission, and with probably assisted by the AI Agent, and well tested to be working by the author's own experience and hard effort/man-hours.
 
 - [X]  `Perplexity AI`: _[`version 1.0.0`](https://www.perplexity.ai/)_ - [Perplexity AI](https://www.perplexity.ai/)
   - AI Research and Sources: Context AI Assisted Search and Secondary Searches, with source citations and links.
@@ -741,7 +804,7 @@ Design difference between final and implemented
 
 - [X]  `Dependabot Preview`: _[GitHub: Dependabot](https://dependabot.com/)_ - [Dependabot](https://dependabot.com/)
 - [X]  `GitLive`: _[GitHub Marketplace: GitLive](https://github.com/marketplace/teamhub_ - [GitLive](https://gitlive.app/)
-- [X]  `GitHub Actions`: _[GitHub Marketplace: IssueLabler](https://github.com/marketplace/supershields)_ - [IssueLabler by riyadhalnur](https://riyadhalnur.github.io/issuelabeler/) : [Probot](https://probot.github.io/)
+- [X]  `GitHub Actions`: _[GitHub Marketplace: IssueLabeler](https://github.com/marketplace/supershields)_ - [IssueLabeler by riyadhalnur](https://riyadhalnur.github.io/issuelabeler/) : [Probot](https://probot.github.io/)
 - [X]  `Supershields`: _[GitHub Marketplace: Supershields.io](https://github.com/marketplace/supershields)_ - [Supershields.io](https://supershields.io)
 - [X]  `Wakatime`: _[GitHub Marketplace: Wakatime](https://github.com/marketplace/wakatime)_ - [Wakatime](https://wakatime.com)
 
@@ -995,12 +1058,12 @@ Refs:
     - consistent - conventions for behaviour, naming and documentation.
     - performant - tools to test and improve performance
   - Provide multiple points of extensions, including:
-    - [custom syntaxes](https://stylelint.io/developer-guide/syntaxes) - use any PostCSS-compatible syntax to support other CSS-like languages and containers
+    - [custom syntax's](https://stylelint.io/developer-guide/syntaxes) - use any PostCSS-compatible syntax to support other CSS-like languages and containers
     - [extendable configs](https://stylelint.io/user-guide/configure#extends) - extend and share configurations
     - [formatters](https://stylelint.io/developer-guide/formatters) - format Stylelint result objects
     - [plugins](https://stylelint.io/developer-guide/plugins) - build custom rules to support methodologies, toolsets, non-standard CSS features,
   - *Web*: [Home | Stylelint](https://stylelint.io/)
-  - *GitHub*: [stylelint/stylelint: A mighty CSS linter that helps you avoid errors and enforce conventions. (github.com)](https://github.com/stylelint/stylelint)
+  - *GitHub*: [stylelint/stylelint: A mighty CSS linter that helps you avoid errors and enforce conventions. (GitHub.com)](https://github.com/stylelint/stylelint)
   - *NPM*: [stylelint - npm (npmjs.com)](https://www.npmjs.com/package/stylelint)
 
 #### 6.2.3 CSS W3C Validation ✅
@@ -1036,7 +1099,7 @@ The use of ``// jshint ignore:line`` indicates a code hotspot for code quality b
 
 - ✅ File: `logic.js` (Fixing or Ignore 122 issues, JSHint by NPM)
   - E054: JSHint: Class properties must be methods. Expected '(' but instead saw '='. (E054)
-  - W016: JSHint: Unexpected use of '++'. (W016) = > > used play+= 1, line 1406
+  - W016: JSHint: Unexpected use of '++'. (W016) → > used play+= 1, line 1406
   - W030: JSHint: Expected an assignment or function call and instead saw an expression. (W030)
   - W071: JSHint: This function has too many statements. (23) (W071), Line 71,606, 703, 980, 1063, 1110,1260,1311, 1387, 1489, 1582
   - W072: JSHint: This function has too many parameters. (8) (W072)
@@ -1082,7 +1145,7 @@ The use of ``// noinspections`` indicates a code hotspot for code quality by Jet
 flowchart TD
     A[Select] -->|F: _whoWins| B(_hasValidMove)
     B --> C{If Invalid}
-    C -->|TRUE| D[Has Inavlid State]
+    C -->|TRUE| D[Has Invalid State]
     D-->C
     C-->|RETURN:Invalid Result|X1(this._result)
     X1-->|RESULT|B
@@ -1161,50 +1224,231 @@ flowchart TD
 
 ---
 
-### 8.2 Bugs & Issues ✅
+### 8.2 Bugs & Issues ⛔
 
 > This project used [GitHub Issues](https://github.com/iPoetDev/MiniTicTacToe/issues) to track, triage and describe project and code level bugs.
 
 - **ISSUE #15 <ins>BUG :: DRAW STATE is indeterminate: GameLogic._checkOutcome Conditionals</ins>** #15: https://github.com/iPoetDev/MiniTicTacToe/issues/15,
   - Status: Can't Fix before the deadline.
-
+- **ISSUE**: invalid/bad move
+- **ISSUE**: One click beyond win/outcome state: reference error in console logs.
 ---
 
 > ::
 
 ---
 
-## 9.0 Features & User Acceptance
+## 9.0 Features & User Acceptance ✅
 
 > Complete: ❓ | Review: 📝 | To Do: 📌
 
-### 9.1 Features ⛔
+> - Is a mirror of section 3.3 Milestones in User Experience: But with the User Acceptance Completed
+> - User Acceptance using then `Given...When...Then` of Behavioral Drive Testing and Agile Planning.
 
-### 9.2 Screenshots ⛔
+### 9.1 Features & User Acceptance ✅
 
-### 9.3 User Acceptance ⛔
+### 9.1.1 **Game Brand**: Purpose and Context
+
+```text
+✅ Feature: App Branding & Brand Identity:
+  - ⛔ Icon: None, Future Version
+  - Title/Text: Mini Tic Tac Toe, in a cursive hand written script
+  - Color: See 4.3.2 for colors, theme is dark blue grey/gunmetal/indigo
+  - Whitespacing: Minimalist in style: few component
+  - Dark Mode: Yes
+✅ Is Part Of: Web Page
+Version: 2.0.1.11
+✅ Benefit:
+  - Implies and imparts the game's intent and context implicitly.
+  - A good Brand Identity allows for an emotional and logical connection as to the design ethos of the App.
+  - A strong brand allows for quick recognition of the game's purpose and intuitive informational clues to how the game is played.
+```
+##### 9.1.1.1 Acceptance: ✅
+- **Given** That the web page has a banner; and a byline
+- **When** I load a web app page
+- **Then** I accept that the page looks as anticipated for branding and identifying page purpose
+    - **AND**: See that the font and dark look give a focus on to the game area, which is a lighter tone.
+    - **BUT**: Does not include an icon or favicon to help with brand identity
 
 ---
 
-### 9.4 Responsive Design ⛔
+### 9.1.2 **Game Banner**: ✅
 
-#### 9.4.1 iPhone
+```text
+✅ Feature: The Game Banner is the page container that is composed of :
+  - Game Title
+  - ByLine:
+    - Link to User Profile
+    - Link to Project Repository on GitHub.com
+✅ Is Part of: Web Page
+Version: 2.0.1.11
+✅ Benefit:
+  - Allows for brand identity (a Title/Heading/Icon) positioning.
+  - Allows for positioning simple in-game controls (like toggles) to control game options.
+```
+
+##### 9.1.2.1 Acceptance: ✅
+- **Given** That the web page has a banner; and a byline
+- **When** I Look at the vertical alignment of the banner to the game area.
+- **Then** I accept that the page looks as anticipated for branding and identifying game controls.
+    - **AND**: See links to GitHub to look beyond the website and into the project repository.
+    - **AND**: Simple set of in game controls: two visible buttons: reset and help.
+
+---
+
+### 9.1.3 **Game Title** ✅
+
+```text
+✅ Feature: The Game Title is the page element that is composed of :
+  - Logo Heading: Mini Tic Tac Toe
+✅ Is Part of: Game Brand
+Version: 2.0.1.11
+✅ Benefit:
+  - Allows for brand identity (a Title/Heading) positioning.
+  - Applying brand style and theming. See colors and fonts in section 4.0
+```
+
+##### 9.1.3.1 Acceptance: ✅
+- **Given** That the web page has a banner and its content.
+- **When** I Look at the Bold Title and By Line,
+  - **AND** I look at Title of Mini, gives a clue to the look and feel of the game: minimalist.
+- **Then** I accept that the page looks as anticipated for branding and identifying game controls.
+    - **AND**: See links to GitHub to look beyond the website and into the project repository.
+    - **AND**: The dark mode of the look and feel
+    - **AND**: Along with the cursive handwritten style gives a fun relax air.
+
+---
+
+### 9.1.4  **Game Controls** ✅
+
+```text
+✅ Feature:
+  - Grid Cell Button x9: Receives the users click, to start the game and make each turn, as display the outcome of each turn
+  - Reset Button: Rest the GameLogic engine AND the Game UI
+  - Help Button: To Open the Game FAQ Modal/Pop Up
+  - Close Buttons x2: To Close the Game FAQ Modal/Pop Up
+✅ Version:
+✅ Benefit:
+  - Essential initiators of user interaction.
+  - Additional surface for UI visuals and interactivity when user points a cursor
+  - Display outcome of the user selection.
+  - Show/hide hidden context/surfaces for additional contextual information
+```
+##### 9.1.4.1 Acceptance: ✅
+- **Given** the explicit and Implicit Controls, I can operate the game.
+- **When** I start to click on the UI anywhere in the grid or on a button.
+- **Then** I can see response to my interaction selections.
+    - **AND** I get animated tokens
+    - **AND** I get clues to which grid cell I am hovering over as it is highlighted
+    - **AND** I get immediate and smooth responses to interaction on each click
+    - **AND** I get the tokens to highlight themselves when I hover, focus on active selections.
+
+---
+
+### 9.1.5 **Game Board** ✅
+
+```text
+✅ Feature:
+  - 3 Rows of 3 grid Cells,each with an id of cell-id-{i} where i: 0>= i <=8
+  - Each Cell is made up of Button for user interaction, event handling and action outcome, as well as animation effects.
+✅ Version:
+✅ Benefit:
+  - Use of buttons, which are natural event handlers for interactions, simplifies good design and implementation for each user selection
+```
+
+##### 9.1.5.1 Acceptance: ✅
+- **Given** the explicit and Implicit Controls, I can operate the game.
+- **When** I start to click on the UI anywhere in the grid or on a button.
+- **Then** I can see response to my interaction selections.
+    - **AND** I get animated tokens
+    - **AND** I get clues to which grid cell I am hovering over as it is highlighted
+    - **AND** I get immediate and smooth responses to interaction on each click
+    - **AND** I get the tokens to highlight themselves when I hover, focus on active selections.
+
+---
+
+### 9.1.6 **Game Messages** ✅
+
+```text
+✅ Feature:
+  A) Feedback on the game outcome
+  - Update the Outcome button at top of Game Area
+  - Default ot `No Result`
+  - Possible Outcome messages:
+    1. Winner of X Round is X i.e. X is the number of rounds
+    2. Winner of X Round is O
+    3. ⛔ The game is a Draw (not yet finalised).
+  B) Visuals from the interaction
+    - Tokens bounce in animation
+    - The selected grid panels on selection, in focus, when active, also animate per grid cell
+✅ Version:
+✅ Benefit:
+   - Provides signals to the user that they:
+     1) Have made their turn
+     2) Have reached the end of the game
+     3) ⛔ To have made an illegal/bad move (Not yet implemented)
+```
+##### 9.1.1.1 Acceptance: ✅
+- **Given** I have made a series of moves against a player,
+    - **AND** I have made a winning move, or made a drawing move,
+    - **AND** I can see the visual result of the end of the game.
+- **When** I expect to have made all possible valid moves
+    - **AND** I have ended the game
+- **Then** I should have a message stating that I have either Won | Drawn | Lost
+    - **AND** The NO Result Button/Sign Updates with a Possible Outcome Message
+    - **NOT** The NO DRAW message is NOT currently displaying as a Possible Outcome Message.
+
+---
+
+### 9.1.6 **Game FAQ: `? Help`** ✅
+
+```text
+✅ Feature: A Pop out help panel that
+  - Informs of History fo the game with links to Wikipedia.
+  - How the game is played convention.
+  - How the current version of the game is to be played.
+  - The current limitations, bugs, issues withe the game.
+  - The future improvements scheduled on the roadmap.
+✅ Version:
+✅ Benefit:
+  - Provides contextual and game instruction awareness to target audiences
+  - Inform openly and transparent the bugs and limitations to the assessor/code reviewer for assessment/evaluation purposes.
+```
+
+##### 9.1.6.1 Acceptance: ✅
+- **Given** I want to find more on the game of
+    - **OR** I want to learn about how the game is played, and how the current game is played.
+    - **OR** I want to learn about project was implemented, what issues it has, and what improvements are planned.
+- **When** I click on the help button at the top of the page.
+    - **AND** I see a pop-up window with dark semi translucent aspect, and white text.
+    - **AND** I can just see the game behind the window
+- **Then** I should be able to read the Game FAQ: Help on the History, Game Play, Limitations and Roadmap of the Game
+    - **BUT** then I click on close buttons, top or button,
+    - **AND** to close the pop-up window to exit.
+
+---
+>
+---
+
+### 9.2 Screenshots & Responsive Design ✅
+
+#### 9.2.1 iPhone
 
 ![](refs/assets/img/iPhone14Pro.png)
 
-#### 9.4.2 iPad Pro 9.7 Portrait
+#### 9.2.2 iPad Pro 9.7 Portrait
 
 ![](refs/assets/img/iPadPro9.7″.png)
 
-#### 9.4.3 iPad Pro 9.7 Landscape
+#### 9.2.3 iPad Pro 9.7 Landscape
 
 ![](refs/assets/img/iPadPro9.7″Landscape.png)
 
-#### 9.4.4 Desktop Wide
+#### 9.2.4 Desktop Wide
 
 ![](refs/assets/img/DeskTopWide1368w.png)
 
-#### 9.4.5 Desktop HD 1440px Wide
+#### 9.2.5 Desktop HD 1440px Wide
 
 ![](refs/assets/img/DesktopHD1440w.png)
 
@@ -1266,11 +1510,29 @@ https://ipoetdev.github.io/MiniTicTacToe/
 
 ## 11.0 Assessments
 
-> Complete: ❓ | Review: 📝 | To Do: 📌
+> <small><sup> Complete: ✅ 24/01/22</sup></small>
+
+**AUTHORS NOTE**: As this submission is a resit and second attempt, there is not much accreditation to be made here.
 
 ### 11.1 Credits
 
 ### 11.2 External Sources
+
+- Mozilla Web Docs: https://developer.mozilla.org/
+  - Proxy Objects
+  - Console Logging
+
+#### 11.2.A: AI
+> Fir each of the following services, I have a record od stored prompts and responses for inspection if so called upon.
+
+- Perplexity.AI: https://www.perplexity.ai/
+- JetBrains Assistance: Pro Subscriber, 1 Year as a User fo JetBrains. https://www.jetbrains.com/ai/
+    - This makes natural sense, and I hardly turn to other sources.
+
+#### 11.2.2: Prior Submissions
+
+- Myself: 1st Attempt at Tic Tac Toe: https://github.com/iPoetDev/terni-lapilli--toe
+  - Prior to Art and Prior knowledge was developed in March and April 2023
 
 ---
 
