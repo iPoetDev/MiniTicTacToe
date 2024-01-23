@@ -496,10 +496,25 @@ Assuming the default orientation is portrait for mobile and landscape for deskto
 
 ### 4.1 Wireframe/Skeleton: 🚧
 
+> AUTHOR NOTES: The Excalidraw master file for the following wireframes has been deleted. As a direct result, the author-developer was unable to edit and adjust the final design/implementation to look like the initial designs hereto presented.
+
+So a hack &amp; fix for this is:
+- [x] List the features that are to be in a future version
+- [x] Put the UI controls on the page, as place-holders to align with initial design, but disable these controls and annotate
+- [ ] Best effort design to align with implementation without some interactivity
+
+Design difference between final and implemented
+
+1. Dark Color scheme over a light scheme as represented below.
+
 #### 4.1.1 App Page 🚧
 
 ##### 4.1.1.1 Desktop 🚧
 
+###### Breakpoints for Project
+
+- [ ]  **Portrait 1366 x 768**
+- [ ]  **Landscape 1440 x 900**
 
 | **Portrait 1366 x 768**                                       | Notes          |
 | ------------------------------------------------------------- | -------------- |
@@ -511,6 +526,8 @@ Assuming the default orientation is portrait for mobile and landscape for deskto
 
 ##### 4.1.1.2 Tablet 🚧
 
+- [ ] **Portrait: 768 x 1024**
+- [ ] **Landscape 1024 x 768**
 
 | **Portrait: 768 x 1024**                                    | **Landscape 1024 x 768**                                     |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
@@ -520,6 +537,7 @@ Assuming the default orientation is portrait for mobile and landscape for deskto
 
 ##### 4.1.1.3 Mobile 🚧
 
+- **Portrait iPhone**
 
 | **Portrait iPhone**                                     | **Landscape iPhone** |
 | ------------------------------------------------------- | -------------------- |
@@ -829,13 +847,13 @@ Refs:
 
 #### 6.0.3 Code Style ✅
 
-**8.0.3.1 Style Guides**
+** 6.0.3.1 Style Guides**
 
 - [X]  `HTML`: _[`HTML Style Guide`](https://www.w3schools.com/html/html5_syntax.asp)_ - [HTML Style Guide](https://www.w3schools.com/html/html5_syntax.asp)
 - [X]  `CSS`: _[`CSS Style Guide`](https://www.w3schools.com/css/css_syntax.asp)_ - [CSS Style Guide](https://www.w3schools.com/css/css_syntax.asp)
 - [X]  `JavaScript`: _[`JavaScript Style Guide`](https://www.w3schools.com/js/js_conventions.asp)_ - [JavaScript Style Guide](https://www.w3schools.com/js/js_conventions.asp)
 
-**8.0.3.2 Clean Code** ✅
+** 6.0.3.2 Clean Code** ✅
 
 - [X]  ✅ `Clean Code Characteristics`: Project requirements for code quality and standards.
   - [X]  ✅ Code demonstrates the characteristics of ‘clean code’
@@ -1147,7 +1165,7 @@ flowchart TD
 
 > This project used [GitHub Issues](https://github.com/iPoetDev/MiniTicTacToe/issues) to track, triage and describe project and code level bugs.
 
-- **<ins>BUG :: DRAW STATE is indeterminate: GameLogic._checkOutcome Conditionals</ins>** #15: https://github.com/iPoetDev/MiniTicTacToe/issues/15,
+- **ISSUE #15 <ins>BUG :: DRAW STATE is indeterminate: GameLogic._checkOutcome Conditionals</ins>** #15: https://github.com/iPoetDev/MiniTicTacToe/issues/15,
   - Status: Can't Fix before the deadline.
 
 ---
@@ -1169,6 +1187,26 @@ flowchart TD
 ---
 
 ### 9.4 Responsive Design ⛔
+
+#### 9.4.1 iPhone
+
+![](refs/assets/img/iPhone14Pro.png)
+
+#### 9.4.2 iPad Pro 9.7 Portrait
+
+![](refs/assets/img/iPadPro9.7″.png)
+
+#### 9.4.3 iPad Pro 9.7 Landscape
+
+![](refs/assets/img/iPadPro9.7″Landscape.png)
+
+#### 9.4.4 Desktop Wide
+
+![](refs/assets/img/DeskTopWide1368w.png)
+
+#### 9.4.5 Desktop HD 1440px Wide
+
+![](refs/assets/img/DesktopHD1440w.png)
 
 ---
 
