@@ -7,11 +7,12 @@
  * @param {GameLogic} newgame - The instance of the gameLogic class.
  * @return {void}
  * @complexity 6%|low
+ * @see index.html
  */
-function oninitload(newgame) {
+function oninitload(newgame) { // jshint ignore:line
 
     // noinspection AnonymousFunctionJS
-    document.addEventListener("DOMContentLoaded", function()
+    document.addEventListener('DOMContentLoaded', function()// jshint ignore:line
     {
         //Initialize gameLogic class and assign to game
         /** @type {GameLogic} **/
@@ -27,21 +28,24 @@ function oninitload(newgame) {
         /** @type {object} Global Variable with data property to watch **/
         window.GameRound = {roundData: []}
         // Proxy-ify the Global variable's data structure for watching for changes.
-        window.GameRound.roundData = watchData(window.GameRound.roundData,
-                                                dataHandler)
+        /** @see watch.js **/
+        window.GameRound.roundData = watchData(window.GameRound.roundData, // jshint ignore:line
+                                                dataHandler) // jshint ignore:line
         window.hasFinal = null
-        // initUI
-        initUI()
+        /** @see watch.js **/
+        initUI() // jshint ignore:line
 
         //Find all grid buttons i.e. cells/clicks
-        /** @type {HTMLElement[]} **/
-        let buttons_on_grid = findButtons('cell-',
+        /** @type {HTMLElement[]}
+         * @see ui1.js **/
+        let buttons_on_grid = findButtons('cell-', // jshint ignore:line
                                                             game.MAX)
         /** @type {HTMLElement} **/
         let resetBtn = document.getElementById('reset');
         // Initialize the game' eventHandlers
         // and link the result container for each move to the grid
-        result = gridButtonOnClick(buttons_on_grid,
+        /** @see ui1.js **/
+        result = gridButtonOnClick(buttons_on_grid, // jshint ignore:line
                                     'click',
                                     'cell-',
                                     startgrid,
@@ -49,7 +53,8 @@ function oninitload(newgame) {
                                     result)
         // Dynamically initialize the reset on load,
         // and link the result of a move to the reset
-        resetButtonOnClick(resetBtn,
+        /** @see ui1.js **/
+        resetButtonOnClick(resetBtn, // jshint ignore:line
                             'click',
                             'reset',
                             startgrid,
@@ -57,6 +62,7 @@ function oninitload(newgame) {
                             result,
                             devmode );
         // Log the passing result
-        devmode && clickLogger(result)
+        /** @see ui1.js **/
+        devmode && clickLogger(result) // jshint ignore:line
     });
 }
