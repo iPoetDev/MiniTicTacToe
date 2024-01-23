@@ -107,31 +107,13 @@ amiresponsive.co.uk/ | URI: AmIResponsive
 - More on a Perfect Game strategies on Wikipedia **(1)**.
 
 
-```
+
 <small><sup><b>1</b></sup>: Source: <a href="https://en.wikipedia.org/wiki/Tic-tac-toe#Gameplay">https://en.wikipedia.org/wiki/Tic-tac-toe#Gameplay</a></small>
 <small><sup><b>2</b></sup>: Source: <a href="https://en.wikipedia.org/wiki/Futile_game">https://en.wikipedia.org/wiki/Futile_game</a></small>
 <small><sup><b>3</b></sup>: Source: <a href="https://github.com/miloszmisiek/ci_p2_tictactoe#gameplay">https://github.com/miloszmisiek/ci_p2_tictactoe#gameplay</a>, Author: <b>Milosz Misiek</b> <i>https://github.com/miloszmisiek</i> (2021), Last Accessed: Dec 12, 2023</small>
-```
 
-***
-### 2.2 Game Arena ✅❓
 
-**`Key Components`**: See [4.? Features]() below for fuller outline and description.
 
-| Arena/App Features      | Parent Feature   | Form Factor                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Location                       | Outline                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Elements                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | Interactions                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Version |
-|:-------------------|:-----------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------|
-| Web Page           | --               | All:<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Desktop, Tablet, Mobile | Page                           | HTML                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | HTML Semantics                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | --                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |         |
-| Web App            | Web Page         | All:<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Desktop, Tablet, Mobile | Page                           | SPA, Simple, Alpine X-Data&nbsp;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | Loads JS&nbsp;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | --                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |         |
-| Game Banner        | Web App          | All: <br>Desktop, Tablet, Mobile                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | 1st Row,<br>Top of Area/Header | Header, Headings<br>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Game Title,<br>In-Game Controls                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | --                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |         |
-| Game Title         | Game Banner      | All:<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Desktop, Tablet, Mobile |  2nd Row,&nbsp;<br>Game Banner | Headings                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Text                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | --                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |         |
-| In-Game Controls   | Game Banner      | All:<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Desktop, Tablet, Mobile |           2nd Row, Game Banner | Template,<br>Components<br><br>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Game Timer/Controls,<br>Game FAQ Button                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | --                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |         |
-| Game Timer         | In-Game Controls | Desktop &amp; Tablet                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |           2nd Row, Game Banner | Counts down the assigned set interval.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | External Library,<br>InnerHTML Text                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Timer, On Click                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |         |
-| Game FAQ Button    | In-Game Controls | All:<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Desktop, Tablet, Mobile |           2nd Row, Game Banner | Button                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | In Page Modal                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Opens Modal<br>Button On Click                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |         |
-| Game Board         | Web App          | All:<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Desktop, Tablet, Mobile | Centre of Area                 | Template,<br>Grid, Button                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | Grid, 0-3<br>Grid, 3-6<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Grid, 6-9<br> | Button On Click                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |         |
-| Game Messages      | Web App          | All:<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Desktop, Tablet, Mobile |         2nd Row,&nbsp;<br>Area | Template,<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Components   | InnerHTML Text                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | &nbsp;On Update, Update DOM                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |         |
-| Game Controls      | Web App          | All:<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Desktop, Tablet, Mobile | Bottom of Game Board           | Template,<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Grid, Button | Start Button<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Reset Button            | Button On Click                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |         |
-| Game Score         | Web App          | All:<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Desktop, Tablet, Mobile | Bottom of Game Board           | Template,<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Components   | InnerHTML Text                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | &nbsp;On Update, Update DOM                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |         |
-| Game Match Scoring | Web App          | All:<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Desktop, Tablet, Mobile | In Overlay, In Page Modal      | Template,<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Components   | InnerHTML Text<br>Start Match Button<br>Reset Match                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Opens Modal<br style="--tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;">Button On Click |         |
 ***
 ### 2.3 Developer Motivations ✅✅
 
@@ -183,187 +165,13 @@ This author-developer's project has a strong influence, code reuse, concept and 
     - Proxy Object in `watch.js` of the game's result object in the global scope.
     - Defining a Watcher behaviour using the Browser custom event handling
     - Updating the UI dynamically when certain end state conditions are met.
-
-***
-> ::
-***
-## 3.0 Project 🚧
-> Complete: ❓ | Review: 📝 | To Do: 📌
-
-_This section is a summation of select key, pre-agile:
-- _i) project decisions_
-- _ii) project management activities_
-- _iii) stages of the project delivery workflows from code to hosting_
-- _iv) documentation requirements._
-### 3.1 Key Project Decisions 🚧
-
-> -  Learning Requirement: Any design decisions that contravene accepted user interaction, user experience design principles are **identified and described** (comments in code or a section in the README)
-
-#### 3.1.1 Interactive Front-End Web Application as a Single Page Architecture
-
-> To use HTML, CSS and JavaScript (native and or Libraries) as front end technologies
-
-#### 3.1.2 To employ a principle of Locality of Behaviour before Separation of Concerns, as a leading technical design pattern.
-
-- .
-
-#### 3.1.3 Select a CSS Framework, like TailwindCSS, that demonstrate the Locality of Behaviour principle as a design pattern.
-
--
-
--
-
-***
-### 3.2 Workflow ✅
-
-The following workflow is an extract, re-sorted, of the PASS and MERIT Learning Objectives from the assessment criteria. Repurposed to define a workflow from start to finish, in semantic categories/phases. If these are surmounted, then good performance will open the possibility to a higher performance.
-
-#### 3.3.1 Design & UX
-
-> - 🚧✅ **Learning Objective**: *Design an interactive Front-End web application using HTML and CSS and JavaScript based on the principles of user experience design, accessibility and responsivity*.
-> 	- [ ] Design a web application that meets accessibility guidelines, follows the principles of UX design, and meets its given purpose.
-> 	- [ ] Design the organisation of information on the page following the principles of user experience design.
-> 	- [ ] Design a web application that presents a structured layout and navigation model, and meets its given purpose.
-> 	- [ ] Design a website that meets accessibility guidelines.
-> 	- [ ] Design interactivity for a web application that lets the user initiate and control actions, and gives feedback.
-> - 🚧✅ **Learning Objective**: *Design an interactive Front-End web application using HTML and CSS and JavaScript based on the principles of user experience design, accessibility and responsivity*.
-> 	- [ ] Implement a website that provides an excellent solution to the key project goals, demands and expectations.
-> 	- [ ] Implement a web application whose purpose is immediately evident to a new user.
-> 	- [ ] Design a website with a flow of information layout and interaction feedback that is clear and unambiguous.
-> - 🚧✅ **Learning Objective**: *Test a front-end web application through the development, implementation and deployment stages*
-> 	- [ ] Code all external links to open in a separate tab when clicked.
-> 	- [ ] If used, implement clear navigation to allow users to find resources on the site intuitively.
-> 	- [ ] Present the finished website with clearly understandable site-specific content, rather than Lorem Ipsum placeholder text.
-> - 🚧✅ **Learning Objective**: *Implement Front-End interactivity, using core JavaScript, JavaScript libraries or frameworks*.
-> 	- [ ] Design a web application that lets the user initiate and control actions and gives feedback
-##### 3.3.1.1 Graphics & Content
-
-> - 🚧✅ <ins><b>Learning Objective</b>: <i>Design an interactive Front-End web application using HTML and CSS and JavaScript based on the principles of user experience design, accessibility and being responsive to device screens</i>.</ins>
-> 	- [ ] Implement an interactive web application that incorporates images or graphics of usable resolution, legible, un-obscured text, consistent styling, undistracted foregrounds.
-> 	- [ ] Ensure that foreground information is never distracted by backgrounds.
-> 	- [ ] Include graphics that are consistent in style and colour.
-> 	- [ ] Design a website that meets accessibility guidelines (e.g. contrast between background and foreground colours to cater for the visually impaired).
-> - 🚧✅ <ins><b>Learning Objective</b>: <i>Test a front-end web application through the development, implementation and deployment stages</i></ins>.
-> 	- [ ] **Present** the finished website with clearly understandable site-specific content, rather than Lorem Ipsum placeholder text.
-#### 3.3.2 Build
-
-> - 🚧✅ **Learning Objective**: Implement an interactive Front-End web application using HTML and CSS and JavaScript based on the principles of user experience design, accessibility and responsivity*.
-> 	- [ ]  Implement a website with a flow of information layout and interaction feedback that is clear and unambiguous.
-> 	- [ ]  Implement an interactive Front-End web application using HTML and CSS and JavaScript based on the principles of user experience design, accessibility and being responsive to device screens.
-> 	- [ ]  Implement the (*semantic*) organization of information on the page following the principles of user experience design.
-> 	- [ ]  Implement interactivity for a web application that lets the user initiate and control actions, and gives feedback.
-> 	- [ ]  Implement an interactive web application that incorporates images or graphics of usable resolution, legible, unobscured text, consistent styling, undistracted foregrounds.
-> - 🚧✅ **Learning Objective**: *Implement Front-End interactivity, using core JavaScript, JavaScript libraries or frameworks*
-> 	- [ ]  Implement appropriate working functionality for all project requirements.
-##### 3.3.2.1 HTML
-
-> - 🚧✅ **Learning Objective**: Design an interactive Front-End web application using HTML and CSS and JavaScript based on the principles of user experience design, accessibility and being responsive to device screens.
-> 	- [ ]  Write custom HTML code to create a responsive front-end web application consisting of one or more HTML pages with significant interactive functionality
-> - 🚧✅ **Learning Objective**: *Test a front-end web application through the development, implementation and deployment stages*
-> 	- [ ]  Write custom HTML code that passes through the official W3C validator with no issues.
-> 	- [ ]  Use Semantic markup to structure HTML code
-##### 3.3.2.2 CSS
-
-> - 🚧✅ **Learning Objective**: Design an interactive Front-End web application using HTML and CSS and JavaScript based on the principles of user experience design, accessibility and being responsive to device screens.
-> 	- [ ]  Write custom CSS code to create a responsive front-end web application consisting of one or more HTML pages with significant interactive functionality
-> - 🚧✅ **Learning Objective**: *Test a front-end web application through the development, implementation and deployment stages*
-> 	- [ ]  Write custom CSS code that passes through the official (Jigsaw) validator with no issues.
-> 	- [ ]  Use CSS media queries across the application to ensure the layout changes appropriately and maintains the page's structural integrity across device screen sizes.
-##### 3.3.2.3 JavaScript
-
-> - 🚧✅ **Learning Objective**: *Design an interactive Front-End web application using HTML and CSS and JavaScript based on the principles of user experience design, accessibility and responsivity*.
-> 	- [ ]  Design interactivity for a web application that lets the user initiate and control actions, and gives feedback.
-> 	- [ ]  Write custom JavaScript to create a responsive front-end web application consisting of one or more HTML pages with significant interactive functionality.
-> 	- [ ]  Write JavaScript code to produce relevant responses to user actions.
-> - 🚧✅ **Learning Objective**: *Test a front-end web application through the development, implementation and deployment stages*.
-> 	- [ ]  Write JavaScript code that passes through a linter (e.g. Jshint) with no significant issues.
-> - 🚧✅ **Learning Objective**: *Implement Front-End interactivity, using core JavaScript, JavaScript libraries or frameworks*.
-> 	- [ ]  Write JavaScript functions that correctly implement compound statements.
-> 	- [ ]  Write code that intelligently handles empty or invalid input data.
-> 	- [ ]  Write code that does not generate internal errors on the page or in the console due to user actions.
-> 	- [ ]  Organize code and assets files in directories by file type.
-#### 3.3.3 Code & Project Organization
-
-> - 🚧✅ **Learning Objective**: *Maximize future maintainability through code structure and organization*.
->     - [ ]  Clearly separate and identify code written for the website and code from external sources (e.g. libraries or tutorials).
->     - [ ]  Organize HTML, CSS and JavaScript code into well-defined and commented sections.
->     - [ ]  Place CSS code in external files linked to the HTML page in the HEAD element.
->     - [ ]  Place JavaScript code in external files linked to the HTML page just above the closing body tag.
->     - [ ]  Name files consistently and descriptively, without spaces or capitalization to allow for cross-platform compatibility.
->     - [ ]  Group files in directories by file type (e.g. an assets directory will contain all static files and may be organized into subdirectories such as CSS, images, etc.).
-> - 🚧✅ **Learning Objective**: *Implement Front-End interactivity, using core JavaScript, JavaScript libraries or frameworks.*
->     - [ ] Organize code and assets files in directories by file type.
-#### 3.3.4 Code Quality
-
-> - 🚧✅ **Learning Objective**: *Test a front-end web application through the development, implementation and deployment stages*.
-> 	- [ ] Write custom HTML code that passes through the official W3C validator with no issues.
-> 	- [ ] Write custom CSS code that passes through the official (Jigsaw) validator with no issues.
-> 	- [ ] Write JavaScript code that passes through a linter (e.g. Jshint) with no significant issues.
-> - 🚧✅ **Learning Objective**: *Deploy a Front-End web application to a Cloud platform.*
-> 	- [ ] Remove commented-out code before pushing final changes to version control and deploying.
-> 	- [ ] Ensure that there are no broken internal links.
-> - 🚧✅ **Learning Objective**: *Maximize future maintainability through code structure and organization*.
-		- [ ] Write code that meets at least minimum standards for readability (consistent indentation, blank lines only appear individually or, at most, in pairs).
-##### 3.3.4.1 Static-Analysis/Linting
-> Pre-Commit Runner
-
->  - 🚧✅ **Learning Objective**: *Deploy a Front-End web application to a Cloud platform*.
->      - [ ] Remove commented-out code before pushing final changes to version control and deploying.
-
-#### 3.3.5 Version Control
-
-> - 🚧✅ **Learning Objective**: *Demonstrate and document the development process through a version control system such as GitHub*.
->     - [ ]  Use Git & GitHub for version control of an interactive web application up to deployment.
->     - [ ]  Commit often for each feature/fix, ensuring that commits are small, well-defined and have clear, descriptive messages.
-#### 3.3.6 Repository:
-
-> - 🚧✅ **Learning Objective**: *Demonstrate and document the development process through a version control system such as GitHub*.
->     - [ ]  Use Git & GitHub for version control of an interactive web application up to deployment.
-
-##### 3.3.6.1 Issues
-
-> - 🚧✅ **Learning Objective**: *Test a front-end web application through the development, implementation and deployment stages*.
->     - [ ]  Document any bugs found and their fixes and explanation of any bugs that are left unfixed.
-
-#### 3.3.7 Testing
-
-> - 🚧✅ **Learning Objective**: *Test a front-end web application through the development, implementation and deployment stages*.
-> 	- [ ]  Document any bugs found and their fixes and explanation of any bugs that are left unfixed.
-> - 🚧✅ **Learning Objective**: *Implement Front-End interactivity, using core JavaScript, JavaScript libraries or frameworks*.
->     - [ ]  Write code that does not generate internal errors on the page or in the console due to user actions.
-
-#### 3.3.8 Deployment
-
-> - 🚧✅ **Learning Objective**: *Deploy a Front-End web application to a Cloud platform*.
-		- [ ]  Deploy a final version of the code to a cloud-based hosting platform (e.g. GitHub Pages) and test to ensure it matches the development version.
-> - 🚧✅ **Learning Objective**: *Demonstrate and document the development process through a version control system such as GitHub*.
->     - [ ]  Document the deployment procedure in a section in a README file.
-
-#### 3.3.9 Hosting
-
->- 🚧✅ **Learning Objective**: Deploy a Front-End web application to a Cloud platform
->	-  [ ]  Deploy a final version of the code to a cloud-based hosting platform (e.g. GitHub Pages) and test to ensure it matches the development version.
->- 🚧✅ **Learning Objective**: Demonstrate and document the development process through a version control system such as GitHub.
-
-***
-### 3.4 Documentation ✅
-
-> - 🚧✅ **Learning Objective LO2**: LO2 Test a front-end web application through the development, implementation and deployment stages
-> 	 - [ ]  Document any bugs found and their fixes and explanation of any bugs that are left unfixed.
-> - 🚧✅ **Learning Objective: LO4**: Maximize future maintainability through documentation.
-> 	 - [x]  Write a README.md file for the web application that explains its purpose, the value that it provides to its users, and the deployment procedure.
-> 	 - [x]  Present a clear rationale for the development of the project, in the README, - Key project goals, target audience
-> 	 - [x]  Insert screenshots of the project features, give a brief description of what each feature does and explain its value to the user.
-> 	 - [ ]  Document the deployment procedure in a section in a README file, written using consistent and effective Markdown formatting that is well-structured, easy to follow, and has few grammatical errors
->      - [ ]  Attribute all code from external sources to its original source via comments above the code and (for larger dependencies) in the README
->  - 🚧✅ **Learning Objective**: *Demonstrate and document the development process through a version control system such as GitHub*.
-> 	 - [ ]  Document the deployment procedure in a section in a README file, written using consistent and effective Markdown formatting that is well-structured, easy to follow, and has few grammatical errors
+- While old code references to this initiator project may linger in history AND OLD COMMITS, they are not part of the final design and all prior commits and history is obsolete with the BREAKING CHANGE and reversion to NativeJS. THESE OLD CODE REFERENCES ARE NO LONGER CREDITS TO PRIOR ART.
 
 ***
 > ::
 ***
 
-## 4.0 User Experience ✅✅
+## 3.0 User Experience ✅✅
 > Complete: ❓ | Review: 📝 | To Do: 📌
 
 - While this project is not scoped for full-blown Agile processes, given the simplicity of the solution context; using concepts in simple application is appropriate to showcase.
@@ -371,7 +179,7 @@ The following workflow is an extract, re-sorted, of the PASS and MERIT Learning 
     - **Feature** definition from : [Epics Features and Stories (gla.ac.uk)](https://www.gla.ac.uk/media/Media_730149_smxx.pdf).
     - **User Stories** from: [Epics Features and Stories (gla.ac.uk)](https://www.gla.ac.uk/media/Media_730149_smxx.pdf).
 
-### 4.? Target Audience ✅
+### 3.1 Target Audience ✅⛔
 
 Any of these audiences/roles or personas are all forms of Users.
 
@@ -392,7 +200,7 @@ A gamer (role) can be one of three player types to form sub personas.
 	- i.e. Classic Gamer who are returners players.
 	- i.e. Classic Gamer who are frequent players.
 
-### 4.? Features ✅
+### 3.2 Features ✅⛔
 
 > In the context of Agile workflows: _A feature is a chunk of work from the Epic – a deliverable that adds value and moves towards completing the Epic._
 
@@ -406,8 +214,8 @@ Defining these features, within Milestones, (here), allows for alluding to the d
 
 ***
 
-### 4.? Milestones 🚧
-#### Version 0.5
+### 3.3 Milestones 🚧⛔
+#### Version 0.5 ⛔
 
 - **Game Brand**: Purpose and Context
 
@@ -523,7 +331,7 @@ Benefit:
 Acceptance:
 ```
 ***
-### 4.? User Stories ✅
+### 3.4 User Stories ✅⛔
 
 > - Stories, also called “user stories,” are short requirements or requests written from the perspective of an end user.
 > - A Story should describe a need that can be satisfied by introducing a new feature or changing an existing feature.
@@ -536,7 +344,7 @@ I want  : User Objective/Want/Task
 So that : User Motive/Why
 ```
 
-#### 4.?.1 For First Time Players who are both Casuals and Fans ✅
+#### 3.4.1 For First Time Players who are both Casuals and Fans ✅⛔
 > Beginners Features | Objective | Tasks
 
 -  [ ] *As a* Fan, *I want* to be able to play an online Tic Tac Toe game *so that* I follow my passion for strategy and probability.
@@ -545,14 +353,14 @@ So that : User Motive/Why
 -  [ ] *As a* General Player (Any Persona, Any Type), *I want* to read instructions/FAQ *so that* I can easily understand how to play the game.
 -  [ ] *As a* General Player (Any Persona, Any Type), *I want* to have clearly labelled controls, i.e. intuitive usage, *so that* I can easily understand how to operate (*new, start, reset, end* ) the game.
 -  [ ] *As a* First Time General Player (Any Persona), *I want* to see status messages to know if I have won, drawn or lost *so that* I know what is the outcome of the game.
-#### 4.?.2 For Returning Players who are Casuals and Fans ✅
+#### 3.4.2 For Returning Players who are Casuals and Fans ✅⛔
 > Intermediate Features | Objective | Tasks
 
 -  [ ] *As a* Developer, *I want* to be able to play a game against a computer *so that* I can experience what an automation/algorithm is like to play against.
 -  [ ] *As a* Returning Player (Any Persona), *I want* to be able to replay the game on the same web page *so that* I do not have to reload the page.
 -  [ ] *As a* Returning Player (Any Persona), *I want* to be able to see my score displayed *so that* can get a feedback is from the game.
 -  [ ] *As a* Returning Player (Any Persona), *I want* to be able to track my score from game to game *so that* I can play best of `2n + 1` matches against my opponent.
-#### 4.?.2 For Frequent Players who are Fans and maybe Casuals ✅
+#### 3.4.2 For Frequent Players who are Fans and maybe Casuals ✅⛔
 > Advanced Features | Objective | Tasks
 
 -  [ ] *As a* Frequent Player, who is a Fan, *I want* an ascetically pleasing graphical visuals and brand identity *so that* I find the game to be pleasant and fun to play to keep on playing.
@@ -567,9 +375,9 @@ g. As a user, I want to be able to give my feedback
 - As a site owner, I want users to be able to clearly see some basic info on the game
 ```
 ***
-### 4.? Form Factors ✅
+### 3.5 Form Factors ✅
 
-#### 4.?.1 Device Screens ✅
+#### 3.5.1 Device Screens ✅
 
 **Screen Resolution v Form Factor**
 
@@ -590,14 +398,14 @@ Mobile   | Portrait    | iPhone 6*    |     |
 - GitHub: [browserslist/browserslist: 🦔 Share target browsers between different front-end tools, like Autoprefixer, Stylelint and babel-preset-env (github.com)](https://github.com/browserslist/browserslist)
 - Query: last 5 versions, last 2 node versions, not ie 6-11
 - Result: [Browserslist](https://browserslist.dev/?q=bGFzdCA1IHZlcnNpb25zLCBsYXN0IDIgbm9kZSB2ZXJzaW9ucywgbm90IGllIDYtMTE%3D)
-#### 4.?.2 Responsiveness ✅
+#### 3.5.2 Responsiveness ✅
 
 > Users today are driven by experiences. Therefore, your web design must be responsive across all devices. With the increasing number of mobile users, one cannot emphasize the importance of responsive design in customer experience.
 
  > **_What is a Breakpoint:_**
 	- CSS Breakpoint is a “defined width” that is used in the webpage style to make the content and design responsive.
 	- It helps enhance user experience by delivering consistent experience on different devices.
-##### 4.?.2.1 [Common Breakpoints For Responsive Design (browserstack.com)](https://www.browserstack.com/guide/responsive-design-breakpoints#toc3) ✅
+##### 3.5.2.1 [Common Breakpoints For Responsive Design (browserstack.com)](https://www.browserstack.com/guide/responsive-design-breakpoints#toc3) ✅
 
 Assuming the default orientation is portrait for mobile and landscape for desktop.
 
@@ -615,7 +423,7 @@ Mobile | Tablets | Desktops
 **412×915,P** | --- | **1920x1080,L**
 **414×896,P** | --- | **2560x1440,L**
 **480x896,P** | --- | ---
-##### 4.?.2.2 [Best Practices for Adding Standard Responsive Breakpoints (browserstack.com)](https://www.browserstack.com/guide/responsive-design-breakpoints#toc6) ✅
+##### 3.5.2.2 [Best Practices for Adding Standard Responsive Breakpoints (browserstack.com)](https://www.browserstack.com/guide/responsive-design-breakpoints#toc6) ✅
 
 - **Develop for Mobile Audience:** The developer and designer receive multiple benefits by developing and designing mobile-first content.
     - It is more difficult to simplify a desktop experience for mobile screens than expand a mobile view for desktop screens. When a design is mobile-first, developers address what is most necessary and can then make additions to match the preferences of desktop users.
@@ -637,62 +445,25 @@ Mobile | Tablets | Desktops
 - **Don’t Define Standard Responsive Breakpoints Based on the Device Size:** The primary objective of responsive design breakpoints is to display content in the best possible way.
 	- So, let the content be the guide. Add a breakpoint when the content and design requires it.
 
-#### 4.3 Accessibility 🚧
+### 3.6 Accessibility 🚧
 
 
 ***
 > ::
 ***
 
-## 5.0 Plan 🚧
-> Complete: ❓ | Review: 📝 | To Do: 📌
-
-### 5.? Roadmap 🚧
-
-| Stage | Version | Feature | Outline | Story | Submission |
-|:----- |:------- |:------- |:------- |:----- |:---------- |
-|       | 0.1     |         |         |       | ❌         |
-|       | 0.2     |         |         |       | ❌         |
-|       | 0.3     |         |         |       | ❌         |
-
-***
-### 5.? Versions 🚧
-
-> - Versioning of the app is non-liner, haphazard and needs a serious refactoring and review.
-> - Versioning was not well scope or managed for this project with the breaking change causing a diversion in design.
-
-#### ~~v0.1~~ 1st: Layout & Deployment for v2.0-NativeJS
-
-- [x] Web Page - Header
-- [x] Game Arena - Layout & Surface Design
-- [x] Game Title - Layout & Surface Design
-- [x] Game Board - Layout & Surface Design
-- [x] Hosting Deployment - Layout & Surface Design
-
-#### ~~v0.2~~ 2nd: Responsiveness: Devices & Form Factors 🚧
-
-- [ ] Game Arena - Responsiveness: Devices & Form Factors
-- [ ] Game Title - Responsiveness: Devices & Form Factors
-- [ ] Game Board - Responsiveness: Devices & Form Factors
-- [ ] Hosting Deployment - Responsiveness: Devices & Form Factors
--
-#### ~~v0.3~~ 3rd : 🚧
-
-
-
-
 ***
 > ::
 ***
 
-## 6.0 Design / UI 🚧
+## 4.0 Design / UI 🚧
 > Complete: ❓ | Review: 📝 | To Do: 📌
 
-### 6.? Wireframe/Skeleton: 🚧
+### 4.1 Wireframe/Skeleton: 🚧
 
-#### 6.?.1 App Page 🚧
+#### 4.1.1 App Page 🚧
 
-##### 6.?.1.1 Desktop 🚧
+##### 4.1.1.1 Desktop 🚧
 
 **Portrait 1366 x 768** | Notes
 --- | ---
@@ -702,21 +473,21 @@ Mobile | Tablets | Desktops
 
 
 ***
-##### 6.?.1.2 Tablet 🚧
+##### 4.1.1.2 Tablet 🚧
 
 **Portrait: 768 x 1024** | **Landscape 1024 x 768**
 --- | ---
 ![](refs/assets/img/Wireframe-Tablet-Standard-Portrait.png) |![](refs/assets/img/Wireframe-Tablet-Standard-Landscape.png)
 
 ***
-##### 6.?.1.3 Mobile 🚧
+##### 4.1.1.3 Mobile 🚧
 
 **Portrait iPhone** |  **Landscape iPhone**
 --- | ----
 ![](refs/assets/img/Wireframe-Mobile-Portrait-Base.png) | ....
 
 ***
-### 6.? Site Structure 🚧
+### 4.2 Site Structure 🚧
 
 #### Alpha Release 🚧
 
@@ -740,9 +511,21 @@ Mobile | Tablets | Desktops
 - Candidate Release and ....
 
 ***
-### 6.? Theme/Surface 🚧
+### 4.3 Theme/Surface 🚧
 
-#### 6.?.1 Fonts+ 🚧
+#### 4.3.1 Fonts+ 🚧
+
+##### 4.3.1.1  Web Safe Fonts
+
+- These font from Google where convert from `.ttf` to web safe variants i.e. `.WOFF`, `.WOFF2`
+- Using then my URL handles these web safe versions as they are automatic unpacked by the Browser.
+- While NOT used in the project per se, they are kep in repository for reference and design guidance purpose.
+- Also for licence and Googele web URI fail-over/dependencies if there is a bug in web access or web performance issues, like the layout shift as fonts & page render.
+
+- **`URL: Converter`**: https://transfonter.org/
+> The @font-face CSS rule allows web developers to specify online fonts to display text on their web pages. By allowing authors to provide their own fonts, @font-face eliminates the need to depend on the limited number of fonts users have installed on their computers.
+
+#### 4.3.1.2 Feature & Use
 
 Feature | Element | Font Name | Root Size | Desktop | Tablet | Mobile
 --- |--- | --- | --- | --- | --- | ---
@@ -755,7 +538,7 @@ Emoji   | Icons, Spirites   | FontAwesome       |      |      |       |
    |    |        |      |      |       |
    |    |        |      |      |       |
 
-##### 6.?.1.1 Kanit ✅
+##### 4.3.1.3 Kanit ✅
 
 - *Kanit* means mathematics in Thai, and the Kanit typeface family is a formal Loopless Thai and Sans Latin design.
 - A notable detail is that the stroke terminals have flat angles, which allows the design to enjoy decreased spacing between letters while preserving readability and legibility at smaller point sizes.
@@ -770,7 +553,8 @@ Emoji   | Icons, Spirites   | FontAwesome       |      |      |       |
 ![](refs/assets/img/Font-Kanit-Reg400-48px.png)
 
 ![](refs/assets/img/Font-Kanit-Reg400-16px.png)
-##### 6.?.1.2 Gochi-Hand ✅
+
+##### 4.3.1.4 Gochi-Hand ✅
 
 - *Gochi Hand* is a typographic interpretation of the handwriting of a teenager.
 	- The style is fresh, not like the letters made by a calligrapher, but those of an ordinary person.
@@ -787,22 +571,14 @@ Emoji   | Icons, Spirites   | FontAwesome       |      |      |       |
 ![](refs/assets/img/Font-GochiHand-Reg400-36px.png)
 
 > <small>Note: These screenshots of fronts come from Google Fonts for Kanit and Gochi-Hand respectively. The quotes are mundane in this project's context and have no political intention or design.</small>
-#### 6.?.2 Colour 🚧
-> Light mode was due to be designed, however time and project deadline schedules did not permit.
-
-##### 6.?.2.2 Dark Mode 🚧
-
-- Dark Mode: Tailwinds
--
-
 
 ***
 > ::
 ***
-## 7.0 Build ✅
-> Complete: ✅ | Review: ❓ | Publish: ❌
+## 5.0 Build ✅
+> <small><sup> Complete: ✅ 24/01/23</sup></small>
 
-### 7.1 IDE & Environments ✅
+### 5.1 IDE & Environments ✅
 
 - [x] `Windows 22H2`: `version 11.0.22621.2715` - [Windows](https://www.microsoft.com/en-gb/windows)
 - [x] `Git`: `version 2.42` - [Git](https://git-scm.com/)
@@ -810,7 +586,7 @@ Emoji   | Icons, Spirites   | FontAwesome       |      |      |       |
 - [x] `Nodeist/NPM`: `version 9.8.1`  - [NPM](https://www.npmjs.com/)
 - [x] `JetBrains | WebStorm`: `version  2023.2.3`  - [JetBrains WebStorms](https://www.jetbrains.com/webstorm)
 
-#### 7.1.1 IDE Plugins
+#### 5.1.1 IDE Plugins
 
 - [x] `SonarLint` - [SonarLint](https://plugins.jetbrains.com/plugin/7973-sonarlint/)
 - [x] `Browserlist` - [Browserlist](https://plugins.jetbrains.com/plugin/9275-browserlist/)
@@ -818,7 +594,7 @@ Emoji   | Icons, Spirites   | FontAwesome       |      |      |       |
 - [x] `W3C Validation` - [W3C Validation](https://plugins.jetbrains.com/plugin/7322-w3c-validation/)
 
 ***
-### 7.2 AI Agents & Services ✅
+### 5.2 AI Agents & Services ✅
 
 > AUTHORS NOTE: AI Assistance is here to stay, as a developer *tool*. The author it is as random as a fellow human in the quality of the output based on it level of skill/domain it knows; as well as the quality of the prompt/input by the author-developer. It can be super helpful if the knowledge is a known problem domain. It can super mis-leading is the domain is an unknown or unfamiliar issue/concept. Any code here submitted is by the developers own submission, and with probabale assisted by the AI Agent, and well tested to be working by the author's own experience and hard effort/man-hours.
 
@@ -830,9 +606,9 @@ Emoji   | Icons, Spirites   | FontAwesome       |      |      |       |
     - **Features**: Code Generation, Code Completion, Code Analysis, Code Navigation, Code Refactoring, Code Inspection, Code Highlighting, Code Formatting, Code Folding, Code Templates, Code Style, Code Intentions, Code Actions, Code Linting, Code Documentation, Code Comments, Code Snippets.
 
 ***
-### 7.3 Libraries & Frameworks ✅
+### 5.3 Libraries & Frameworks ✅
 
-#### 7.3.1 npm Tooling
+#### 5.3.1 npm Tooling
 
 > See [`package.json`](https://github.com/iPoetDev/P2-Template/blob/main/package.json) for full list of dependencies
 
@@ -889,14 +665,14 @@ Emoji   | Icons, Spirites   | FontAwesome       |      |      |       |
 
 ***
 
-### 7.4 Repository & Hosting ✅
+### 5.4 Repository & Hosting ✅
 
-#### 7.4.1 Repository (Version Source Control) ✅
+#### 5.4.1 Repository (Version Source Control) ✅
 
 - [x] `GitHub.com`: _[`Github Respoistory`](https://www.github.com)_
 - [x] `GitHub.io`: _[`Github Pages`](https://pages.github.com/)_
 
-#### 7.4.2 Apps (Code Integration & Deployment) ✅
+#### 5.4.2 Apps (Code Integration & Deployment) ✅
 
 - [x] `Dependabot Preview`: _[GitHub: Dependabot](https://dependabot.com/)_ - [Dependabot](https://dependabot.com/)
 - [x] `GitLive`: _[GitHub Marketplace: GitLive](https://github.com/marketplace/teamhub_ - [GitLive](https://gitlive.app/)
@@ -907,11 +683,11 @@ Emoji   | Icons, Spirites   | FontAwesome       |      |      |       |
 ***
 > ::
 ***
-## 8.0 Code ✅
-> Complete: ❓ | Review: 📝 | To Do: 📌
-#### 8.0.1 Version Control ✅
+## 6.0 Code ✅
+> <small><sup> Complete: ✅ 24/01/23</sup></small>
+#### 6.0.1 Version Control ✅
 
-##### 8.0.1.1 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) ✅
+##### 6.0.1.1 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) ✅
 > A changelog is a file, which contains a curated, chronologically ordered list of notable changes for each version of a
 project.
 - All notable changes to this project will be documented in this file.
@@ -924,14 +700,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [x] `Keep a ChangeLog`: _[`version 1.0.0`](https://keepachangelog.com/en/1.0.0/)_ - [Keep a ChangeLog](https://keepachangelog.com/en/1.0.0/)
 
-##### 8.0.1.2 [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) ✅
+##### 6.0.1.2 [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) ✅
 > The Conventional Commits specification is a lightweight convention on top of commit messages. It provides an easy set
 of rules for creating an explicit commit history; which makes it easier to write automated tools on top of. This
 convention dovetails with [SemVer](http://semver.org/), by describing the features, fixes, and breaking changes made in commit messages.
 
 - [x] `Conventional Commits`: _[`version 1.0.0`](https://www.conventionalcommits.org/en/v1.0.0/)_ - [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 
-##### 8.0.1.3 [SemVer Versioning](https://semver.org/))
+##### 6.0.1.3 [SemVer Versioning](https://semver.org/))
 > “Semantic Versioning.” Under this scheme, version numbers and the way they change convey meaning about the underlying
 code and what has been modified from one version to the next.
 
@@ -940,7 +716,7 @@ code and what has been modified from one version to the next.
   - **MINOR** version when you add functionality in a backward compatible manner
   - **PATCH** version when you make backward compatible bug fixes
 ✅
-##### 8.0.1.4 Custom Descriptive Commits
+##### 6.0.1.4 Custom Descriptive Commits
 
 - The author decided to merge and customize the two commit message standards to create a more descriptive commit message standard.
 - There is a convention for not using commit messages as a changelog, but the author has decided to use the commit
@@ -978,9 +754,9 @@ Refs:
 -
 ```
 ✅
-#### 8.0.2 Code Structure ✅
+#### 6.0.2 Code Structure ✅
 
-###### 8.0.2.1 Design Patterns: Code Organisation ✅
+###### 6.0.2.1 Design Patterns: Code Organisation ✅
   - <ins>**Separation of Concerns v Locality of Behaviour**</ins>
     1. **Separation of Concerns**: HTML, CSS and JavaScript are kept in separate, linked files is a traditional approach to code factoring and project structure organization.
         - Related code is groups together in a single file by (mime-)type.
@@ -990,7 +766,7 @@ Refs:
        at that unit of code.
         - .
         - .
-#### 8.0.3 Code Style ✅
+#### 6.0.3 Code Style ✅
 
 **8.0.3.1 Style Guides**
 - [x] `HTML`: _[`HTML Style Guide`](https://www.w3schools.com/html/html5_syntax.asp)_ - [HTML Style Guide](https://www.w3schools.com/html/html5_syntax.asp)
@@ -1027,7 +803,7 @@ Refs:
   - StandardJS for JavaScript
   - ESLint for JavaScript
 
-#### 8.0.4 Project Structure ✅
+#### 6.0.4 Project Structure ✅
 
 - [x] ✅  `Project Templates`: GitHub allows for each repository to be used as templates for new projects.
     - `Directory Structure` is defined in the repository template.
@@ -1037,7 +813,7 @@ Refs:
       - `Grouping by Libraries & Frameworks`: e.g. `node_modules` directory will group related file types via subdirectories. Though `node_modules` are not always pushed the remote repository.
       - `Grouping by Features`: e.g. `components` directory will group related file types via subdirectories.
 
-#### 8.0.5 Planned Repository Structure ✅
+#### 6.0.5 Planned Repository Structure ✅
 
 ```
 📁: Project
@@ -1099,24 +875,24 @@ Refs:
 
 
 ***
-### 8.1 HTML ✅
+### 6.1 HTML ✅
 
 - `HTML5`: `v5.0`
-#### 8.1.1 Linting / Static Code Analysis: `htmlHint` ✅
+#### 6.1.1 Linting / Static Code Analysis: `htmlHint` ✅
 
 - The static code analysis tool you need for your HTML.
 - Rules: https://htmlhint.com/docs/user-guide/list-rules
 
-#### 8.1.2 HTML W3C Validation ✅
+#### 6.1.2 HTML W3C Validation ✅
 
 - This validator checks the [markup validity](https://validator.w3.org/docs/help.html#validation_basics) of Web documents in HTML.
 - Use Validator: https://validator.w3.org/nu/#textarea
 - Uses NPM: https://www.npmjs.com/package/w3c-html-validator
 
 ***
-### 8.2 CSS ✅
+### 6.2 CSS ✅
 
-#### 8.2.1 CSS Libraries & Frameworks ✅
+#### 6.2.1 CSS Libraries & Frameworks ✅
 
 - Modern CSS: CSSv3 with latest Browser Supports.
 	- CanIUse: [Can I use... Support tables for HTML5, CSS3, etc](https://caniuse.com/)
@@ -1125,7 +901,7 @@ Refs:
 		- CanIUse.com for CSS: [Can I use... Support tables for CSS3, etc](https://caniuse.com/?cats=CSS&statuses=all)
 	- InterOp 2023: [web-platform-tests dashboard (wpt.fyi)](https://wpt.fyi/interop-2023)
 
-#### 8.2.2 Linting: `StyleLint` ✅
+#### 6.2.2 Linting: `StyleLint` ✅
 
 - `StyleLint` `v15.11.0`:
 	- A mighty CSS linter that helps you avoid errors and enforce conventions.
@@ -1145,41 +921,206 @@ Refs:
 	- *GitHub*: [stylelint/stylelint: A mighty CSS linter that helps you avoid errors and enforce conventions. (github.com)](https://github.com/stylelint/stylelint)
 	- *NPM*: [stylelint - npm (npmjs.com)](https://www.npmjs.com/package/stylelint)
 
-#### 8.2.3 CSS W3C Validation ✅
+#### 6.2.3 CSS W3C Validation ✅
 
-*- W3C CSS* compatibility for *W3C JigSaw*: [Cascading Style Sheets (w3.org)](https://www.w3.org/Style/CSS/)
-	- [So, this is the authority on what is correct CSS and what isn't? (w3.org)](https://jigsaw.w3.org/css-validator/about.html#reference):
-		- **No**. It is a helpful and reliable tool, but a software tool.
-		- The actual reference on Cascading Style Sheets are the [CSS Specifications](http://www.w3.org/Style/CSS/#specs).
-	- This tool is largely out of date, and documentation on their [About the W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/about.html) has references to 2.1.
-		- Useful for learning purposes, however there are features in *ModernCSS* (*InterOp 2023*, between browser vendors) that are see as errors in *W3C JigSaw*.
+- W3C CSS* compatibility for *W3C JigSaw*: [Cascading Style Sheets (w3.org)](https://www.w3.org/Style/CSS/)
+    - [So, this is the authority on what is correct CSS and what isn't? (w3.org)](https://jigsaw.w3.org/css-validator/about.html#reference):
+        - **No**. It is a helpful and reliable tool, but a software tool.
+        - The actual reference on Cascading Style Sheets are the [CSS Specifications](http://www.w3.org/Style/CSS/#specs).
+    - This tool is largely out of date, and documentation on their [About the W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/about.html) has references to 2.1.
+        - Useful for learning purposes, however there are features in *ModernCSS* (*InterOp 2023*, between browser vendors) that are seen as errors in *W3C JigSaw*.
 
 ***
-### 8.3 JavaScript 🚧
+### 6.3 JavaScript ✅
 
-#### 8.3.1 JS Libraries & Frameworks ✅
+#### 6.3.1 JS Libraries & Frameworks ✅
 
 - `JavaScript` `vEC6`: *ECMAScrip 2015* - *ECMAScript 2020*.
 	- MDN: [JavaScript | MDN (mozilla.org)](https://developer.mozilla.org/en-US/docs/Web/javascript)
 	- W3CSchools: [JavaScript Versions (w3schools.com)](https://www.w3schools.com/Js/js_versions.asp)
 
-#### 8.3.2 JS Linting ✅
+#### 6.3.2 JS Linting ✅
 
 > Read More: [4 options to help you get started linting your JavaScript - LogRocket Blog](https://blog.logrocket.com/four-options-to-help-you-get-started-linting-your-javascript-b4b829828648/)
 
 - `esLint`: `v8.55.0`
 - `standardJS`: `v`
 - `JsHint`: `v2.13.6`
+
+##### JSHint Ignore Pragma
+
+The use of ``// jshint ignore:line`` indicates a code hotspot for code quality by JSHint standards, but elected to ignore. Below is a record summary of these code hotspots.
+
+- ✅ File: `logic.js` (Fixing or Ignore 122 issues, JSHint by NPM)
+  - E054: JSHint: Class properties must be methods. Expected '(' but instead saw '='. (E054)
+  - W016: JSHint: Unexpected use of '++'. (W016) = > > used play+= 1, line 1406
+  - W030: JSHint: Expected an assignment or function call and instead saw an expression. (W030)
+  - W071: JSHint: This function has too many statements. (23) (W071), Line 71,606, 703, 980, 1063, 1110,1260,1311, 1387, 1489, 1582
+  - W072: JSHint: This function has too many parameters. (8) (W072)
+  - W098: Line 94-95 JSHint: 'caller' is defined but never used. (W098)
+  - W101: JSHint: Line is too long. (W101): Remedied by code to next line.
+  - W117: JSHint: 'console' is not defined. (W117): Line 122, 133, 145, 157, 169, 180
+- ✅ File: ``logging.js``: 2024/01/22
+- ✅ File: `watch.js`: 2024/01/22
+- ✅ File: `ui1.js`: 2024/01/22
+- ✅ File: `onloadinit.js`: 2024/01/22
+##### JetBrains NoInspections
+
+The use of ``// noinspections`` indicates a code hotspot for code quality by JetBrain Webstorm IDE code styles, but elected to ignore.
+
 ***
 > ::
 ***
-## 9.0 Test & Quality
-> Complete: ❓ | Review: 📝 | To Do: 📌
-### 9.1 Code Quality & Validation
 
-#### 9.1.1 HTML
+## 7.0 Logic & Code Flow ✅
+> <small><sup> Complete: ✅ 24/01/23</sup></small>
+#### 7.1 Mermaid: Code Flow: ``Logic.JS: GameLogic Class``
+
+> What follows is a series of Mermaid Flowchart of the game logic class tracking the method calls, and key returns objects.
+> The class GameLogic acts as like a server / backend to the Game of Tic Tac Toe.
+
+**Question: Why This Design**
+> 1. Could a simpler design be used, most definitely.
+> 2. Dies ot my 20 year old bias for OOP and class based design, I fall into a cognitive/design bias for OOP and Classes based on my prior knowledge of Java, C# and other back end technologies.
+> 3. However, after man-hours of effort, I was committed to this design.
+> 4. In future versions, would I choose this approach. No
+> 5. Does it showcase my skills and coding techniques, Yes.
+> 6. I get to play with Mermaid as a text to diagram documentation skill.
+
+##### Select Cell, Click & Move Validity
+
+```mermaid
+flowchart TD
+    A[Select] -->|F: _whoWins| B(_hasValidMove)
+    B --> C{If Invalid}
+    C -->|TRUE| D[Has Inavlid State]
+    D-->C
+    C-->|RETURN:Invalid Result|X1(this._result)
+    X1-->|RESULT|B
+    C -->|FALSE| E[Is Not Invalid\nValid Move]
+    E -->|RESULT| B
+    B-->|RESULT: Outcome|A
+```
+##### Valid Moves: Who Wins & Make Turns
+```mermaid
+flowchart TD
+    E[Is Not Invalid\nValid Move]
+    E -->|CLICK: index| G(_whoWins)
+    G-->|RETURN: Valid Result|X2(this._result)
+    X2-->|RESULT|G
+
+    E -->|TURNS: index| F[isEvenTurn]
+    G -->|RESULT| B(hasValidMove)
+    B -->|RESULT: outcome| A(Select)
+    G -->H(checkWinner)
+    H-->|winCheck|G
+    F-->I(isTurnFlag)
+    I-->|evenOdd,_turnFlag|F
+    F-->J(UpdateTurnsAndGrid)
+    J-->K(updateTurn)
+
+```
+##### Make Turns: Turn Flags, Update Turns Data & Increment Turns/Swap Players
+```mermaid
+flowchart TD
+    F[isEvenTurn]
+    F-->I(isTurnFlag)
+    I-->|evenOdd,_turnFlag|F
+    F-->J(UpdateTurnsAndGrid)
+    J-->K(updateTurn)
+    K-->K1(moveRef)
+    K1-->|turnProp|K2(_xTurns)
+    K1-->|turnProp|K3(_OTurns)
+    K2-->|updateSequence|K1
+    K3-->|updateSequence|K1
+    K1-->|playedSequenc|K
+    K-->|CurrentSequence|J
+    J-->L{CurrentPlayer}
+    L-->P1(Player 1)
+    P1-->|updateValues\nGrid,Player|P1
+    L-->P2(Player 2)
+    P2-->|updateValues\nGrid,Player|P2
+    P1-->M(PlayedSequence)
+    P2-->M
+    L-->|PlayedSequence|J
+    F-->N(incrementTurn)
+    N-->N1(swapPlayer)
+    N1-->|Swapped|N
+    N-->N2{Turn States}
+    N2-->N2.1(Start, First Player)
+    N2-->N2.2(>Start, <= Max)
+    N2-->N2.3(>Max)
+    N2-->N2.4(_turns Undefined)
+    N2-->|NEW TURN|N
+```
+##### Check For Win: Outcome, Sequence Match, Declare Winner
+
+```mermaid
+flowchart TD
+    G(_whoWins)
+    G-->|RETURN: Valid Result|X2(this._result)
+    G -->H(checkWinner)
+    H-->|winCheck|G
+    H-->H1([sequence in\n WIn Combination])
+    H1-->H1
+    H1-->H2(Check Outcome)
+    H2-->H1
+    H1-->|Outcome|H3.P(Player1 OR Player 2)
+    H1-->|Outcome|H3.D(WHENDRAWN)
+    H1-->|GameStatus|H
+    H2-->I(CheckOutcome)
+    I-->|TRUE, FALSE|I0{CheckSequenceWin}
+    I0-->|TRUE: :IF &&\n ! IFDRAW|I1([checkSequence: Streak, Sequnece])
+    I0-->J(CheckSequnceWin)
+    I0-->|FALSE: IF NOT &&\n ! IFDRAW|I2([checkSequence: Streak, Sequnece])
+    J-->|foundWinner|J0(FoundWinnder \n Array.from, every, includes )
+    J0-->|True, False|J
+    I1-->K1{hasDrawn: TotalTurns}
+    I2-->K2{hasDrawn: TotalTurns}
+    K1-->|true|K11(Has Draw)
+    K1-->|true|K12(Win Outcome)
+    K2-->|true|K22(Has Draw)
+    K2-->|true|K23(In Play)
+    K11-->k3(Outcome)
+    K12-->k3(Outcome)
+    K22-->k3(Outcome)
+    K23-->k3(Outcome)
+    k3-->|Game Status \n OUTCOME|I
+    I-->H2
+```
+##### Check Game State Outcomes, with Winning Sequence
+````mermaid
+flowchart TD
+    H2([sequence in\n WIn Combination])
+    H2-->I(CheckOutcome)
+    I-->|TRUE, FALSE|I0{CheckSequenceWin}
+    I0-->|TRUE: :IF &&\n ! IFDRAW|I1([checkSequence: Streak, Sequnece])
+    I0-->J(CheckSequnceWin)
+    I0-->|FALSE: IF NOT &&\n ! IFDRAW|I2([checkSequence: Streak, Sequnece])
+    J-->|foundWinner|J0(FoundWinnder \n Array.from, every, includes )
+    J0-->|True, False|J
+    I1-->K1{hasDrawn: TotalTurns}
+    I2-->K2{hasDrawn: TotalTurns}
+    K1-->|true|K11(Has Draw)
+    K1-->|true|K12(Win Outcome)
+    K2-->|true|K22(Has Draw)
+    K2-->|true|K23(In Play)
+    K11-->k3(Outcome)
+    K12-->k3(Outcome)
+    K22-->k3(Outcome)
+    K23-->k3(Outcome)
+    k3-->|Game Status \n OUTCOME|I
+    I-->H2
+````
+
+
+## 8.0 Test & Quality ✅
+> <small><sup> Complete: ✅ 24/01/23</sup></small>
+### 8.1 Code Quality & Validation ✅
+
+#### 8.1.1 HTML ✅
 > Version: 23.11.28
->
+
 - Last Inspection: 2024/01/22
 - Count: 6
 
@@ -1193,7 +1134,7 @@ Refs:
 | External     | `index.html`, line 124 | `Warning`       | Warning: The type attribute is unnecessary for JavaScript resources | Kept, Ignored, as current Browsers DevTools showed warnings on Mime Type |
 
 
-#### 9.1.2 CSS
+#### 8.1.2 CSS ✅
 
 > AUTHOR NOTE: TailwindCSS auto generates CSS via JS and may output non-compliant CSS, or modern variants of CSS that the CSS Jigsaw engine may not be up-to-date. So any errors listed here are only a guide, and errors from Tailwinds generated CSS are out of scope. If the CSS displays; and the feature is styled, so be it.
 >
@@ -1201,12 +1142,12 @@ Refs:
 
 - URI: https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fipoetdev.github.io%2FMiniTicTacToe%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en @ 24/01/22 @ 16:01
 
-##### 9.1.2. Tailwind Styles
+##### 8.1.2. Tailwind Styles ✅
 
 > Source: https://ipoetdev.github.io/MiniTicTacToe/src/assets/css/tw-style.css
 > Auto Generated
 
-##### ERRORS (60)
+##### ERRORS (60) ✅
 
 ![](refs/assets/img/9-1-2.1 W3C-CSS-Tailwind Errors.png)
 ![](refs/assets/img/9-1-2.1 W3C-CSS-Tailwind Errors2.png)
@@ -1215,38 +1156,49 @@ Refs:
   - `*, ::before, ::after`
   - `::backdrop`
 
-##### WARNING (23)
+##### WARNING (23) ✅
 
 ![](refs/assets/img/9-1-2.1 W3C-CSS-Tailwind Warnings.png)
 
 - Resolution: Out of scope as these are auto generated by Tailwinds.
 
 ***
-### 9.2 Responsive Design
+### 8.2 Bugs & Issues ✅
 
+> This project used [GitHub Issues](https://github.com/iPoetDev/MiniTicTacToe/issues) to track, triage and describe project and code level bugs.
 
-***
-### 9.4 Bugs & Issues
-
+- **<ins>BUG :: DRAW STATE is indeterminate: GameLogic._checkOutcome Conditionals</ins>** #15: https://github.com/iPoetDev/MiniTicTacToe/issues/15,
+  - Status: Can't Fix before the deadline.
 
 ***
 > ::
 ***
-## 10.0 Features & User Acceptance
+## 9.0 Features & User Acceptance
 > Complete: ❓ | Review: 📝 | To Do: 📌
-### 10.1 Features
+### 9.1 Features ⛔
 
-### 10.2 Screenshots
+-
 
-### 10.3 User Acceptance
+### 9.2 Screenshots ⛔
+
+
+
+
+### 9.3 User Acceptance ⛔
+
+
+***
+### 9.4 Responsive Design ⛔
+
+
 
 ***
 > ::
 ***
-## 11.0 Deployment
+## 10.0 Deployment ✅✅
 > <small><sup> Complete: ✅ 24/01/22</sup></small>
 
-### 11.1 Deployment Strategy
+### 10.1 Deployment Strategy ✅
 
 - Develop on `*/branch-name-vN.M` trunk (1️⃣)
 - Pull Request and Merge into the `main` branch (2️⃣)
@@ -1264,7 +1216,7 @@ Notes on the above:
 Regular pushes to trunk branches, and then pull into to main and finally to deploy/* branches.
 ```
 
-### 11.2 Deployment Configuration
+### 10.2 Deployment Configuration ✅
 
 - Source: Deploy from Branch: `deploy/mini_tictactoe`
 - Root: `./` or root 📂
@@ -1272,12 +1224,12 @@ Regular pushes to trunk branches, and then pull into to main and finally to depl
 
 ![](refs/assets/img/11-2 Deployment Configuration.png)
 
-### 11.3 Deployment Environments
+### 10.3 Deployment Environments ✅
 
 ![](refs/assets/img/11-3 DeploymentEnv.png)
 **`Example Deployment from GitHub.com for GitHub.io in GitHub Environments`** *Dated: 2024/01/22*
 
-### 11.4 GitHub Pages: Live Site
+### 10.4 GitHub Pages: Live Site ✅
 
 - URL: https://ipoetdev.github.io/MiniTicTacToe/
 - Site:
@@ -1289,14 +1241,14 @@ https://ipoetdev.github.io/MiniTicTacToe/
 > ::
 ***
 
-## 12.0 Assessments
+## 11.0 Assessments
 > Complete: ❓ | Review: 📝 | To Do: 📌
 
-### 12.1 Credits
+### 11.1 Credits
 
 
 
-### 12.2 External Sources
+### 11.2 External Sources
 
 
 
