@@ -1,3 +1,112 @@
+/*noinspection Stylelint*/
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+@layer typography {
+    #myModal * {
+        font-family: 'Inter', sans-serif;
+    }
+}
+
+@layer GridAndButtons {
+    .help-button {
+        font-size: 16px;
+        border: none;
+        text-decoration: none;
+    }
+
+    .control-shaddow {
+        /* Credit https://manuarora.in/boxshadows Style India */
+        box-shadow: 0 4px 2px 0  rgba(240, 46, 170, 0.5);
+    }
+
+    .hover-brighten {
+        transition: filter 0.3s ease; /* Add transition for smooth hover effect */
+        filter: brightness(100%);
+    }
+
+    .hover-brighten:hover,
+    .hover-brighten:focus, /* Add style for when element is in focus */
+    .hover-brighten:active { /* Add style for when element is active (clicked or tapped) */
+        filter: brightness(120%);
+    }
+
+    .hover-brighten:focus-visible { /* Highlight outline when element is accessed via keyboard */
+        outline: 2px solid #FF9900; /* Change color as needed */
+    }
+
+    .hover-brighten:not(:hover) {
+        filter: brightness(80%);
+    }
+
+    .cell {
+        background-color: #6B7280; /* Corresponds to bg-blue-gray-500 in Tailwind */
+        transition: all 0.3s ease; /* Corresponds to transition-all and duration-300 in Tailwind */
+        filter: brightness(100%);
+    }
+
+    .cell:hover,
+    .cell:focus,
+    .cell:active {
+        background-color: #305b7f; /* Corresponds to bg-blue-gray-400 in Tailwind */
+        filter: brightness(120%);
+        outline: none;
+        border-radius: 1rem; /* Corresponds to rounded-2xl in Tailwind */
+    }
+
+    .cell:focus-visible {
+        outline: 2px solid rgba(237, 187, 105, 0.91); /* Corresponds to outline-2 and outline-yellow-500 in Tailwind */
+    }
+
+    .cell:not(:hover) {
+        filter: brightness(80%);
+    }
+
+}
+
+@layer TokenStyles {
+    .text-x {
+        color: rgba(240, 46, 170, 0.5);
+        text-shadow: #6366f1 1px 0 10px;
+    }
+
+    .text-o {
+        color: #6366f1;
+        text-shadow: rgba(240, 46, 170, 0.5) 1px 0 10px;
+    }
+}
+
+@layer UIModals {
+    .modal {
+        display: none; /* Hidden by default */
+    }
+
+    .modal-content {
+        border: none; /* remove border made by Tailwind as it can't be mixed with custom CSS attributes */
+    }
+}
+
+@layer gameArea {
+    .game-area-shadow {
+        /* https://manuarora.in/boxshadows Style India*/
+        box-shadow: 0 14px 7px 0  rgba(240, 46, 170, 0.5);
+    }
+}
+
+@layer animation {
+    /* Very Bouncy Tokens */
+    @keyframes bounce {
+        0%   { transform: scale(1,1)      translateY(0); }
+        10%  { transform: scale(1.1,.9)   translateY(0); }
+        30%  { transform: scale(.9,1.1)   translateY(-100px); }
+        50%  { transform: scale(1.05,.95) translateY(0); }
+        57%  { transform: scale(1,1)      translateY(-7px); }
+        64%  { transform: scale(1,1)      translateY(0); }
+        100% { transform: scale(1,1)      translateY(0); }
+    }
+
+    .bounce {
+        animation: bounce 1.5s ease-in-out;
+    }
+}

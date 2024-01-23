@@ -128,6 +128,8 @@ function resetButtonOnClick (resetButton, handler, ident, // jshint ignore:line
             // Reset Current Round Result Data
             updateRoundData(result, _RESET, show)
             window.hasFinal = null
+            /** @see watch.js **/
+            initUI() // jshint ignore:line
         } else {
             show && console.warn('No grid button found with id: ' + resetButton.id) // jshint ignore:line
         }
@@ -332,9 +334,13 @@ function updateGridUI(selected, start, board, // jshint ignore:line
     // @todo improvements on the logic as PlayedToken is already string in this method, never {null}
     if (mostRecentMove && cellNotEmpty) {
         cell.innerText = playedToken;
+        updateCellColor(cell,  playedToken);
+        animateCell(cell);
     }
     else if (hasBeenPlayed && cellNotEmpty) {
         cell.innerText = playedToken;
+        updateCellColor(cell,  playedToken);
+        animateCell(cell);
     } else {
         show && haslog && window.myLoggerWriteLog(`Grid Cell ${selected}`, '🔍',
                                                   caller, level,
@@ -348,6 +354,29 @@ function updateGridUI(selected, start, board, // jshint ignore:line
     show && haslog && window.myLoggerWriteLog('UI Update','🔍',
                                               caller, 'table',
                                               'log per cell', board); // jshint ignore:line
+}
+
+function updateCellColor(cell) {
+    if (cell.textContent.trim() === 'X') {
+        cell.classList.add('text-x');
+        cell.classList.remove('text-o');
+    } else if (cell.textContent.trim() === 'O') {
+        cell.classList.add('text-o');
+        cell.classList.remove('text-x');
+    }
+}
+
+function animateCell(cell) {
+    // Check if cell has a token
+    if (cell.textContent === 'X' || cell.textContent === 'O') {
+        cell.classList.add('bounce');
+
+        // Listen for the end of the animation
+        cell.addEventListener('animationend', () => {
+            // Remove the class so the animation can play again next time
+            cell.classList.remove('bounce');
+        });
+    }
 }
 
 // noinspection InnerHTMLJS
