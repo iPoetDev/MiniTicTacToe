@@ -498,8 +498,6 @@ Assuming the default orientation is portrait for mobile and landscape for deskto
 - **Don’t Define Standard Responsive Breakpoints Based on the Device Size:** The primary objective of responsive design breakpoints is to display content in the best possible way.
   - So, let the content be the guide. Add a breakpoint when the content and design requires it.
 
-### 3.6 Accessibility 🚧
-
 ---
 
 > ::
